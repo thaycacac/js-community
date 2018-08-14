@@ -1,4 +1,106 @@
-span {
-  margin: 10px;
-  font-size: 20px
+
+.container{
+  width: 1200px;
+  height: 100%;
+  background-color: #e6e6e6;
+  margin: auto;
+  display: grid;
+  grid-template-areas:
+  'side-bar-1 side-bar-1 main main main main side-bar-2 side-bar-2'
+  'side-bar-3 side-bar-3 main main main main side-bar-4 side-bar-4';
+  grid-gap:10px;
+  position: relative;
+}
+
+.hashtag-bar{
+  grid-area: side-bar-3;
+  float: left;
+  width: 250px;
+  height: 400px;
+  background-color: #ffffff;
+  display: block;
+
+
+}
+
+.main-content{
+  grid-area: main;
+  float: left;
+  width: 640px;
+  height: 100%;
+  background-color: #ffffff;
+  display: block;
+  margin-left: 10px;
+
+}
+
+.weekly-bar{
+  grid-area: side-bar-2;
+  float: left;
+  width: 250px;
+  height: 400px;
+  background-color: #ffffff;
+  display: block;
+  margin-left: 10px;
+
+}
+
+.ranking-bar{
+  grid-area: side-bar-4;
+  float: left;
+  width: 250px;
+  height: 400px;
+  background-color: #ffffff;
+  display: block;
+  margin-left: 10px;
+
+}
+
+.saved-post-bar{
+  grid-area: side-bar-1;
+  float: left;
+  width: 250px;
+  height: 400px;
+  background-color: #ffffff;
+  display: block;
+
+}
+/* style menu bar */
+.menu-bar{
+  width: 540px;
+  background-color: #e6e6e6;
+  margin: auto;
+}
+
+/* side bar */
+.bar-title{
+  margin-top: 10px;
+  margin-left: 90px;
+}
+
+.bar-content{
+  margin:20px;
+}
+
+.bar-content a{
+  text-decoration: none;
+  cursor: pointer;
+  margin: 5px;
+  float: left;
+}
+
+/* main content */
+.main-content{
+  padding: 10px;
+}
+
+/* ranking table */
+.ranking-table{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.ranking-table th{
+  text-align: center;
 }

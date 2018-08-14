@@ -1,0 +1,61 @@
+.short-post-container{
+    width: 600px;
+
+    border-bottom: 1px solid #000000;
+    
+}
+
+.user-avatar{
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin:10px;
+}
+
+.user-avatar img{
+    width: 100%;
+}
+.short-description{
+    width: 500px;
+    height: 90px;
+    display: inline-block;
+    margin :10px;
+
+}
+
+.username {
+
+    display: inline-block;
+}
+
+.main-hashtag{
+    margin-left: 10px;
+    display: inline-block;
+
+}
+
+.hashtag{
+    margin-left: 5px;
+    border: 1px solid #5bc0de;
+    padding: 3px;
+    border-radius: 4px;
+    
+}
+
+.hashtag a{
+    text-decoration: none;
+    color:#5bc0de;
+    cursor: pointer;
+}
+
+.post-title a{
+    text-decoration: none;
+    color: #000000;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.user-interact{
+    margin-top:5px;
+
+}
