@@ -22,13 +22,13 @@ export default class ShortPost extends Component{
                 </div>
 
                 <div className='short-description'>
-                    <p className='username'>{this.state.username}</p>
+                    <p className='username'><a href='/profile'>{this.state.username}</a></p>
                     <div className='main-hashtag'>
                         <span className='hashtag'><a>Swift</a></span>
                         <span className='hashtag'><a>iOS</a></span>
                     </div>
                     <div className='post-title'>
-                        <a>{this.state.title}</a>
+                        <a href='/post'>{this.state.title}</a>
                     </div>
                     <div className='user-interact'>
                     <i class="fa fa-thumbs-o-up" style={{fontSize:'15px'}}>17 </i>

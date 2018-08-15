@@ -1,0 +1,26 @@
+.comment-container{
+    margin: 20px;
+}
+
+.comment-user-avatar{
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-user-avatar img{
+    width: 100%;
+}
+
+.comment-text{
+    width: 500px;
+    height: 100%;
+    padding:2px;
+    margin-left: 50px;
+    border-bottom: 1px;
+    /* border-bottom-style: groove; */
+    padding-bottom: 20px;
+}
+

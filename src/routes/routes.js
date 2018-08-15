@@ -12,3 +12,8 @@ export const Profile = Loadable({
   loader: () => import("../pages/Profile/Profile"),
   loading : Loading
 });
+
+export const Post = Loadable({
+  loader: () => import("../pages/Post/Post"),
+  loading : Loading
+});
