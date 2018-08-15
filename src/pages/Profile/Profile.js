@@ -3,14 +3,14 @@ import Header from './../header/Header';
 import './Profile.css';
 import ShortPost from './../Post/ShortPost';
 import avatar from '../images/avatar.png';
-
+import Menu from './../Menu/Menu';
 
 export default class Profile extends Component{
     render(){
         return(
         <div style={{ backgroundColor: '#e6e6e6' }}>
         <Header />
-
+          <Menu/>
         <div className='container'>
 
           <div className='profile'>
