@@ -5,6 +5,20 @@ import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 
 export default class HomePage extends Component {
+  constructor(props){
+    super(props);
+
+    this.state={
+      posts:[
+        1,{
+          username:'Nguyễn Quang Linh',
+          title:'Các loại bootstrap trong RxSwift',
+          like:'17',
+          comment:'32'
+        }
+      ]
+    }
+  }
   render() {
     return (
       <div style={{ backgroundColor: '#e6e6e6' }}>
@@ -12,7 +26,7 @@ export default class HomePage extends Component {
 
         <Menu/>
 
-        <div className='container'>
+        <div className='newfeed-container'>
 
           <div className='saved-post-bar'>
             <div className='bar-title'>
@@ -40,7 +54,7 @@ export default class HomePage extends Component {
           </div>
 
           <div className='main-content'>
-            <ShortPost username='Nguyễn Quang Linh' title='Các loại bootstrap trong RxSwift' />
+            <ShortPost  />
             <ShortPost username='Phan Xuân Vũ' title='Bootstrapping trong AngularJS'/>
             <ShortPost username='Nguyễn Thái Bảo' title='Class method: Một số vấn đề về Coding Standard'/>
             <ShortPost username='Nguyễn Hoàng Hải' title='hướng dẫn debug trong react native'/>

@@ -14,7 +14,7 @@ export default class Question extends Component {
         <Menu/>
 
 
-        <div className='container'>
+        <div className='question-container'>
 
           <div className='saved-post-bar'>
             <div className='bar-title'>

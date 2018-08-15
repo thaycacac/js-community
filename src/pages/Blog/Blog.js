@@ -14,7 +14,7 @@ export default class Blog extends Component {
         <Menu/>
 
 
-        <div className='container'>
+        <div className='blog-container'>
 
           <div className='saved-post-bar'>
             <div className='bar-title'>

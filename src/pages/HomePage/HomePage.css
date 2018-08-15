@@ -1,13 +1,14 @@
 
-.container{
 
+.newfeed-container{
+  max-width: 1200px;
   height: 100%;
   background-color: #e6e6e6;
   margin: auto;
   display: grid;
   grid-template-areas:
-  'side-bar-1 side-bar-1 main main main main side-bar-2 side-bar-2'
-  'side-bar-3 side-bar-3 main main main main side-bar-4 side-bar-4';
+  'side-bar-1 main main main main side-bar-2'
+  'side-bar-3 main main main main side-bar-4';
   grid-gap:10px;
   position: relative;
 }

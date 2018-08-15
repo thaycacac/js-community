@@ -25,7 +25,7 @@ export default class HomePage extends Component {
 
                 <Menu />
 
-                <div className='container'>
+                <div className='post-container'>
 
                     <div className='saved-post-bar'>
                         <div className='bar-title'>

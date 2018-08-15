@@ -4,7 +4,7 @@ import './Menu.css';
 export default class Menu extends Component {
     render(){
         return(
-            <div className='menu-bar'>
+            <div className='menu-bar' fluid='false'>
           <Navbar>
             <Nav>
               <NavItem eventKey={1} href='/home'> New Feed</NavItem>

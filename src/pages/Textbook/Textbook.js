@@ -14,7 +14,7 @@ export default class Textbook extends Component {
         <Menu/>
 
 
-        <div className='container'>
+        <div className='textbook-container'>
 
           <div className='saved-post-bar'>
             <div className='bar-title'>

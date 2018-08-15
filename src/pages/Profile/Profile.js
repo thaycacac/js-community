@@ -11,7 +11,7 @@ export default class Profile extends Component{
         <div style={{ backgroundColor: '#e6e6e6' }}>
         <Header />
           <Menu/>
-        <div className='container'>
+        <div className='profile-container'>
 
           <div className='profile'>
             <div className='avatar'><img src={avatar}/></div>

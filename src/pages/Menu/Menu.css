@@ -1,7 +1,14 @@
 /* style menu bar */
 .menu-bar{
-    width: 540px;
+
+    grid-area: main;
     height: 80px;
     background-color: #e6e6e6;
-    margin: auto;
+    padding:auto;
+  }
+
+  .container{
+    width:100%;
+    background-color: #e6e6e6;
+    padding-left:90px;
   }

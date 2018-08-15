@@ -10,8 +10,8 @@ export default class ShortPost extends Component{
             username:this.props.username,
             mainHashtag:['iOS','Swift'],
             title:this.props.title,
-            like:'',
-            comment:''
+            like:this.props.like,
+            comment:this.props.comment
         }
     }
     render(){
@@ -31,8 +31,8 @@ export default class ShortPost extends Component{
                         <a href='/post'>{this.state.title}</a>
                     </div>
                     <div className='user-interact'>
-                    <i class="fa fa-thumbs-o-up" style={{fontSize:'15px'}}>17 </i>
-                    <i class="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px'}}>32</i>
+                    <i class="fa fa-thumbs-o-up" style={{fontSize:'15px'}}>{this.state.like} </i>
+                    <i class="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px'}}>{this.state.comment}</i>
                     </div>
                 </div>
                 
