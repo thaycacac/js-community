@@ -68,6 +68,7 @@
 /* style menu bar */
 .menu-bar{
   width: 540px;
+  height: 80px;
   background-color: #e6e6e6;
   margin: auto;
 }

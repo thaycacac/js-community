@@ -9,9 +9,15 @@
 
 .title{
     min-width: 200px;
-    color: #ffffff;
+    
     font-size: 26px;
     position: absolute;
+}
+
+.title a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
 }
 
 .user {

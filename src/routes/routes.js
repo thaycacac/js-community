@@ -7,3 +7,8 @@ export const HomePage = Loadable({
   loader: () => import("../pages/HomePage"),
   loading : Loading
 });
+
+export const Profile = Loadable({
+  loader: () => import("../pages/Profile/Profile"),
+  loading : Loading
+});

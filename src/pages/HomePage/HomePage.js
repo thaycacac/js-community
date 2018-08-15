@@ -55,9 +55,7 @@ export default class HomePage extends Component {
             <ShortPost username='Nguyễn Thái Bảo' title='Class method: Một số vấn đề về Coding Standard'/>
             <ShortPost username='Nguyễn Hoàng Hải' title='hướng dẫn debug trong react native'/>
             <ShortPost username='Wasd' title='Vài ghi chép về V8 và Garbage Collection'/>
-            <ShortPost username='Vu Phan' title='Tìm hiểu cách xây dựng Google Photos nền Web'/>
-            <ShortPost username='The Uranus' title='Làm quen với TensorFlow qua việc giải bài toán Linear regression'/>
-            <ShortPost username='JT Jukil' title='12 cách tối ưu hoá website - thời đại của mobile-first'/>
+
           </div>
 
           <div className='weekly-bar'>

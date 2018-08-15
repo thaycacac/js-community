@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
 import 'font-awesome/css/font-awesome.min.css';
-import login from './images/login.png';
+import login from '../images/login.png';
 export default class Card extends Component {
   constructor() {
     super();
@@ -51,7 +51,7 @@ export default class Card extends Component {
                 }}
               >
                 <div className='user-content'>
-                    <a href=''>View profile</a><br/>
+                    <a href='./profile'>View profile</a><br/>
                     <a href=''>Sign out </a>
                 </div>
                 

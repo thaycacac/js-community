@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ShortPost.css';
 import 'font-awesome/css/font-awesome.min.css';
-import avatar from './images/avatar.png';
+import avatar from '../images/avatar.png';
 
 export default class ShortPost extends Component{
     constructor(props){
