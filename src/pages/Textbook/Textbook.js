@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import './HomePage.css';
+import './Textbook.css';
 import Header from './../header/Header';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 
-export default class HomePage extends Component {
+export default class Textbook extends Component {
   render() {
     return (
       <div style={{ backgroundColor: '#e6e6e6' }}>
         <Header />
 
         <Menu/>
+
 
         <div className='container'>
 

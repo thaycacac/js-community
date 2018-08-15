@@ -65,6 +65,7 @@
   display: block;
 
 }
+
 /* style menu bar */
 .menu-bar{
   width: 540px;
@@ -72,7 +73,6 @@
   background-color: #e6e6e6;
   margin: auto;
 }
-
 /* side bar */
 .bar-title{
   margin-top: 10px;

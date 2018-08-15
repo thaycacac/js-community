@@ -4,6 +4,7 @@ import Header from './../header/Header';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import avatar from '../images/avatar.png';
 import Comment from './Comment';
+import Menu from './../Menu/Menu';
 
 
 export default class HomePage extends Component {
@@ -22,17 +23,7 @@ export default class HomePage extends Component {
             <div style={{ backgroundColor: '#e6e6e6' }}>
                 <Header />
 
-                <div className='menu-bar'>
-                    <Navbar>
-                        <Nav>
-                            <NavItem eventKey={1} href='#'> New Feed</NavItem>
-                            <NavItem eventKey={1} href='#'> Blog</NavItem>
-                            <NavItem eventKey={1} href='#'> Q/A</NavItem>
-                            <NavItem eventKey={1} href='#'> Textbook</NavItem>
-                        </Nav>
-                    </Navbar>
-                </div>
-
+                <Menu />
 
                 <div className='container'>
 
@@ -84,26 +75,26 @@ export default class HomePage extends Component {
                         </div>
 
                         <div className='post-content'>
-                         Incididunt dolor laboris dolor et cupidatat magna labore veniam enim aute consequat. Amet consectetur id magna dolor et laboris anim excepteur. Velit elit veniam aliquip amet irure ipsum officia mollit ea ut minim quis mollit anim. 
-                         Amet occaecat eu amet est tempor cupidatat elit eiusmod ea proident sit esse ex ullamco. Aute sint ut adipisicing adipisicing ad culpa officia reprehenderit ea. Officia est ullamco sunt cillum do exercitation. Nostrud nostrud cupidatat 
-                         laborum commodo magna esse ipsum est tempor sint incididunt consectetur.
-
-                        Quis occaecat Lorem fugiat consectetur occaecat occaecat pariatur velit pariatur adipisicing eu anim ipsum velit. Ipsum sit culpa aliquip non. Nostrud proident labore eu tempor enim laborum exercitation veniam labore deserunt deserunt deserunt. 
-                        Id do pariatur cupidatat tempor officia duis. Id fugiat nostrud Lorem sunt qui. Cillum enim culpa ipsum non laboris consectetur irure incididunt esse nulla proident.
+                            Incididunt dolor laboris dolor et cupidatat magna labore veniam enim aute consequat. Amet consectetur id magna dolor et laboris anim excepteur. Velit elit veniam aliquip amet irure ipsum officia mollit ea ut minim quis mollit anim.
+                            Amet occaecat eu amet est tempor cupidatat elit eiusmod ea proident sit esse ex ullamco. Aute sint ut adipisicing adipisicing ad culpa officia reprehenderit ea. Officia est ullamco sunt cillum do exercitation. Nostrud nostrud cupidatat
+                            laborum commodo magna esse ipsum est tempor sint incididunt consectetur.
+   
+                           Quis occaecat Lorem fugiat consectetur occaecat occaecat pariatur velit pariatur adipisicing eu anim ipsum velit. Ipsum sit culpa aliquip non. Nostrud proident labore eu tempor enim laborum exercitation veniam labore deserunt deserunt deserunt.
+                           Id do pariatur cupidatat tempor officia duis. Id fugiat nostrud Lorem sunt qui. Cillum enim culpa ipsum non laboris consectetur irure incididunt esse nulla proident.
                         </div>
                     </div>
 
-                        <div className='interaction'>
-                            <div className='add-comment'>
+                    <div className='interaction'>
+                        <div className='add-comment'>
                             <h4>Comment</h4>
                             <textarea placeholder='Add comment here...'></textarea>
-                            <button className='btn btn-primary' style={{float:'right',width:'70px'}}>Post</button>
-                            </div>
-                            <div className='view-comment'>
-                            <Comment username='Vu Phan' content='Nice!'/>
-                            <Comment username='The Uranus' content='I love you <3'/>
-                            </div>
+                            <button className='btn btn-primary' style={{ float: 'right', width: '70px' }}>Post</button>
                         </div>
+                        <div className='view-comment'>
+                            <Comment username='Vu Phan' content='Nice!' />
+                            <Comment username='The Uranus' content='I love you <3' />
+                        </div>
+                    </div>
                     <div className='weekly-bar'>
                         <div className='bar-title'>
                             Weekly
