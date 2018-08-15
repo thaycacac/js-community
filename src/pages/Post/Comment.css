@@ -24,3 +24,6 @@
     padding-bottom: 20px;
 }
 
+textarea{
+    resize: none;
+}
