@@ -7,32 +7,39 @@ export default class ShortPost extends Component{
     constructor(props){
         super(props);
         this.state={
-            username:this.props.username,
-            mainHashtag:['iOS','Swift'],
-            title:this.props.title,
-            like:this.props.like,
-            comment:this.props.comment
+            post:{
+                id:this.props.id,
+                username:this.props.username,
+                title:this.props.title,
+                hashtag:this.props.hashtag,
+                like:this.props.like,
+                comment:this.props.comment
+            }
+            
         }
     }
     render(){
         return(
+            
             <div className='short-post-container'>
+            {
+                console.log('this.state.post',this.state.post)
+              }
                 <div className='user-avatar'>
                     <img src={avatar}/>
                 </div>
 
                 <div className='short-description'>
-                    <p className='username'><a href='/profile'>{this.state.username}</a></p>
+                    <p className='username'><a href='/profile'>{this.state.post.username}</a></p>
                     <div className='main-hashtag'>
-                        <span className='hashtag'><a>Swift</a></span>
-                        <span className='hashtag'><a>iOS</a></span>
+
                     </div>
                     <div className='post-title'>
-                        <a href='/post'>{this.state.title}</a>
+                        <a href='/post'>{this.state.post.title}</a>
                     </div>
                     <div className='user-interact'>
-                    <i class="fa fa-thumbs-o-up" style={{fontSize:'15px'}}>{this.state.like} </i>
-                    <i class="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px'}}>{this.state.comment}</i>
+                    <i className="fa fa-thumbs-o-up" style={{fontSize:'15px'}}>{this.state.post.like} </i>
+                    <i className="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px'}}>{this.state.post.comment}</i>
                     </div>
                 </div>
                 
@@ -41,3 +48,4 @@ export default class ShortPost extends Component{
         )
     }
 }
+

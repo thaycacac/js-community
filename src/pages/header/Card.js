@@ -38,7 +38,7 @@ export default class Card extends Component {
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
           <img src={login} style={{width:'15%',marginRight:'5px'}}/>
-          Hi,user <i class="fa fa-angle-down" style={{fontSize:'15px',color:'white',marginLeft:'5px'}}></i>
+          Hi,user <i className="fa fa-angle-down" style={{fontSize:'15px',color:'white',marginLeft:'5px'}}></i>
         </button>
         
         {

@@ -6,6 +6,50 @@ import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 
 export default class Blog extends Component {
+  constructor(props){
+    super(props);
+      this.state={
+        posts:[
+          {
+            id:'1',
+            username:'Nguyễn Quang Linh',
+            title:'Các loại bootstrap trong RxSwift',
+            hashtag:['Swift','iOS'],
+            like:'17',
+            comment:'32'
+          },
+          {
+            id:'2',
+            username:'Phan Xuân Vũ',
+            title:'Bootstrapping trong AngularJS',
+            like:'45',
+            comment:'35'
+          },
+          {
+            id:'3',
+            username:'Nguyễn Thái Bảo',
+            title:'Class method: Một số vấn đề về Coding Standard',
+            like:'1',
+            comment:'0'
+          },
+          {
+            id:'4',
+            username:'Nguyễn Hoàng Hải',
+            title:'hướng dẫn debug trong react native',
+            like:'97',
+            comment:'58'
+          },
+          {
+            id:'5',
+            username:'Wasd',
+            title:'Vài ghi chép về V8 và Garbage Collection',
+            like:'25',
+            comment:'45'
+          }
+          ]
+      }
+  }
+
   render() {
     return (
       <div style={{ backgroundColor: '#e6e6e6' }}>
@@ -42,11 +86,16 @@ export default class Blog extends Component {
           </div>
 
           <div className='main-content'>
-            <ShortPost username='Nguyễn Quang Linh' title='Các loại bootstrap trong RxSwift' />
-            <ShortPost username='Phan Xuân Vũ' title='Bootstrapping trong AngularJS'/>
-            <ShortPost username='Nguyễn Thái Bảo' title='Class method: Một số vấn đề về Coding Standard'/>
-            <ShortPost username='Nguyễn Hoàng Hải' title='hướng dẫn debug trong react native'/>
-            <ShortPost username='Wasd' title='Vài ghi chép về V8 và Garbage Collection'/>
+            {
+              this.state.posts.map(post=>{
+                  console.log('username',post.username)
+                  return (
+                    <ShortPost id={post.id} username={post.username} title={post.title} hashtag={post.hashtag}  like={post.like} comment={post.comment}/>
+                  )
+                })
+              
+              
+            }
 
           </div>
 
