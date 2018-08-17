@@ -3,11 +3,13 @@ import './Header.css';
 import 'font-awesome/css/font-awesome.min.css';
 import login from '../images/login.png';
 export default class Card extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     
     this.state = {
       showMenu: false,
+      email:'',
+      username:'user'
     };
     
     this.showMenu = this.showMenu.bind(this);
@@ -38,7 +40,7 @@ export default class Card extends Component {
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
           <img src={login} style={{width:'15%',marginRight:'5px'}}/>
-          Hi,user <i className="fa fa-angle-down" style={{fontSize:'15px',color:'white',marginLeft:'5px'}}></i>
+          Hi,{this.state.username} <i className="fa fa-angle-down" style={{fontSize:'15px',color:'white',marginLeft:'5px'}}></i>
         </button>
         
         {

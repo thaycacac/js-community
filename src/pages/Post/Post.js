@@ -11,11 +11,38 @@ export default class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'Nguyễn Quang Linh',
+            email:'',
+            username:'',
+            author: 'Nguyễn Quang Linh',
             title: 'Các loại bootstrap trong RxSwift',
-            hashtag: ['iOS', 'Swift'],
-            like: '',
-            comment: ''
+            postHashtags: ['iOS', 'Swift'],
+            like: '17',
+            numberOfComment: '32',
+            content:'Incididunt dolor laboris dolor et cupidatat magna labore veniam enim aute consequat. Amet consectetur id magna dolor et laboris anim excepteur. Velit elit veniam aliquip amet irure ipsum officia mollit ea ut minim quis mollit anim.',
+            ranking:[
+              {
+                username:'',
+                votes:''
+              }
+            ],
+            hashtags:[],
+            activities:[
+              {
+                date:'',
+                activity:''
+              }
+            ],
+            comments:[
+                {
+                    username:'Vu Phan',
+                    content:'Nice!'
+                },
+                {
+                    username:'The Uranus',
+                    content:'I love you <3'
+                }
+            ],
+            newComment:'',
         }
     }
     render() {
@@ -42,6 +69,12 @@ export default class HomePage extends Component {
           </div>
 
                         <div className='bar-content'>
+                        {
+                            // this.state.hashtags.map((hashtag)=>{
+                            //   return(<a>{hashtag}</a> )
+                              
+                            // })
+                        }
                             <a>#android</a>
                             <a>#web</a>
                             <a>#machineLearning</a>
@@ -61,38 +94,51 @@ export default class HomePage extends Component {
                             <div className='post-title'>
                                 {this.state.title}
                             </div>
-                            <p className='username'><a href='/profile'>{this.state.username}</a></p>
+                            <p className='username'><a href='/profile'>{this.state.author}</a></p>
 
 
                             <div className='user-interact'>
                                 <div className='main-hashtag'>
-                                    <span className='hashtag'><a>Swift</a></span>
-                                    <span className='hashtag'><a>iOS</a></span>
+                                    {
+                                        this.state.postHashtags.map(hashtag=>{
+                                            return(
+                                                <span className='hashtag'><a>{hashtag}</a></span>
+                                            )
+                                        })
+                                    }
                                 </div>
-                                <i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}>17 </i>
-                                <i class="fa fa-comment-o" style={{ fontSize: '15px', marginLeft: '10px' }}>32</i>
+                                <i class="fa fa-comment-o" style={{ fontSize: '15px', marginLeft: '10px' }}>{this.state.numberOfComment}</i>
+                                <i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}>{this.state.like} </i>
+                                
                             </div>
                         </div>
 
                         <div className='post-content'>
-                            Incididunt dolor laboris dolor et cupidatat magna labore veniam enim aute consequat. Amet consectetur id magna dolor et laboris anim excepteur. Velit elit veniam aliquip amet irure ipsum officia mollit ea ut minim quis mollit anim.
-                            Amet occaecat eu amet est tempor cupidatat elit eiusmod ea proident sit esse ex ullamco. Aute sint ut adipisicing adipisicing ad culpa officia reprehenderit ea. Officia est ullamco sunt cillum do exercitation. Nostrud nostrud cupidatat
-                            laborum commodo magna esse ipsum est tempor sint incididunt consectetur.
-   
-                           Quis occaecat Lorem fugiat consectetur occaecat occaecat pariatur velit pariatur adipisicing eu anim ipsum velit. Ipsum sit culpa aliquip non. Nostrud proident labore eu tempor enim laborum exercitation veniam labore deserunt deserunt deserunt.
-                           Id do pariatur cupidatat tempor officia duis. Id fugiat nostrud Lorem sunt qui. Cillum enim culpa ipsum non laboris consectetur irure incididunt esse nulla proident.
+                            {this.state.content}
                         </div>
+                        <button className='btn btn-sm btn-primary' style={{width:'60px',float:'right',marginRight:'10px'}}><i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}></i> Like</button>
                     </div>
 
                     <div className='interaction'>
                         <div className='add-comment'>
                             <h4>Comment</h4>
-                            <textarea placeholder='Add comment here...'></textarea>
-                            <button className='btn btn-primary' style={{ float: 'right', width: '70px' }}>Post</button>
+                            <textarea placeholder='Add comment here...' onChange={event=>{this.setState(this.state.newComment=event.target.value)}}></textarea>
+                            <button className='btn btn-primary' 
+                                style={{ float: 'right', width: '70px' }}
+                                   
+                            >
+                            Post
+                            </button>
                         </div>
                         <div className='view-comment'>
-                            <Comment username='Vu Phan' content='Nice!' />
-                            <Comment username='The Uranus' content='I love you <3' />
+                        {
+                            this.state.comments.map((comment)=>{
+                                return(
+                                    <Comment username={comment.username} content={comment.content} />
+                                )
+                            })
+                        }
+                            
                         </div>
                     </div>
                     <div className='weekly-bar'>
@@ -100,6 +146,13 @@ export default class HomePage extends Component {
                             Weekly
           </div>
                         <div className='bar-content'>
+                        {
+                            // this.state.activities.map((date,activity)=>{
+                            //   return(
+                            //     <li>{date} - {activity}</li>
+                            //   )
+                            // })
+                        }
                             No activities yet.
           </div>
                     </div>
@@ -110,11 +163,23 @@ export default class HomePage extends Component {
           </div>
                         <div className='bar-content'>
                             <table className='ranking-table' >
+
                                 <tr>
                                     <th>#</th>
                                     <th>User</th>
                                     <th>Votes</th>
                                 </tr>
+                                {
+                                    // this.state.ranking.map((rank,username,votes)=>{
+                                    //   return(
+                                    //     <tr>
+                                    //     <td>{rank}</td>
+                                    //     <td>{username}</td>
+                                    //     <td>{votes}</td>
+                                    //     </tr>
+                                    //   )
+                                    // })
+                                  }
                                 <tr>
                                     <td>1</td>
                                     <td>Wasd</td>

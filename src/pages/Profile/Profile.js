@@ -46,7 +46,13 @@ export default class Profile extends Component{
             like:'25',
             comment:'45'
           }
-          ]
+          ],
+          userid:'',
+          username:'',
+          dob:'',
+          totalPost:'',
+          totalVotes:'',
+          rank:'',
       }
   }
     render(){
@@ -59,24 +65,24 @@ export default class Profile extends Component{
           <div className='profile'>
             <div className='avatar'><img src={avatar}/></div>
             <div className='bar-content'>
-            <div className='username-profile'>Nguyễn Quang Linh</div>
+            <div className='username-profile'>{this.state.username}Nguyễn Quang Linh</div>
             <div className='public-profile'>
               <table className='table-profile'>
                 <tr>
                   <td>Date of birth:</td>
-                  <td>13/04/1998</td>
+                  <td>{this.state.dob}13/04/1998</td>
                 </tr>
                 <tr>
                   <td>Total posts:</td>
-                  <td>5</td>
+                  <td>{this.state.totalPost}5</td>
                 </tr>
                 <tr>
                   <td>Total votes:</td>
-                  <td>54</td>
+                  <td>{this.state.totalVotes}54</td>
                 </tr>
                 <tr>
-                  <td>Ranking:</td>
-                  <td>#1</td>
+                  <td>tRanking:</td>
+                  <td>#{this.state.rank}1</td>
                 </tr>
               </table>
             </div>

@@ -9,43 +9,57 @@ export default class Question extends Component {
   constructor(props){
     super(props);
       this.state={
+        email:'',
+        username:'user',
         posts:[
           {
             id:'1',
-            username:'Nguyễn Quang Linh',
+            author:'Nguyễn Quang Linh',
             title:'Các loại bootstrap trong RxSwift',
-            hashtag:['Swift','iOS'],
             like:'17',
             comment:'32'
           },
           {
             id:'2',
-            username:'Phan Xuân Vũ',
+            author:'Phan Xuân Vũ',
             title:'Bootstrapping trong AngularJS',
             like:'45',
             comment:'35'
           },
           {
             id:'3',
-            username:'Nguyễn Thái Bảo',
+            author:'Nguyễn Thái Bảo',
             title:'Class method: Một số vấn đề về Coding Standard',
             like:'1',
             comment:'0'
           },
           {
             id:'4',
-            username:'Nguyễn Hoàng Hải',
+            author:'Nguyễn Hoàng Hải',
             title:'hướng dẫn debug trong react native',
             like:'97',
             comment:'58'
           },
           {
             id:'5',
-            username:'Wasd',
+            author:'Wasd',
             title:'Vài ghi chép về V8 và Garbage Collection',
             like:'25',
             comment:'45'
           }
+          ],
+          ranking:[
+            {
+              username:'',
+              votes:''
+            }
+          ],
+          hashtags:[],
+          activities:[
+            {
+              date:'',
+              activity:''
+            }
           ]
       }
   }
@@ -74,6 +88,12 @@ export default class Question extends Component {
           </div>
 
             <div className='bar-content'>
+            {
+              // this.state.hashtags.map((hashtag)=>{
+              //   return(<a>{hashtag}</a> )
+                
+              // })
+          }
               <a>#android</a> 
               <a>#web</a>
               <a>#machineLearning</a> 
@@ -103,6 +123,13 @@ export default class Question extends Component {
               Weekly
           </div>
             <div className='bar-content'>
+            {
+              // this.state.activities.map((date,activity)=>{
+              //   return(
+              //     <li>{date} - {activity}</li>
+              //   )
+              // })
+          }
               No activities yet.
           </div>
           </div>
@@ -113,6 +140,17 @@ export default class Question extends Component {
           </div>
             <div className='bar-content'>
               <table className='ranking-table' >
+              {
+                // this.state.ranking.map((rank,username,votes)=>{
+                //   return(
+                //     <tr>
+                //     <td>{rank}</td>
+                //     <td>{username}</td>
+                //     <td>{votes}</td>
+                //     </tr>
+                //   )
+                // })
+              }
                   <tr>
                   <th>#</th>
                   <th>User</th>
