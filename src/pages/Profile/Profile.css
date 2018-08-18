@@ -2,7 +2,7 @@
 .profile-container{
   max-width: 1200px;
   height: 100%;
-  background-color: #e6e6e6;
+  background-color: #f2f2f2;
   margin: auto;
   display: grid;
   grid-template-areas:
@@ -99,7 +99,7 @@
   .menu-bar{
     width: 540px;
     height: 80px;
-    background-color: #e6e6e6;
+    background-color: #f2f2f2;
     margin: auto;
   }
 

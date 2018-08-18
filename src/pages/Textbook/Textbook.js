@@ -65,7 +65,7 @@ export default class Textbook extends Component {
   }
   render() {
     return (
-      <div style={{ backgroundColor: '#e6e6e6' }}>
+      <div style={{ backgroundColor: '#f2f2f2' }}>
         <Header />
 
         <Menu/>

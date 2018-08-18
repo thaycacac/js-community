@@ -32,3 +32,8 @@ export const Textbook = Loadable({
   loader: () => import("../pages/Textbook/Textbook"),
   loading : Loading
 });
+
+export const WritePost = Loadable({
+  loader: () => import("../pages/WritePost/WritePost"),
+  loading : Loading
+});

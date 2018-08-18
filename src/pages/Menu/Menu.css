@@ -1,14 +1,15 @@
 /* style menu bar */
 .menu-bar{
-
+    border:0px;
     grid-area: main;
     height: 80px;
-    background-color: #e6e6e6;
+    background-color: #f2f2f2;
     padding:auto;
   }
 
   .container{
+    border:0px;
     width:100%;
-    background-color: #e6e6e6;
+    background-color: #f2f2f2;
     padding-left:90px;
   }

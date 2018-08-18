@@ -57,7 +57,7 @@ export default class Profile extends Component{
   }
     render(){
         return(
-        <div style={{ backgroundColor: '#e6e6e6' }}>
+        <div style={{ backgroundColor: '#e6f2f2f2e6e6' }}>
         <Header />
           <Menu/>
         <div className='profile-container'>

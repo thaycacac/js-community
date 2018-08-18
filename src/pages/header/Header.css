@@ -1,7 +1,7 @@
 .header-container{
     min-width: 1200px;
     height: 80px;
-    background-color: #02163c;
+    background-color: #2c4762;
     margin: 0px;
     padding-top: 20px;
     width: 100%;
@@ -36,7 +36,7 @@
 .user-button{
     height: 40px;
     width: 120px;
-    background-color: #02163c;
+    background-color: #2c4762;
     color: #ffffff;
     border: 0px ;
 
@@ -78,7 +78,7 @@
 .write-a-post a{
     text-decoration: none;
     color: #ffffff;
-    margin: 20px 20px;
+    margin: 10px 10px;
 
 }
 
