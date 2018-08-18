@@ -62,12 +62,21 @@
 }
 
 .search{
+    background-image: url('../images/search-icon.png');
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: 5px 5px;
+    padding-left: 35px;
     width:50%;
     min-width: 400px;
     position: absolute;
     left: 260px;
+    border:0px;
+    border-radius: 100px;
 }
-
+.search:focus{
+    outline: #2c4762;
+}
 .write-a-post{
     width: 150px;
     text-align: center;
