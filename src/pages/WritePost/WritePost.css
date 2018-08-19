@@ -60,3 +60,14 @@
 .title-input:focus{
     outline: #ffffff;
 }
+
+.btn-clear{
+    float: right;
+    margin-top:10px;
+    border-radius: 100px;
+    width: 80px;
+}
+
+.writing-hint{
+    margin-top:10px;
+}

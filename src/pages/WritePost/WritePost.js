@@ -6,26 +6,29 @@ import './WritePost.css';
 import Header from './../header/Header';
 import Menu from './../Menu/Menu';
 
-const initialValue = Value.fromJSON({
+const existingValue = JSON.parse(localStorage.getItem('content'))
+const initialValue = Value.fromJSON(
+  existingValue || {
     document: {
-        nodes: [
+      nodes: [
+        {
+          object: 'block',
+          type: 'paragraph',
+          nodes: [
             {
-                object: 'block',
-                type: 'paragraph',
-                nodes: [
-                    {
-                        object: 'text',
-                        leaves: [
-                            {
-                                text: 'A line of text in a paragraph.',
-                            },
-                        ],
-                    },
-                ],
+              object: 'text',
+              leaves: [
+                {
+                  text: '',
+                },
+              ],
             },
-        ],
+          ],
+        },
+      ],
     },
-})
+  }
+)
 
 function CodeNode(props) {
     return (
@@ -69,8 +72,13 @@ export default class WritePost extends Component {
     }
 
     onChange = ({ value }) => {
+        // Check to see if the document has changed before saving.
+        if (value.document != this.state.value.document) {
+          const content = JSON.stringify(value.toJSON())
+          localStorage.setItem('content', content)
+        }
         this.setState({ value })
-    }
+      }
   
     render() {
         return (
@@ -104,11 +112,29 @@ export default class WritePost extends Component {
                     value={this.state.value}
                     onChange={this.onChange}
                     renderMark={this.renderMark}
+                    placeholder='Enter content here...'
                     />
                     </div>
-
+                    <button 
+                    className='btn btn-success btn-clear'
+                    onClick={()=>{
+                        localStorage.clear();
+                        alert('Clear successfully!');
+                        window.location.reload();
+                    }}
+                    >
+                    Clear
+                    </button>
+                    <div className='writing-hint'>
+                        <code>ctrl B</code> - <strong>bold</strong><br/>
+                        <code>ctrl I</code> - <i>italy</i><br/>
+                        <code>ctrl U</code> - <u>underline</u><br/>
+                        <code>ctrl `</code> - <code>code</code><br/>
+                        <i>The content is saved as draft automatically.</i><br/>
+                    </div>
+                    </div>
                 </div>
-            </div>
+            
         )
     }
 
