@@ -8,12 +8,15 @@ import logojs from '../images/logoJSColor.png';
 
 import houseJS from '../images/houseJS.png';
 
+import logoJSNon from '../images/logoJS.png';
+
 export default class Login extends Component {
     render()  {
         return (
             <div>
                 <div className="intro-header">
-                    <p className="intro-js">JS Community</p>
+                    
+                    <p className="intro-js"><img src={logoJSNon} style={{width:'50px', margin: '3px'}}/>JS Community</p>
                     {/* <div class="link-sign-in btn-sign-in">
                         <a href="#">
                             <img src="iconFB.png" width="24px"/>

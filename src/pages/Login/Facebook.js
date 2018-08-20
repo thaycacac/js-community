@@ -27,19 +27,19 @@ export default class Facebook extends Component {
         let fbContent;
 
         if(this.state.isLoggedIn) {
-            // fbContent = (
-            //     <div style={{
-            //         width: '400px',
-            //         margin: 'auto',
-            //         background: '#f4f4f4',
-            //         padding: '20px'
-            //     }}>
-            //         <img src={this.state.picture}/>
-            //         <h2>Welcome {this.state.name}</h2>
-            //         Email: {this.state.email}
-            //     </div>
-            // );
-            fbContent = null;
+            fbContent = (
+                <div style={{
+                    width: '400px',
+                    margin: 'auto',
+                    background: '#f4f4f4',
+                    padding: '20px'
+                }}>
+                    <img src={this.state.picture}/>
+                    <h2>Welcome {this.state.name}</h2>
+                    Email: {this.state.email}
+                </div>
+            );
+            // fbContent = null;
         } else {
             fbContent = (<FacebookLogin
                 appId="1075153362660059"
