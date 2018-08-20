@@ -1,0 +1,96 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.intro-header {
+    padding: 10px;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #2c4762;
+}
+
+.intro-js {
+    margin-left: 12%;
+    color: white;
+    display: inline;
+    font: 32px arial, sans-serif;
+}
+
+.link-sign-in {
+    display: block;
+    float: right;
+    margin-right: 10%;
+}
+
+.btn-sign-in {
+    border: 1px solid white;
+    
+    border-radius: 4px;
+    color: white;
+}
+
+.intro-header .link-sign-in a {
+    text-decoration: none;
+    color: white;
+    font: 16px arial, sans-serif;
+    margin: 8px 8px;
+}
+
+.intro-header .link-sign-in a img {
+    margin: 5px;
+    display: inline;
+    float: left;
+    margin-right: 0;
+}
+
+.intro-header .link-sign-in a span {
+    margin: 8px;
+    margin-left: 0;
+    display: inline;
+    float: right;
+}
+
+.main-content {
+    width: 80%;
+    display: block;
+    background-color: white;
+    /* margin: 10px 11.5%; */
+    margin: 10px auto;
+}
+
+.main-content h1 {
+    text-align: center;
+    font-weight: bold;
+    font: 44px Trebuchet MS, sans-serif;
+    color: #02163c;
+}
+
+.main-content h3 {
+    text-align: center;
+    font: 32px Comic Sans MS, sans-serif;
+    color: #02163c;
+}
+
+.main-content p {
+    font: 16px 'Inder', sans-serif;
+    /* font-family: cursive; */
+    /* font-size: 16px; */
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 28px;
+    color: #666;
+}
+
+.main-content .img-left {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+.main-content .img-right {
+    float: right;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
