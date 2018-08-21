@@ -13,7 +13,7 @@ import logoJSNon from '../images/logoJS.png';
 export default class Login extends Component {
     render()  {
         return (
-            <div>
+            <div className="main-body">
                 <div className="intro-header">
                     
                     <p className="intro-js"><img src={logoJSNon} style={{width:'50px', margin: '3px'}}/>JS Community</p>
