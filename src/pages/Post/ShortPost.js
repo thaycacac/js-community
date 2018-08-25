@@ -19,11 +19,11 @@ export default class ShortPost extends Component{
             
             <div className='short-post-container'>
                 <div className='user-avatar'>
-                    <img src={avatar}/>
+                    <img src={this.props.post && this.props.post.avatar ? this.props.post.avatar : avatar}/>
                 </div>
 
                 <div className='short-description'>
-                    <p className='username'><a href='/profile'>{this.state.post.authorId}</a></p>
+                    <p className='username'><a href='/profile'>{this.state.post.authorName}</a></p>
                     <div className='main-hashtag'>
                         {
                             // this.state.post.hashtags.map(hashtag=>{
@@ -37,8 +37,10 @@ export default class ShortPost extends Component{
                         <a href='/post' >{this.state.post.title}</a>
                     </div>
                     <div className='user-interact'>
-                    <i className="fa fa-thumbs-o-up" style={{fontSize:'15px'}}> </i>
-                    <i className="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px'}}></i>
+                    <i className="fa fa-thumbs-o-up" style={{fontSize:'15px', marginRight: '5px'}}> </i>
+                    <span>{this.props.post.total_likes}</span>
+                    <i className="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px', marginRight: '5px'}}></i>
+                    <span>{this.props.post.total_comments}</span>
                     </div>
                 </div>
                 

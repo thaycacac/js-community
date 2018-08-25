@@ -1,11 +1,11 @@
 const dev = {
   // BACKEND_URL: "http://localhost:3005"
-  BACKEND_URL: "https://hoalacxanh-server.azurewebsites.net"
+  BACKEND_URL: "https://jscommunity-server.azurewebsites.net"
 };
 
 const prod = {
   //BACKEND_URL: "http://localhost:3005"
-  BACKEND_URL: "https://hoalacxanh-server.azurewebsites.net"
+  BACKEND_URL: "https://jscommunity-server.azurewebsites.net"
 };
 
 function chooseEnvironment(env) {

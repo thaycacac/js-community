@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 import { push } from "react-router-redux";
 import store from "../store";
-import { fetchPostsRequest,fetchPostsSuccess,fetchPostsError } from '../reducers/auth/actions';
 
 export function get(url) {
   let accessToken = Cookies.get("accessToken");
@@ -72,24 +71,3 @@ export function put(url, body) {
   });
 }
 
-function fetchPosts(){
-  const URL = 'https://jscommunity-server.azurewebsites.net/post/get?page=1';
-  return fetch(URL, {method:'GET'})
-  .then(response => Promise.all([response,response.json()]));
-
-}
-export function fetchPostsWithRedux(){
-  return (dispatch) =>{
-      dispatch(fetchPostsRequest());
-      return fetchPosts().then(
-          ([response,json]) => {
-              if(response.status === 200){
-                  dispatch(fetchPostsSuccess(json))
-              }
-              else{
-                  dispatch(fetchPostsError())
-              }
-          }
-      )
-  }
-}

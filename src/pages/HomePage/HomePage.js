@@ -3,31 +3,28 @@ import './HomePage.css'
 import Header from './../header/Header'
 import ShortPost from './../Post/ShortPost'
 import Menu from './../Menu/Menu'
-import {} from '../../reducers/auth/actions'
 import { fetchPostsWithRedux } from './../../utils/fetch'
 import {connect} from 'react-redux'
+import { fetchPosts } from '../../reducers/post/actions';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
   constructor(props){
     super(props);
       this.state={
         posts:[],
+        total_pages : 0,
+        page : 0
       }
   }
   
-  componentDidMount(){
-    // fetch('https://jscommunity-server.azurewebsites.net/post/get?page=1')
-    // .then((res)=>res.json())
-    // .then((data) =>{
-    //   let posts= data.posts;
-    //   this.setState({posts});
-    // })
-
-    fetchPostsWithRedux();
+  componentWillMount(){
+    this.props.fetchPosts(0).then(() => {
+      const {posts, total_pages, page} = this.props.posts;
+      this.setState({posts, total_pages, page})
+    })
     
-    console.log('posts',this.state.posts);
   }
-
+  
   render() {
     return (
       <div style={{ backgroundColor: '#f2f2f2' }}>
@@ -145,10 +142,14 @@ export default class HomePage extends Component {
 }
 
 function mapStateToProps(state){
-  const {posts}=state;
-  return{
-      posts
-  }
+  //console.log(state.post.posts)
+  return({
+      posts : state.post.posts
+  })
 }
+const mapDispatchToProps = {
+  fetchPosts : fetchPosts
+};
 
- connect(mapStateToProps,{fetchPostsWithRedux})(HomePage);
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
