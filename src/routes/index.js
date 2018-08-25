@@ -7,7 +7,7 @@ export default (
       <Route path="/" component={HomePage} />
       <Route path="/home" component={HomePage} />
       <Route path='/profile' component={Profile}/>
-      <Route path='/post' component={Post}/>
+      <Route path='/post/:postId' component={Post}/>
       <Route path='/blog' component={Blog}/>
       <Route path='/question' component={Question}/>
       <Route path='/textbook' component={Textbook}/>

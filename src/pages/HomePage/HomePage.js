@@ -142,7 +142,7 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(state){
-  //console.log(state.post.posts)
+  console.log(state.post.posts)
   return({
       posts : state.post.posts
   })

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './ShortPost.css';
 import 'font-awesome/css/font-awesome.min.css';
 import avatar from '../images/avatar.png';
-
-
-
+import {Link} from 'react-router';
 
 export default class ShortPost extends Component{
     constructor(props){
@@ -34,7 +32,7 @@ export default class ShortPost extends Component{
                         }
                     </div>
                     <div className='post-title'>
-                        <a href='/post' >{this.state.post.title}</a>
+                        <Link to={{pathname:`/post/${this.props.post.postId}`}} >{this.state.post.title}</Link>
                     </div>
                     <div className='user-interact'>
                     <i className="fa fa-thumbs-o-up" style={{fontSize:'15px', marginRight: '5px'}}> </i>

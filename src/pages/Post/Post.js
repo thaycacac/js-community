@@ -1,20 +1,41 @@
-import React, { Component } from 'react';
-import './Post.css';
-import Header from './../header/Header';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import avatar from '../images/avatar.png';
-import Comment from './Comment';
-import Menu from './../Menu/Menu';
+import React, { Component } from 'react'
+import './Post.css'
+import Header from './../header/Header'
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import avatar from '../images/avatar.png'
+import Comment from './Comment'
+import Menu from './../Menu/Menu'
+import {Link} from 'react-router' 
+import {fetchPostContent} from '../../reducers/post/actions'
+import {connect} from 'react-redux'
 
-
-export default class HomePage extends Component {
+class Post extends Component {
     constructor(props) {
         super(props);
         this.state={
-            post:this.props.post
+            postId: 0,
+            authorId: 0,
+            authorName: '',
+            authorAvatar: null,
+            authorDescription: '',
+            title: '',
+            content: '',
+            created_at: '',
+            type: '',
+            total_comments: 0,
+            total_likes: 0,
         
     }
     }
+
+    componentWillMount(){
+        this.props.fetchPostContent(this.props.params.postId).then(() => {
+            const {postId,authorId,authorName,authorAvatar,authorDescription,title,content,created_at,type,total_comments,total_likes}= this.props.content;
+            this.setState({postId,authorId,authorName,authorAvatar,authorDescription,title,content,created_at,type,total_comments,total_likes})
+            console.log('content',this.state.content)
+          })
+    }
+    
     render() {
         return (
             <div style={{ backgroundColor: '#f2f2f2' }}>
@@ -57,17 +78,14 @@ export default class HomePage extends Component {
 
                     <div className='main-content'>
                         <div className='user-avatar'>
-                            <img src={avatar} />
+                            <img src={this.avatar ? this.state.avatar : avatar} />
                         </div>
 
                         <div className='short-description'>
                             <div className='post-title'>
-                            This is title
-                                {
-                                    // this.state.post.title
-                                }
+                                {this.state.title}
                             </div>
-                            <p className='username'><a href='/profile'>Nguyễn Quang Linh</a></p>
+                            <p className='username'><Link to='/profile' >{this.state.authorName}</Link></p>
 
 
                             <div className='user-interact'>
@@ -80,14 +98,14 @@ export default class HomePage extends Component {
                                         // })
                                     }
                                 </div>
-                                <i class="fa fa-comment-o" style={{ fontSize: '15px', marginLeft: '10px' }}>14</i>
-                                <i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}> 64</i>
+                                <i class="fa fa-comment-o" style={{ fontSize: '15px', marginLeft: '10px' }}>{this.state.total_comments}</i>
+                                <i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}> {this.state.total_likes}</i>
                                 
                             </div>
                         </div>
 
                         <div className='post-content'>
-                            {this.state.post}
+                            {this.state.content}
                         </div>
                         <button className='btn btn-sm btn-primary' style={{width:'60px',float:'right',marginRight:'10px'}}><i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}></i> Like</button>
                     </div>
@@ -182,3 +200,16 @@ export default class HomePage extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    console.log('state.post.content',state.post.content)
+    return ({
+        content : state.post.content
+    })
+}
+
+const mapDispatchToProps = {
+    fetchPostContent : fetchPostContent
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Post);

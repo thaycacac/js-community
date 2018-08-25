@@ -9,7 +9,7 @@ export default class Header extends Component{
         return(
             <div className="header-container">
                 <div className="title col-sm-3">
-                    <a href='./home'>
+                    <a href='/home'>
                     <img src={logoJS} style={{width:'40px'}}/> JS Community
                     </a> 
                  
