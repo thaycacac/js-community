@@ -133,6 +133,7 @@ export default class Blog extends Component {
           }
               No activities yet.
           </div>
+          <a href='/event'>Detail>></a>
           </div>
 
           <div className='ranking-bar'>

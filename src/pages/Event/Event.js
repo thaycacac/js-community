@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
-import './Post.css';
+import './Event.css';
 import Header from './../header/Header';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import avatar from '../images/avatar.png';
-import Comment from './Comment';
 import Menu from './../Menu/Menu';
+import Activity from './Activity';
 
-
-export default class HomePage extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            post:this.props.post
-        
-    }
-    }
-    render() {
+export default class Event extends Component {
+    render(){
         return (
             <div style={{ backgroundColor: '#f2f2f2' }}>
                 <Header />
 
                 <Menu />
-                
+
                 <div className='post-container'>
 
                     <div className='saved-post-bar'>
@@ -56,64 +46,10 @@ export default class HomePage extends Component {
                     </div>
 
                     <div className='main-content'>
-                        <div className='user-avatar'>
-                            <img src={avatar} />
-                        </div>
-
-                        <div className='short-description'>
-                            <div className='post-title'>
-                            This is title
-                                {
-                                    // this.state.post.title
-                                }
-                            </div>
-                            <p className='username'><a href='/profile'>Nguyễn Quang Linh</a></p>
-
-
-                            <div className='user-interact'>
-                                <div className='main-hashtag'>
-                                    {
-                                        // this.state.post.hashtags.map(hashtag=>{
-                                        //     return(
-                                        //         <span className='hashtag'><a>{hashtag}</a></span>
-                                        //     )
-                                        // })
-                                    }
-                                </div>
-                                <i class="fa fa-comment-o" style={{ fontSize: '15px', marginLeft: '10px' }}>14</i>
-                                <i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}> 64</i>
-                                
-                            </div>
-                        </div>
-
-                        <div className='post-content'>
-                            {this.state.post}
-                        </div>
-                        <button className='btn btn-sm btn-primary' style={{width:'60px',float:'right',marginRight:'10px'}}><i class="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}></i> Like</button>
+                        <Activity/>
+                        <Activity/>
                     </div>
 
-                    <div className='interaction'>
-                        <div className='add-comment'>
-                            <h4>Comment</h4>
-                            <textarea placeholder='Add comment here...' onChange={event=>{this.setState(this.state.newComment=event.target.value)}}></textarea>
-                            <button className='btn btn-primary' 
-                                style={{ float: 'right', width: '70px' }}
-                                   
-                            >
-                            Post
-                            </button>
-                        </div>
-                        <div className='view-comment'>
-                        {
-                            // this.state.comments.map((comment)=>{
-                            //     return(
-                            //         <Comment username={comment.username} content={comment.content} />
-                            //     )
-                            // })
-                        }
-                            
-                        </div>
-                    </div>
                     <div className='weekly-bar'>
                         <div className='bar-title'>
                             Weekly
@@ -179,6 +115,6 @@ export default class HomePage extends Component {
                     </div>
                 </div>
             </div>
-        )
+                                )
     }
-}
+};

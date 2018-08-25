@@ -37,3 +37,9 @@ export const WritePost = Loadable({
   loader: () => import("../pages/WritePost/WritePost"),
   loading : Loading
 });
+
+export const Event = Loadable({
+  loader: () => import("../pages/Event/Event"),
+  loading : Loading
+});
+

@@ -5,8 +5,9 @@ export default class Menu extends Component {
     render(){
         return(
             <div className='menu-bar'>
-          <Navbar style={{border:'0px;'}}>
-            <Nav>
+          <Navbar style={{backgroundColor: '#f2f2f2',
+            borderColor: '#f2f2f2'}}>
+            <Nav style={{border:'0px;'}}>
               <NavItem eventKey={1} href='/home'> New Feed</NavItem>
               <NavItem eventKey={1} href='/blog'> Blog</NavItem>
               <NavItem eventKey={1} href='/question'> Q/A</NavItem>

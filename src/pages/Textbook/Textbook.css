@@ -45,6 +45,12 @@
   
   }
   
+  .weekly-bar a{
+    text-decoration: none;
+    float: right;
+    margin:10px;
+}
+
   .ranking-bar{
     grid-area: side-bar-4;
     float: left;

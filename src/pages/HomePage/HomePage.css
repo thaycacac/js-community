@@ -8,12 +8,15 @@
   display: grid;
   grid-template-areas:
   'side-bar-1 main main main main side-bar-2'
+  'side-bar-3 main main main main side-bar-4'
+  'side-bar-3 main main main main side-bar-4'
   'side-bar-3 main main main main side-bar-4';
   grid-gap:10px;
   position: relative;
 }
 
 .hashtag-bar{
+  
   grid-area: side-bar-3;
   float: left;
   width: 250px;
@@ -44,6 +47,11 @@
   display: block;
   margin-left: 10px;
 
+}
+.weekly-bar a{
+  text-decoration: none;
+  float: right;
+  margin:10px;
 }
 
 .ranking-bar{

@@ -1,3 +1,9 @@
+@font-face {
+    font-family: AnnieUseYourTelescope;
+    src: url(AnnieUseYourTelescope.ttf);
+    font-weight: bold;
+}
+
 .header-container{
     min-width: 1200px;
     height: 80px;
@@ -10,7 +16,7 @@
 
 .title{
     min-width: 200px;
-    
+    font-family: AnnieUseYourTelescope;
     font-size: 26px;
     position: absolute;
 }

@@ -1,7 +1,3 @@
-code{
-  background-color:#f2f2f2;
-  color: black;
-}
 
 .post-container{
     max-width: 1200px;
@@ -56,11 +52,13 @@ code{
     margin-left: 10px;
   
   }
+
   .weekly-bar a{
-    text-decoration: none;
-    float: right;
-    margin:10px;
-}
+      text-decoration: none;
+      float: right;
+      margin:10px;
+  }
+  
   .ranking-bar{
     grid-area: side-bar-4;
     float: left;

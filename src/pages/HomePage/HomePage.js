@@ -1,69 +1,32 @@
-import React, { Component } from 'react';
-import './HomePage.css';
-import Header from './../header/Header';
-import ShortPost from './../Post/ShortPost';
-import Menu from './../Menu/Menu';
+import React, { Component } from 'react'
+import './HomePage.css'
+import Header from './../header/Header'
+import ShortPost from './../Post/ShortPost'
+import Menu from './../Menu/Menu'
+import {} from '../../reducers/auth/actions'
+import { fetchPostsWithRedux } from './../../utils/fetch'
+import {connect} from 'react-redux'
 
 export default class HomePage extends Component {
   constructor(props){
     super(props);
       this.state={
-        email:'',
-        username:'user',
-        posts:[
-          {
-            id:'1',
-            author:'Nguyễn Quang Linh',
-            title:'Các loại bootstrap trong RxSwift',
-            like:'17',
-            comment:'32'
-          },
-          {
-            id:'2',
-            author:'Phan Xuân Vũ',
-            title:'Bootstrapping trong AngularJS',
-            like:'45',
-            comment:'35'
-          },
-          {
-            id:'3',
-            author:'Nguyễn Thái Bảo',
-            title:'Class method: Một số vấn đề về Coding Standard',
-            like:'1',
-            comment:'0'
-          },
-          {
-            id:'4',
-            author:'Nguyễn Hoàng Hải',
-            title:'hướng dẫn debug trong react native',
-            like:'97',
-            comment:'58'
-          },
-          {
-            id:'5',
-            author:'Wasd',
-            title:'Vài ghi chép về V8 và Garbage Collection',
-            like:'25',
-            comment:'45'
-          }
-          ],
-          ranking:[
-            {
-              username:'',
-              votes:''
-            }
-          ],
-          hashtags:[],
-          activities:[
-            {
-              date:'',
-              activity:''
-            }
-          ]
+        posts:[],
       }
   }
   
+  componentDidMount(){
+    // fetch('https://jscommunity-server.azurewebsites.net/post/get?page=1')
+    // .then((res)=>res.json())
+    // .then((data) =>{
+    //   let posts= data.posts;
+    //   this.setState({posts});
+    // })
 
+    fetchPostsWithRedux();
+    
+    console.log('posts',this.state.posts);
+  }
 
   render() {
     return (
@@ -104,24 +67,16 @@ export default class HomePage extends Component {
               <a>#share</a>
             </div>
           </div>
-
+            
           <div className='main-content'>
-          
             {
-              this.state.posts.map(post=>{
-                  return (
-                    <ShortPost id={post.id} username={post.author} title={post.title}  like={post.like} comment={post.comment}/>
-                  )
-                })
-              
-              
+              this.state.posts.map(post => <ShortPost post={post}/>)
             }
-
           </div>
 
           <div className='weekly-bar'>
             <div className='bar-title'>
-              Weekly
+            Weekly
           </div>
             <div className='bar-content'>
             <ul>
@@ -135,6 +90,7 @@ export default class HomePage extends Component {
             </ul>
               No activities yet.
           </div>
+          <a href='/event'>Detail>></a>
           </div>
 
           <div className='ranking-bar'>
@@ -188,11 +144,11 @@ export default class HomePage extends Component {
   }
 }
 
-// function mapStateToProps(state){
-//   const {posts}=state;
-//   return{
-//       posts
-//   }
-// }
+function mapStateToProps(state){
+  const {posts}=state;
+  return{
+      posts
+  }
+}
 
-//  connect(mapStateToProps,null)(HomePage);
+ connect(mapStateToProps,{fetchPostsWithRedux})(HomePage);

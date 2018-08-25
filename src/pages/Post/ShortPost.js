@@ -3,17 +3,15 @@ import './ShortPost.css';
 import 'font-awesome/css/font-awesome.min.css';
 import avatar from '../images/avatar.png';
 
+
+
+
 export default class ShortPost extends Component{
     constructor(props){
         super(props);
         this.state={
-                id:this.props.id,
-                username:this.props.username,
-                title:this.props.title,
-                hashtags:['iOS','Swift'],
-                like:this.props.like,
-                comment:this.props.comment
-            
+                post:this.props.post
+
         }
     }
     render(){
@@ -25,22 +23,22 @@ export default class ShortPost extends Component{
                 </div>
 
                 <div className='short-description'>
-                    <p className='username'><a href='/profile'>{this.state.username}</a></p>
+                    <p className='username'><a href='/profile'>{this.state.post.authorId}</a></p>
                     <div className='main-hashtag'>
                         {
-                            this.state.hashtags.map(hashtag=>{
-                                return(
-                                    <span className='hashtag'><a>{hashtag}</a></span>
-                                )
-                            })
+                            // this.state.post.hashtags.map(hashtag=>{
+                            //     return(
+                            //         <span className='hashtag'><a>{hashtag}</a></span>
+                            //     )
+                            // })
                         }
                     </div>
                     <div className='post-title'>
-                        <a href='/post'>{this.state.title}</a>
+                        <a href='/post' >{this.state.post.title}</a>
                     </div>
                     <div className='user-interact'>
-                    <i className="fa fa-thumbs-o-up" style={{fontSize:'15px'}}>{this.state.like} </i>
-                    <i className="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px'}}>{this.state.comment}</i>
+                    <i className="fa fa-thumbs-o-up" style={{fontSize:'15px'}}> </i>
+                    <i className="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px'}}></i>
                     </div>
                 </div>
                 
