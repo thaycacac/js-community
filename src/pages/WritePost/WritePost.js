@@ -7,10 +7,18 @@ import Header from './../header/Header';
 import Menu from './../Menu/Menu';
 import Editor1 from './Editor1';
 import Editor2 from './Editor2';
+import initialValue from './value.json'
+import { Value } from 'slate';
 
 export default class WritePost extends Component {
     constructor(props){
         super(props);
+        this.state={
+            title:'',
+            hashtagString:'',
+            hashtags:[],
+            content:''
+        }
     }
     
     
@@ -28,7 +36,14 @@ export default class WritePost extends Component {
                             <a href='/home'><i class="fa fa-chevron-left"></i> Back</a>
                         </div>
 
-                        <button className='btn btn-primary btn-post'>
+                        <button className='btn btn-primary btn-post'
+                            onClick={() =>{
+                                this.setState({content:localStorage.getItem('text')})
+                                const res=this.state.hashtagString.split('/');
+                                this.setState({hashtags:res});
+
+                            }}
+                        >
                             <i class="fa fa-paper-plane-o"></i> Post
                         </button>
                     </div>
@@ -36,11 +51,21 @@ export default class WritePost extends Component {
 
                     <div className='writing-title'>
                         <form>
-                            <input className='title-input' type='text' placeholder='Title'/>
+                            <input className='title-input' type='text' placeholder='Title'
+                            onChange={event=>{
+                                this.setState({title:event.target.value})
+                            }}
+                            />
+                            <input className='hashtag-input' type='text' placeholder='hashtag : web/android/...'
+                            onChange={event=>{
+                                this.state.hashtagString = event.target.value;
+                            }}
+                            />
                         </form>
                     </div>
                     <div className='writing-content'>
                     <Editor2/>
+                    {console.log('hashtags',this.state.hashtags)}
                     </div>
                     
                     <div className='writing-hint'>
