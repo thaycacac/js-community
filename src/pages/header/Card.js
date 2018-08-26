@@ -9,7 +9,7 @@ export default class Card extends Component {
     this.state = {
       showMenu: false,
       email:'',
-      username:'Nguyễn Quang Linh Linh Linh'
+      username: 'Linh'
     };
     
     this.showMenu = this.showMenu.bind(this);
@@ -39,8 +39,8 @@ export default class Card extends Component {
     return (
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
-          <img src={login} style={{height:'100%',marginRight:'5px'}}/>
-          Hi,{this.state.username} <i className="fa fa-angle-down" style={{fontSize:'15px',color:'white',marginLeft:'5px'}}></i>
+          <img src={login} style={{width:'15%',marginRight:'5px'}}/>
+          Hi, {this.state.username} <i className="fa fa-angle-down" style={{fontSize:'15px',color:'white',marginLeft:'5px'}}></i>
         </button>
         
         {

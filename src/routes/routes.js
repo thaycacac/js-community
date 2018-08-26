@@ -43,6 +43,6 @@ export const Event = Loadable({
   loading : Loading
 });
 export const logIn = Loadable({
-  loader: () => import("../pages/HomePage"),
+  loader: () => import("../pages/Login"),
   loading : Loading
 });

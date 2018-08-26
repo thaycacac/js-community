@@ -5,7 +5,7 @@ import {HomePage,Profile,Post,Blog,Question,Textbook,WritePost,Event,logIn} from
 
 export default (
     <Route>
-      <Route path="/" component={HomePage} />
+      
       <Route path="/home" component={HomePage} />
       <Route path='/profile' component={Profile}/>
       <Route path='/post/:postId' component={Post}/>
