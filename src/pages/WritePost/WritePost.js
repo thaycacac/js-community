@@ -47,8 +47,8 @@ export default class WritePost extends Component {
                         <code>ctrl I</code> - <i>italy</i><br/>
                         <code>ctrl U</code> - <u>underline</u><br/>
                         <code>ctrl `</code> - <code>code</code><br/>
-                        <i>You must select the text before editing link</i><br/>
-
+                        <i>- You must select the text before editing link</i><br/>
+                        <i>- You can drag and drop images to the editor</i><br/>
                     </div>
                     </div>
                 </div>
