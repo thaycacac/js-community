@@ -4,7 +4,11 @@ import Header from './../header/Header'
 import ShortPost from './../Post/ShortPost'
 import Menu from './../Menu/Menu'
 import {connect} from 'react-redux'
-import { fetchPosts } from '../../reducers/post/actions';
+import { fetchPosts } from '../../reducers/post/actions'
+import Rank from './../sidebars/Rank'
+import Hashtags from './../sidebars/Hashtags'
+import SavedPost from './../sidebars/SavedPost'
+import Weekly from './../sidebars/Weekly'
 
 class HomePage extends Component {
   constructor(props){
@@ -12,7 +16,8 @@ class HomePage extends Component {
       this.state={
         posts:[],
         total_pages : 0,
-        page : 0
+        page : 0,
+        
       }
   }
   
@@ -38,7 +43,7 @@ class HomePage extends Component {
               Saved post
         </div>
             <div className='bar-content'>
-              No saved post.
+              <SavedPost />
         </div>
           </div>
 
@@ -48,19 +53,7 @@ class HomePage extends Component {
           </div>
 
             <div className='bar-content'>
-            {
-                // this.state.hashtags.map((hashtag)=>{
-                //   return(<a>{hashtag}</a> )
-                  
-                // })
-            }
-              <a>#android</a> 
-              <a>#web</a>
-              <a>#machineLearning</a> 
-              <a>#iOS</a>
-              <a>#AI</a>
-              <a>#tricks</a>
-              <a>#share</a>
+              <Hashtags/>
             </div>
           </div>
             
@@ -74,19 +67,7 @@ class HomePage extends Component {
             <div className='bar-title'>
             Weekly
           </div>
-            <div className='bar-content'>
-            <ul>
-            {
-                // this.state.activities.map((date,activity)=>{
-                //   return(
-                //     <li>{date} - {activity}</li>
-                //   )
-                // })
-            }
-            </ul>
-              No activities yet.
-          </div>
-          <a href='/event'>Detail>></a>
+            <Weekly/>
           </div>
 
           <div className='ranking-bar'>
@@ -94,44 +75,7 @@ class HomePage extends Component {
               Ranking
           </div>
             <div className='bar-content'>
-              <table className='ranking-table' >
-              {
-                // this.state.ranking.map((rank,username,votes)=>{
-                //   return(
-                //     <tr>
-                //     <td>{rank}</td>
-                //     <td>{username}</td>
-                //     <td>{votes}</td>
-                //     </tr>
-                //   )
-                // })
-              }
-                  <tr>
-                  <th>#</th>
-                  <th>User</th>
-                  <th>Votes</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Wasd</td>
-                    <td>696</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Vũ Phan</td>
-                    <td>569</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>The Uranus</td>
-                    <td>496</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Hoàng Hải</td>
-                    <td>369</td>
-                  </tr>
-              </table>
+              <Rank/>
             </div>
           </div>
         </div>
@@ -141,7 +85,7 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(state){
-  console.log(state.post.posts)
+  console.log('state.post.posts',state.post.posts)
   return({
       posts : state.post.posts
   })

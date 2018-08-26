@@ -5,6 +5,10 @@ import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 import {connect} from 'react-redux'
 import { fetchPosts } from '../../reducers/post/actions'
+import Rank from './../sidebars/Rank'
+import Hashtags from './../sidebars/Hashtags'
+import SavedPost from './../sidebars/SavedPost'
+import Weekly from './../sidebars/Weekly'
 
 class Blog extends Component {
   constructor(props){
@@ -30,15 +34,14 @@ class Blog extends Component {
 
         <Menu/>
 
-
-        <div className='blog-container'>
+        <div className='newfeed-container'>
 
           <div className='saved-post-bar'>
             <div className='bar-title'>
               Saved post
         </div>
             <div className='bar-content'>
-              No saved post.
+              <SavedPost />
         </div>
           </div>
 
@@ -48,44 +51,21 @@ class Blog extends Component {
           </div>
 
             <div className='bar-content'>
-            {
-              // this.state.hashtags.map((hashtag)=>{
-              //   return(<a>{hashtag}</a> )
-                
-              // })
-          }
-              <a>#android</a> 
-              <a>#web</a>
-              <a>#machineLearning</a> 
-              <a>#iOS</a>
-              <a>#AI</a>
-              <a>#tricks</a>
-              <a>#share</a>
+              <Hashtags/>
             </div>
           </div>
-
+            
           <div className='main-content'>
-          {
-            this.state.posts.map(post => <ShortPost post={post}/>)
-          }
-
+            {
+              this.state.posts.map(post => <ShortPost post={post}/>)
+            }
           </div>
 
           <div className='weekly-bar'>
             <div className='bar-title'>
-              Weekly
+            Weekly
           </div>
-            <div className='bar-content'>
-            {
-              // this.state.activities.map((date,activity)=>{
-              //   return(
-              //     <li>{date} - {activity}</li>
-              //   )
-              // })
-          }
-              No activities yet.
-          </div>
-          <a href='/event'>Detail>></a>
+            <Weekly/>
           </div>
 
           <div className='ranking-bar'>
@@ -93,44 +73,7 @@ class Blog extends Component {
               Ranking
           </div>
             <div className='bar-content'>
-              <table className='ranking-table' >
-              {
-                // this.state.ranking.map((rank,username,votes)=>{
-                //   return(
-                //     <tr>
-                //     <td>{rank}</td>
-                //     <td>{username}</td>
-                //     <td>{votes}</td>
-                //     </tr>
-                //   )
-                // })
-              }
-                  <tr>
-                  <th>#</th>
-                  <th>User</th>
-                  <th>Votes</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Wasd</td>
-                    <td>696</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Vũ Phan</td>
-                    <td>569</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>The Uranus</td>
-                    <td>496</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Hoàng Hải</td>
-                    <td>369</td>
-                  </tr>
-              </table>
+              <Rank/>
             </div>
           </div>
         </div>
