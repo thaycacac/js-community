@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
-import {HomePage,Profile,Post,Blog,Question,Textbook,WritePost,Event} from './routes';
+
+import {HomePage,Profile,Post,Blog,Question,Textbook,WritePost,Event,logIn} from './routes';
 
 export default (
     <Route>
@@ -13,5 +14,6 @@ export default (
       <Route path='/textbook' component={Textbook}/>
       <Route path='/writepost' component={WritePost}/>
       <Route path='/event' component={Event}/>
+      <Route path='/login' component={logIn}/>
     </Route>
   );

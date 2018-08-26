@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 // Require Editor JS files.
 
@@ -52,9 +53,9 @@ export default class WritePost extends Component {
                     </div>
                     </div>
                 </div>
-            
-        )
-    }
 
-    
+            
+         )
+     }  
 };
+

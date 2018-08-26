@@ -42,4 +42,7 @@ export const Event = Loadable({
   loader: () => import("../pages/Event/Event"),
   loading : Loading
 });
-
+export const logIn = Loadable({
+  loader: () => import("../pages/HomePage"),
+  loading : Loading
+});
