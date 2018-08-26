@@ -1,47 +1,53 @@
 import React, { Component } from 'react';
 
-import FacebookLogin from 'react-facebook-login';
-
+//import FacebookLogin from 'react-facebook-login';
+import logoFB from '../images/iconFB.png';
 import { browserHistory } from 'react-router';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import './login.css';
 
 export default class Facebook extends Component {
     state = {
         isLoggedIn: false,
         userID: '',
         name: '',
-        email: '',
-        picture: ''
+        email: ''
     }
 
     responseFacebook = response => {
+        console.log('response', response);
         this.setState({
-            isLoggedIn : true,
-            userID : response.userID,
-            name : response.name,
-            email : response.email,
-            picture: response.picture.data.url 
+            isLoggedIn: true,
+            userID: response.userID,
+            name: response.name,
+            email: response.email
         });
+        console.log('this state',this.state)
     }
 
     render() {
         let fbContent;
 
-        if(this.state.isLoggedIn) {
+        if (this.state.isLoggedIn) {
             browserHistory.push("/home");               
         } else {
             fbContent = (<FacebookLogin
                 appId="1075153362660059"
-                autoLoad={true}
-                fields="name,email,picture"
+                autoLoad={false}
+                fields="name,email"
                 callback={this.responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon="fa-facebook"
-              />);
+                render={renderProps => (
+                    <div onClick={renderProps.onClick} className="link-sign-in btn-sign-in">
+                        <img src={logoFB} width="24px"/>
+                        <span>Login with Facebook</span>
+                    </div>
+                )}
+            />);
         }
 
-        return(
-            <div>
-            {fbContent}
+        return (
+            <div >
+                {fbContent}
             </div>
         )
     }

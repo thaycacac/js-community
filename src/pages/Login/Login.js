@@ -10,20 +10,17 @@ import houseJS from '../images/houseJS.png';
 
 import logoJSNon from '../images/logoJS.png';
 
+import logoFB from '../images/iconFB.png';
+
 export default class Login extends Component {
     render()  {
         return (
             <div className="main-body">
                 <div className="intro-header">
-                    
-                    <p className="intro-js"><img src={logoJSNon} style={{width:'50px', margin: '3px'}}/>JS Community</p>
-                    {/* <div class="link-sign-in btn-sign-in">
-                        <a href="#">
-                            <img src="iconFB.png" width="24px"/>
-                            <span>Login with Facebook</span>
-                        </a>
-                    </div> */}
-                    <Facebook className="link-sign-in btn-sign-in"/>
+                    <div className="intro-js">
+                        <img src={logoJSNon} style={{width:'50px', margin: '3px'}}/>JS Community                      
+                    </div>
+                    <Facebook/>
                 </div>
                 <div className="main-content">
                     <h1>Welcome to JS Community</h1>
