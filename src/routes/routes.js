@@ -37,3 +37,8 @@ export const WritePost = Loadable({
   loader: () => import("../pages/WritePost/WritePost"),
   loading : Loading
 });
+
+export const logIn = Loadable({
+  loader: () => import("../pages/HomePage"),
+  loading : Loading
+});

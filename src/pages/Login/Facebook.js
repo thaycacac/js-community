@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import FacebookLogin from 'react-facebook-login';
 
+import { browserHistory } from 'react-router';
+
 export default class Facebook extends Component {
     state = {
         isLoggedIn: false,
@@ -21,25 +23,11 @@ export default class Facebook extends Component {
         });
     }
 
-    componentClicked = () => console.log("clicked");
-
     render() {
         let fbContent;
 
         if(this.state.isLoggedIn) {
-            fbContent = (
-                <div style={{
-                    width: '400px',
-                    margin: 'auto',
-                    background: '#f4f4f4',
-                    padding: '20px'
-                }}>
-                    <img src={this.state.picture}/>
-                    <h2>Welcome {this.state.name}</h2>
-                    Email: {this.state.email}
-                </div>
-            );
-            // fbContent = null;
+            browserHistory.push("/home");               
         } else {
             fbContent = (<FacebookLogin
                 appId="1075153362660059"
