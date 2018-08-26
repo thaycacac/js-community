@@ -10,6 +10,7 @@
     'side-bar-3 side-bar-3 main main main main side-bar-4 side-bar-4';
     grid-gap:10px;
     position: relative;
+    
   }
   
   .hashtag-bar{
@@ -31,7 +32,7 @@
     background-color: #ffffff;
     display: block;
     margin-left: 10px;
-  
+    margin-bottom: 40px;
   }
   
   .weekly-bar{

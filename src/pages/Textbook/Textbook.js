@@ -4,65 +4,27 @@ import Header from './../header/Header';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
+import {connect} from 'react-redux'
+import { fetchPosts } from '../../reducers/post/actions'
 
-export default class Textbook extends Component {
+class Textbook extends Component {
   constructor(props){
     super(props);
       this.state={
-        email:'',
-        username:'user',
-        posts:[
-          {
-            id:'1',
-            author:'Nguyễn Quang Linh',
-            title:'Các loại bootstrap trong RxSwift',
-            like:'17',
-            comment:'32'
-          },
-          {
-            id:'2',
-            author:'Phan Xuân Vũ',
-            title:'Bootstrapping trong AngularJS',
-            like:'45',
-            comment:'35'
-          },
-          {
-            id:'3',
-            author:'Nguyễn Thái Bảo',
-            title:'Class method: Một số vấn đề về Coding Standard',
-            like:'1',
-            comment:'0'
-          },
-          {
-            id:'4',
-            author:'Nguyễn Hoàng Hải',
-            title:'hướng dẫn debug trong react native',
-            like:'97',
-            comment:'58'
-          },
-          {
-            id:'5',
-            author:'Wasd',
-            title:'Vài ghi chép về V8 và Garbage Collection',
-            like:'25',
-            comment:'45'
-          }
-          ],
-          ranking:[
-            {
-              username:'',
-              votes:''
-            }
-          ],
-          hashtags:[],
-          activities:[
-            {
-              date:'',
-              activity:''
-            }
-          ]
+        posts:[],
+        total_pages : 0,
+        page : 0
       }
   }
+  
+  componentWillMount(){
+    this.props.fetchPosts(0).then(() => {
+      const {posts, total_pages, page} = this.props.posts;
+      this.setState({posts, total_pages, page})
+    })
+    
+  }
+  
   render() {
     return (
       <div style={{ backgroundColor: '#f2f2f2' }}>
@@ -106,14 +68,7 @@ export default class Textbook extends Component {
 
           <div className='main-content'>
           {
-            this.state.posts.map(post=>{
-                console.log('username',post.username)
-                return (
-                  <ShortPost id={post.id} username={post.username} title={post.title} hashtag={post.hashtag}  like={post.like} comment={post.comment}/>
-                )
-              })
-            
-            
+            this.state.posts.map(post => <ShortPost post={post}/>)
           }
 
           </div>
@@ -185,3 +140,16 @@ export default class Textbook extends Component {
     )
   }
 }
+
+function mapStateToProps(state){
+  console.log(state.post.posts)
+  return({
+      posts : state.post.posts
+  })
+}
+const mapDispatchToProps = {
+  fetchPosts : fetchPosts
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Textbook);

@@ -3,7 +3,6 @@ import './HomePage.css'
 import Header from './../header/Header'
 import ShortPost from './../Post/ShortPost'
 import Menu from './../Menu/Menu'
-import { fetchPostsWithRedux } from './../../utils/fetch'
 import {connect} from 'react-redux'
 import { fetchPosts } from '../../reducers/post/actions';
 
