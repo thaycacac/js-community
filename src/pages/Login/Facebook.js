@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-//import FacebookLogin from 'react-facebook-login';
+// import FacebookLogin from 'react-facebook-login';
 import logoFB from '../images/iconFB.png';
 import { browserHistory } from 'react-router';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import './login.css';
+import Cookies from 'js-cookie';
 
 export default class Facebook extends Component {
     state = {
@@ -23,6 +24,9 @@ export default class Facebook extends Component {
             email: response.email
         });
         console.log('this state',this.state)
+        Cookies.set('account', this.state);
+        // const a = Cookies.get('account');
+        // console.log('this Cookie', a); 
     }
 
     render() {
