@@ -10,6 +10,7 @@ export function fetchPostsRequest() {
 }
 
 export function fetchPostsSuccess(payload) {
+    
     return {
         type: FETCH_POST_SUCCESS,
         payload
