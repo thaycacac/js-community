@@ -34,50 +34,54 @@ class Textbook extends Component {
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <Header />
 
-        <Menu/>
+        <Menu />
 
         <div className='newfeed-container'>
+          <div className='side-bar-left'>
+            <div className='saved-post-bar'>
+              <div className='bar-title'>
+                Saved post
+        </div>
+              <div className='bar-content'>
+                <SavedPost />
+              </div>
+            </div>
 
-          <div className='saved-post-bar'>
-            <div className='bar-title'>
-              Saved post
-        </div>
-            <div className='bar-content'>
-              <SavedPost />
-        </div>
+            <div className='hashtag-bar'>
+              <div className='bar-title'>
+                #Hashtag
           </div>
 
-          <div className='hashtag-bar'>
-            <div className='bar-title'>
-              #Hashtag
-          </div>
-
-            <div className='bar-content'>
-              <Hashtags/>
+              <div className='bar-content'>
+                <Hashtags />
+              </div>
             </div>
           </div>
-            
+
+
           <div className='main-content'>
             {
-              this.state.posts.map(post => <ShortPost post={post}/>)
+              this.state.posts.map(post => <ShortPost post={post} />)
             }
           </div>
+          <div className='side-bar-right'>
+            <div className='weekly-bar'>
+              <div className='bar-title'>
+                Weekly
+          </div>
+              <Weekly />
+            </div>
 
-          <div className='weekly-bar'>
-            <div className='bar-title'>
-            Weekly
+            <div className='ranking-bar'>
+              <div className='bar-title'>
+                Ranking
           </div>
-            <Weekly/>
-          </div>
-
-          <div className='ranking-bar'>
-            <div className='bar-title'>
-              Ranking
-          </div>
-            <div className='bar-content'>
-              <Rank/>
+              <div className='bar-content'>
+                <Rank />
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     )

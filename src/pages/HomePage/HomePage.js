@@ -3,7 +3,7 @@ import './HomePage.css'
 import Header from './../header/Header'
 import ShortPost from './../Post/ShortPost'
 import Menu from './../Menu/Menu'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { fetchPosts } from '../../reducers/post/actions'
 import Rank from './../sidebars/Rank'
 import Hashtags from './../sidebars/Hashtags'
@@ -11,88 +11,92 @@ import SavedPost from './../sidebars/SavedPost'
 import Weekly from './../sidebars/Weekly'
 
 class HomePage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-      this.state={
-        posts:[],
-        total_pages : 0,
-        page : 0,
-        
-      }
+    this.state = {
+      posts: [],
+      total_pages: 0,
+      page: 0,
+
+    }
   }
-  
-  componentWillMount(){
+
+  componentWillMount() {
     this.props.fetchPosts(0).then(() => {
-      const {posts, total_pages, page} = this.props.posts;
-      this.setState({posts, total_pages, page})
+      const { posts, total_pages, page } = this.props.posts;
+      this.setState({ posts, total_pages, page })
     })
-    
+
   }
-  
+
   render() {
     return (
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <Header />
 
-        <Menu/>
+        <Menu />
 
         <div className='newfeed-container'>
+          <div className='side-bar-left'>
+            <div className='saved-post-bar'>
+              <div className='bar-title'>
+                Saved post
+        </div>
+              <div className='bar-content'>
+                <SavedPost />
+              </div>
+            </div>
 
-          <div className='saved-post-bar'>
-            <div className='bar-title'>
-              Saved post
-        </div>
-            <div className='bar-content'>
-              <SavedPost />
-        </div>
+            <div className='hashtag-bar'>
+              <div className='bar-title'>
+                #Hashtag
           </div>
 
-          <div className='hashtag-bar'>
-            <div className='bar-title'>
-              #Hashtag
-          </div>
-
-            <div className='bar-content'>
-              <Hashtags/>
+              <div className='bar-content'>
+                <Hashtags />
+              </div>
             </div>
           </div>
-            
+
+
           <div className='main-content'>
             {
-              this.state.posts.map(post => <ShortPost post={post}/>)
+              this.state.posts.map(post => <ShortPost post={post} />)
             }
           </div>
+          <div className='side-bar-right'>
+            <div className='weekly-bar'>
+              <div className='bar-title'>
+                Weekly
+          </div>
+              <Weekly />
+            </div>
 
-          <div className='weekly-bar'>
-            <div className='bar-title'>
-            Weekly
+            <div className='ranking-bar'>
+              <div className='bar-title'>
+                Ranking
           </div>
-            <Weekly/>
-          </div>
-
-          <div className='ranking-bar'>
-            <div className='bar-title'>
-              Ranking
-          </div>
-            <div className='bar-content'>
-              <Rank/>
+              <div className='bar-content'>
+                <Rank />
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     )
   }
 }
 
-function mapStateToProps(state){
-  console.log('state.post.posts',state.post.posts)
-  return({
-      posts : state.post.posts
+function mapStateToProps(state) {
+  console.log('state.post.posts', state.post.posts)
+  return ({
+    posts: state.post.posts
   })
 }
 const mapDispatchToProps = {
-  fetchPosts : fetchPosts
+  fetchPosts: fetchPosts
 };
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

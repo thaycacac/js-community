@@ -14,8 +14,7 @@ class Rank extends Component {
 
     componentWillMount() {
         this.props.fetchRank().then(() => {
-            const { ranks } = this.props.ranks;
-            this.setState({ ranks })
+            this.setState({ ranks: this.props.ranks })
             console.log('this.state.ranks', this.state.ranks)
         })
     }
@@ -23,8 +22,8 @@ class Rank extends Component {
         return (
             <table className='ranking-table' >
                 <tr>
-                    <th></th>
-                    <th>#</th>
+                <th>Top</th>
+                    
                     <th>User</th>
                     <th>Votes</th>
                 </tr>
@@ -32,9 +31,8 @@ class Rank extends Component {
                 {
                     this.state.ranks.map(rank => {
                       return(
-                        <tr>
-                        <td><img src={rank && rank.avatar ? rank.avatar : avatar}/></td>
-                        <td>{rank.top}</td>
+                        <tr>                       
+                        <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px'}}/> </td>
                         <td>{rank.name}</td>
                         <td>{rank.total_votes}</td>
                         </tr>
@@ -47,9 +45,9 @@ class Rank extends Component {
 };
 
 function mapStateToProps(state) {
-    console.log('state.rank.ranks', state.rank.ranks)
+    console.log('state.rank.ranks', state.rank.ranks.rank)
     return ({
-        ranks: state.rank.ranks
+        ranks: state.rank.ranks.rank
     })
 }
 

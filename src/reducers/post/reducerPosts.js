@@ -4,6 +4,7 @@ const initialState = {
     posts: [],
     page : 0,
     total_pages: 0,
+    loading: false
   };
 
 export default (state = initialState, action) =>{
