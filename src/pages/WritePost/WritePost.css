@@ -59,12 +59,23 @@ code{
     border: 0px;
     margin-bottom: 20px;
     font-size: 36px;
+    width: 760px;
 }
 
 .title-input:focus{
     outline: #ffffff;
 }
 
+.hashtag-input{
+    border: 0px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    width:760px;
+}
+
+.hashtag-input:focus{
+    outline: #ffffff;
+}
 .btn-clear{
     float: right;
     margin-top:10px;

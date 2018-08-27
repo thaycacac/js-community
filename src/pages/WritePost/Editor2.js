@@ -381,6 +381,9 @@ class RichText extends React.Component {
 
   onChange = ({ value }) => {
     this.setState({ value })
+    const obj = JSON.parse(JSON.stringify(this.state.value.toJSON()));
+    localStorage.setItem('text',obj.document.nodes[0].nodes[0].leaves[0].text)
+    localStorage.getItem('text')
   }
 
   /**
