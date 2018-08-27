@@ -41,7 +41,6 @@ export default class WritePost extends Component {
                                 this.setState({content:localStorage.getItem('text')})
                                 const res=this.state.hashtagString.split('/');
                                 this.setState({hashtags:res});
-
                             }}
                         >
                             <i class="fa fa-paper-plane-o"></i> Post

@@ -4,83 +4,80 @@ code{
 }
 
 .post-container{
-    max-width: 1200px;
-    height: 100%;
-    background-color: #f2f2f2;
-    margin: auto;
-    display: grid;
-    grid-template-areas:
-    'side-bar-1 side-bar-1 main main main main side-bar-2 side-bar-2'
-    'side-bar-3 side-bar-3 comment comment comment comment side-bar-4 side-bar-4';
-    grid-gap:10px;
-    position: relative;
+  width: 1200px;
+  height: 100%;
+  background-color: #f2f2f2;
+  margin: auto;
   }
   .interaction{
-    grid-area: comment;
-    loat: left;
+    float: left;
     width: 640px;
-    height: 100%;
     background-color: #ffffff;
-    display: block;
-    margin-left: 10px;
+  }
+  .side-bar-left{
+    float: left;
+    width: 250px;
+    padding:0px;
   }
   .hashtag-bar{
-    grid-area: side-bar-3;
     float: left;
     width: 250px;
     height: 400px;
     background-color: #ffffff;
-    display: block;
-  
   
   }
   
-  .main-content{
-    grid-area: main;
+  .main-post-content{
     float: left;
     width: 640px;
-    height: 100%;
     background-color: #ffffff;
-    display: block;
-    margin-left: 10px;
-  
+    margin-bottom: 20px;
   }
   
+  .side-bar-right{
+    float: left;
+    width: 250px;
+
+  }
+
+  .content-1{
+    float: left;
+    width: 640px;
+    margin-left:10px;
+  }
   .weekly-bar{
-    grid-area: side-bar-2;
     float: left;
     width: 250px;
     height: 400px;
     background-color: #ffffff;
     display: block;
-    margin-left: 10px;
-  
+    margin-bottom: 20px;
+    
   }
   .weekly-bar a{
     text-decoration: none;
     float: right;
     margin:10px;
-}
+  }
+  
   .ranking-bar{
-    grid-area: side-bar-4;
     float: left;
     width: 250px;
-    height: 400px;
     background-color: #ffffff;
     display: block;
-    margin-left: 10px;
+  
   
   }
   
   .saved-post-bar{
-    grid-area: side-bar-1;
     float: left;
     width: 250px;
     height: 400px;
     background-color: #ffffff;
     display: block;
-  
+    margin-bottom: 20px;
   }
+  
   /* style menu bar */
   .menu-bar{
     width: 540px;
