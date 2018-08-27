@@ -34,6 +34,7 @@ export function fetchPosts(page) {
                         reject()
                     } else {
                         dispatch(fetchPostsSuccess(json))
+                        
                         resolve()
                     }
                 }).catch(() =>  {
@@ -82,6 +83,7 @@ export function fetchPostContent(postId){
                         reject()
                     } else {
                         dispatch(fetchContentSuccess(json))
+                        // console.log('json',json)
                         resolve()
                     }
                 }).catch(() =>  {
