@@ -61,15 +61,33 @@ class Post extends Component {
         })
     }
 
-//     renderComments(){
-//         if (this.state.comments) {
-//             this.state.comments.map(comment => {
-//                 return <Comment username={comment.userName} content={comment.content} />
-//             })
-//         }else{
-//             return <p>No comment yet</p>
-//         }
-// }
+    // renderComments(){
+    //     let arr = this.state.comments;
+    //     console.log('this.state.comments', this.state.comments);
+    //     console.log('arr', arr);
+    //     let a = [1,2,3];
+    //     console.log('a', a);
+    //     console.log('arr.comments', arr.comments);
+    //     if (arr.comments) {
+    //         console.log('hello from arr.comments');
+    //         return arr.comments.map(comment => 
+    //             <Comment username={comment.userName} content={comment.content} />
+    //             // console.log('hello from .map function');
+    //             // return (<div><p>ahihihihihi</p></div>)
+    //         )
+    //     }else{
+    //         return <p>No comment yet</p>
+    //     }
+    // }
+    renderComments(){
+        if (this.state.comments.comments) {
+            return this.state.comments.comments.map(comment => 
+                <Comment username={comment.userName} content={comment.content} />
+            )
+        }else{
+            return <p>No comment yet</p>
+        }
+    }
 
     render() {
         return (
@@ -160,7 +178,7 @@ class Post extends Component {
                             </div>
                             <div className='view-comment'>
                                 {
-                                    // this.renderComments()
+                                    this.renderComments()
                                     
                                 }
                             </div>
