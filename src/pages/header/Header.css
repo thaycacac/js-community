@@ -1,6 +1,6 @@
 @font-face {
-    font-family: AnnieUseYourTelescope;
-    src: url(AnnieUseYourTelescope.ttf);
+    font-family: Starlight Personal;
+    src: url('Starlight Personal.ttf');
     font-weight: bold;
 }
 
@@ -16,8 +16,8 @@
 
 .title{
     min-width: 200px;
-    font-family: AnnieUseYourTelescope;
-    font-size: 26px;
+    font-family: Starlight Personal;
+    font-size: 32px;
     position: absolute;
 }
 

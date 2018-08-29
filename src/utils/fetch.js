@@ -49,7 +49,7 @@ export function post(url, body) {
       Cookies.remove("accessToken");
       store.dispatch(push("/login"));
     }
-    return res;
+    return res.json();
   });
 }
 
