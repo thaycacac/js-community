@@ -22,7 +22,7 @@ class HomePage extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchPosts(1).then(() => {
+    this.props.fetchPosts(0).then(() => {
       const { posts, total_pages, page } = this.props.posts;
       this.setState({ posts, total_pages, page })
     })

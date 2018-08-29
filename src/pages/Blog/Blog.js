@@ -59,7 +59,10 @@ class Blog extends Component {
 
           <div className='main-content'>
             {
-              this.state.posts.map(post => <ShortPost post={post} />)
+              this.state.posts.map(post => {
+                if(post.type==='Blog')
+                <ShortPost post={post} />
+              })
             }
           </div>
           <div className='side-bar-right'>

@@ -15,7 +15,7 @@ class Rank extends Component {
     componentWillMount() {
         this.props.fetchRank().then(() => {
             this.setState({ ranks: this.props.ranks })
-            console.log('this.state.ranks', this.state.ranks)
+            // console.log('this.state.ranks', this.state.ranks)
         })
     }
     render() {
@@ -45,7 +45,7 @@ class Rank extends Component {
 };
 
 function mapStateToProps(state) {
-    console.log('state.rank.ranks', state.rank.ranks.rank)
+    // console.log('state.rank.ranks', state.rank.ranks.rank)
     return ({
         ranks: state.rank.ranks.rank
     })
