@@ -45,7 +45,6 @@ export function post(url, body) {
     },
     body
   }).then(res => {
-    console.log(res.json());
     if (res.status === 401) {
       Cookies.remove("accessToken");
       store.dispatch(push("/login"));
