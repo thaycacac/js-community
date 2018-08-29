@@ -20,14 +20,14 @@ class WritePost extends Component {
             hashtagString: '',
             hashtags: [],
             content: '',
-            type:'',
+            type:'Blog',
         }
     }
 
     addPost(){
         
         console.log('this.state', this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
-        this.props.addPost(0,this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
+        this.props.addPost(1,this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
     }
 
     render() {
@@ -59,7 +59,7 @@ class WritePost extends Component {
                                 this.setState({type:event.target.value})
                                 // console.log('type',this.state.type)
                             }}>
-                                <option value='Blog'>Blog</option>
+                                <option value='Blog' selected>Blog</option>
                                 <option value='Question'>Question</option>
                                 <option value='TextBook'>TextBook</option>
                             </select>
@@ -68,10 +68,10 @@ class WritePost extends Component {
                                     this.setState({ title: event.target.value })
                                 }}
                             />
-                            <input className='hashtag-input' type='text' placeholder='hashtag : web/android/...'
+                            <input className='hashtag-input' type='text' placeholder='hashtag : web,android,...'
                                 onChange={event => {
                                     this.state.hashtagString = event.target.value;
-                                    const res = this.state.hashtagString.split('/');
+                                    const res = this.state.hashtagString.split(',');
                                     this.setState({ hashtags: res });
                                 }}
                             />
