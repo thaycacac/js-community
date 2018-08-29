@@ -1,14 +1,17 @@
-import { LOGIN_SUCCESS } from './constants';
+import { LOGIN_SUCCESS, LOGIN_REQUEST } from './constants';
 
 const initialState = {
     email = '',
-    name = '',
+    picture = '',
+    name = ''
 }
 
 export default (state = initialState, action ) => {
     switch(action.type) {
+        case LOGIN_REQUEST:
+            return Object.assign({}, state);
         case LOGIN_SUCCESS:
-            return Object.assign({}, state, action.payload);
+            return state;
         default:
             return state;
     }

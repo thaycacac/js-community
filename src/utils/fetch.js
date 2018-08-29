@@ -43,14 +43,15 @@ export function post(url, body) {
       "Content-Type": "application/json",
       autherization: "bearer " + accessToken
     },
-    body: body
+    body
   }).then(res => {
+    console.log(res.json());
     if (res.status === 401) {
       Cookies.remove("accessToken");
       store.dispatch(push("/login"));
     }
     return res.json();
-  });
+  })
 }
 
 export function put(url, body) {
