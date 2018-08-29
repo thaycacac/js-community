@@ -48,14 +48,14 @@ class Post extends Component {
         })
         this.props.fetchPostComment(this.props.params.postId).then(() => {
             console.log('this.props.comments',this.props.comments);
-            const comments = this.props.comments
+            const comments = this.props.comments.comments
             this.setState({ comments })
             console.log('comments', this.state.comments)
             
             
         })
         this.props.fetchPostLike(this.props.params.postId).then(() => {
-            const likes = this.props.likes;
+            const likes = this.props.likes.likes;
             this.setState({ likes })
             console.log('likes', this.state.likes)
         })
@@ -80,12 +80,12 @@ class Post extends Component {
     //     }
     // }
     renderComments(){
-        if (this.state.comments.comments) {
-            return this.state.comments.comments.map(comment => 
+        if (this.state.comments.length >0) {
+            return this.state.comments.map(comment => 
                 <Comment username={comment.userName} content={comment.content} />
             )
         }else{
-            return <p>No comment yet</p>
+            return <i style={{margin:'20px'}}>No comment yet</i>
         }
     }
 

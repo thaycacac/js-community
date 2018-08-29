@@ -60,8 +60,8 @@ class Blog extends Component {
           <div className='main-content'>
             {
               this.state.posts.map(post => {
-                if(post.type==='Blog')
-                <ShortPost post={post} />
+                if(post.type==='Blog'){return <ShortPost post={post} />}
+                
               })
             }
           </div>
