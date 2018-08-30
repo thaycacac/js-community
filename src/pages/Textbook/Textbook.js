@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Textbook.css';
 import Header from './../header/Header';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+// import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 import {connect} from 'react-redux'
@@ -62,8 +62,8 @@ class Textbook extends Component {
           <div className='main-content'>
             {
               this.state.posts.map(post => {
-                if(post.type==='TextBook'){return <ShortPost post={post} />}
-                
+                if(post.type==='TextBook'){return <ShortPost post={post} key={Math.random()} />}
+                return null;
               })
             }
           </div>
@@ -92,7 +92,6 @@ class Textbook extends Component {
 }
 
 function mapStateToProps(state){
-  console.log(state.post.posts)
   return({
       posts : state.post.posts
   })

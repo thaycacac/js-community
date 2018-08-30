@@ -61,7 +61,7 @@ class HomePage extends Component {
 
           <div className='main-content'>
             {
-              this.state.posts.map(post => <ShortPost post={post} />)
+              this.state.posts.map(post => <ShortPost post={post} key={Math.random()}/>)
             }
           </div>
           <div className='side-bar-right'>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './../header/Header';
 import './Profile.css';
-import ShortPost from './../Post/ShortPost';
+// import ShortPost from './../Post/ShortPost';
 import avatar from '../images/avatar.png';
 import Menu from './../Menu/Menu';
 
@@ -63,7 +63,7 @@ export default class Profile extends Component{
         <div className='profile-container'>
 
           <div className='profile'>
-            <div className='avatar'><img src={avatar}/></div>
+            <div className='avatar'><img src={avatar} alt="avatar"/></div>
             <div className='bar-content'>
             <div className='username-profile'>User name</div>
             <div className='public-profile'>

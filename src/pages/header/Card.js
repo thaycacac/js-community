@@ -10,8 +10,8 @@ export default class Card extends Component {
 
     this.state = {
       showMenu: false,
-      email: this.props.auth && this.props.auth.email || '',
-      username: this.props.auth && this.props.auth.name || 'Linh'
+      email: (this.props.auth && this.props.auth.email) || '',
+      username: (this.props.auth && this.props.auth.name) || 'Linh'
 
     };
 
@@ -40,14 +40,13 @@ export default class Card extends Component {
   }
 
   signOut = () => {
-    console.log('sign out')
     localStorage.clear();
   }
   render() {
     return (
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
-          <img src={login} style={{ width: '10%', marginRight: '5px' }} />
+          <img src={login} alt="login" style={{ width: '10%', marginRight: '5px' }} />
           Hi, {this.state.username} <i className="fa fa-angle-down" style={{ fontSize: '15px', color: 'white', marginLeft: '5px' }}></i>
         </button>
 

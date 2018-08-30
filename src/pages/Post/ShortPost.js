@@ -19,7 +19,7 @@ export default class ShortPost extends Component{
             
             <div className='short-post-container'>
                 <div className='user-avatar'>
-                    <img src={this.props.post && this.props.post.avatar ? this.props.post.avatar : avatar}/>
+                    <img src={this.props.post && this.props.post.avatar ? this.props.post.avatar : avatar} alt="avatar"/>
                 </div>
 
                 <div className='short-description'>
@@ -34,9 +34,6 @@ export default class ShortPost extends Component{
                         }
                     </div>
                     <div className='post-title'>
-                    {
-                        // console.log(this.props.post.postId)
-                    }
                         <Link to={{pathname:`/post/${this.props.post.postId}`}} >{this.state.post.title}</Link>
                     </div>
                     <div className='user-interact'>

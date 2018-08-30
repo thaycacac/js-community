@@ -36,10 +36,6 @@ function CodeNode(props) {
     )
   }
 
-  const boldPlugin = MarkHotkey({
-    type: 'bold',
-    key: 'b',
-  })
 // Initialize a plugin for each mark...
   const plugins = [
     MarkHotkey({ key: 'b', type: 'bold' }),
@@ -54,7 +50,7 @@ function CodeNode(props) {
 
     return {
       onKeyDown(event, change) {
-        if (!event.ctrlKey || event.key != key) return
+        if (!event.ctrlKey || event.key !== key) return
         event.preventDefault()
         change.toggleMark(type)
         return true
@@ -71,7 +67,7 @@ export default class Editor1 extends Component {
     }
     onChange = ({ value }) => {
         // Check to see if the document has changed before saving.
-        if (value.document != this.state.value.document) {
+        if (value.document !== this.state.value.document) {
           const content = JSON.stringify(value.toJSON())
           localStorage.setItem('content', content)
         }
@@ -94,6 +90,8 @@ export default class Editor1 extends Component {
         switch (props.node.type) {
           case 'code':
             return <CodeNode {...props} />
+          default:
+            return null;
         }
       }
     
@@ -110,6 +108,8 @@ export default class Editor1 extends Component {
             return <del>{props.children}</del>
           case 'underline':
             return <u>{props.children}</u>
+          default: 
+            return null;
         }
       }
 };

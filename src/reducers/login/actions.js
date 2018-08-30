@@ -1,5 +1,4 @@
-import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS ,
-    FETCH_LOGIN_ERROR, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_REQUEST } from './constants';
+import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS } from './constants';
 import * as userfetch from '../../utils/fetch';
 import { BACKEND_URL } from '../../config/constants';
 export function loginRequest() {
@@ -15,7 +14,7 @@ export function loginError() {
 }
 
 export function loginSuccess(payload) {
-    console.log(payload);
+    // console.log(payload);
     return {
         type : LOGIN_SUCCESS,
         payload
