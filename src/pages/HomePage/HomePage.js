@@ -89,7 +89,6 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state.post.posts', state.post.posts)
   return ({
     posts: state.post.posts
   })

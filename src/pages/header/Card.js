@@ -9,8 +9,8 @@ export default class Card extends Component {
     
     this.state = {
       showMenu: false,
-      email:'',
-      username: 'Linh'
+      email: this.props.auth && this.props.auth.email || '',
+      username: this.props.auth && this.props.auth.name || 'Linh'
     };
     
     this.showMenu = this.showMenu.bind(this);

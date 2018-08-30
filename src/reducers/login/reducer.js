@@ -8,7 +8,6 @@ const initialState = {
 }
 
 export default (state = initialState, action ) => {
-    console.log(initialState);
     switch(action.type) {
         case LOGIN_SUCCESS:
             const payload = action.payload;

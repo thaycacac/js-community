@@ -31,8 +31,9 @@ export function login(email, picture, name) {
             .then(json => {
                 if (json && json.token) {
                     console.log(json);
-                    const {name, email, avatar, description} = json;
+                    const {name, email, avatar, description, userId} = json;
                     localStorage.setItem('name', name);
+                    localStorage.setItem('userId', userId);
                     localStorage.setItem('avatar', avatar);
                     localStorage.setItem('email', email);
                     localStorage.setItem('description', description);

@@ -26,14 +26,14 @@ class Header extends Component{
                     <i class="fa fa-pencil-square-o"></i> Write a post 
                 </a> 
                 </div>
-                <Card/>
+                <Card auth = {this.props.auth}/>
             </div>
         )
     }
 }
 function mapStateToProps(state) {
-    const auth = state.auth;
-    console.log(auth);
+    const auth = state.auth.reducer;
+    return { auth }
 }
 
 export default connect(mapStateToProps, null)(Header)

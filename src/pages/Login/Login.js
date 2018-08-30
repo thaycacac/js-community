@@ -12,7 +12,15 @@ import logoJSNon from '../images/logoJS.png';
 
 import logoFB from '../images/iconFB.png';
 
+import { browserHistory } from 'react-router';
+
 export default class Login extends Component {
+    async componentWillMount () {
+        let token = await localStorage.getItem('accessToken');
+        if (token) {
+           await browserHistory.push('/home')
+        }
+    }
     render()  {
         return (
             <div className="main-body">
