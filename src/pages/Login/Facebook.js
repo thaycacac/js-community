@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { login } from '../../reducers/login/actions';
 import { connect } from 'react-redux';
-
+import toastr from 'toastr';
 // import FacebookLogin from 'react-facebook-login';
 import logoFB from '../images/iconFB.png';
 import { browserHistory } from 'react-router';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import './login.css';
-import Cookies from 'js-cookie';
-
 class Facebook extends Component {
     state = {
-        isLoggedIn: false,
-        userID: '',
         name: '',
-        email: ''
+        email: '',
+        picture : ''
     }
 
-    responseFacebook = response => {
-        console.log('response', response);
-        this.setState({
-            isLoggedIn: true,
-            userID: response.userID,
-            name: response.name,
-            email: response.email,
-            picture: response.picture.data.url
-        });
-        console.log('this state',this.state)
-        Cookies.set('account', this.state);
-        this.props.login(this.state.email, this.state.picture, this.state.name);
+    responseFacebook = (response) => {
+        const {name, email, picture} = response;
+        if (picture && picture.data && picture.data.url) {
+            this.props.login(email, picture.data.url, name).then(() => {
+                this.setState({
+                    name,
+                    email,
+                    picture : picture.data.url
+                });
+                browserHistory.push("/home");
+            }).catch(() => toastr.error("Đăng nhập thất bại hoặc bạn không có quyền vào trang này"))
+        } else {
+            toastr.error("Đăng nhập thất bại hoặc bạn không có quyền vào trang này")
+        }
+        
     }
 
     render() {

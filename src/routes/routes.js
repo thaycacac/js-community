@@ -46,3 +46,7 @@ export const logIn = Loadable({
   loader: () => import("../pages/Login"),
   loading : Loading
 });
+export const PageLayout = Loadable({
+  loader: () => import("../pages"),
+  loading : Loading
+});

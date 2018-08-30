@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import './Header.css';
 import Card from './Card';
 import logoJS from '../images/logoJS.png';
-
-export default class Header extends Component{
-
+import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+class Header extends Component{
+    async componentWillMount () {
+        let token = await localStorage.getItem('accessToken');
+        if (!token) {
+           await browserHistory.push('/login')
+        }
+    }
     render(){
         return(
             <div className="header-container">
@@ -25,3 +31,9 @@ export default class Header extends Component{
         )
     }
 }
+function mapStateToProps(state) {
+    const auth = state.auth;
+    console.log(auth);
+}
+
+export default connect(mapStateToProps, null)(Header)

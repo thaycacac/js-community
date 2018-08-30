@@ -1,61 +1,59 @@
-import Cookies from "js-cookie";
 import { push } from "react-router-redux";
 import store from "../store";
 
 export function get(url) {
-  let accessToken = Cookies.get("accessToken");
-  return fetch(url, {
-    method: "GET",
-    headers: {
-      autherization: "bearer " + accessToken
-    }
-  }).then(res => {
-    if (res.status === 401) {
-      Cookies.remove("accessToken");
-      store.dispatch(push("/login"));
-    }
-    return res;
-  });
-}
+  let accessToken = localStorage.getItem("accessToken");
+    return fetch(url, {
+      method: "GET",
+      headers: {
+        autherization: "bearer " + accessToken
+      }
+    }).then(res => {
+      if (res.status === 401) {
+        localStorage.removeItem("accessToken");
+        store.dispatch(push("/login"));
+      }
+      return res;
+    });
+  }
 
 export function del(url) {
-  let accessToken = Cookies.get("accessToken");
-  return fetch(url, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      autherization: "bearer " + accessToken
-    }
-  }).then(res => {
-    if (res.status === 401) {
-      Cookies.remove("accessToken");
-      store.dispatch(push("/login"));
-    }
-    return res;
-  });
-}
-
+  let accessToken = localStorage.getItem("accessToken");
+    return fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        autherization: "bearer " + accessToken
+      }
+    }).then(res => {
+      if (res.status === 401) {
+        localStorage.removeItem("accessToken");
+        store.dispatch(push("/login"));
+      }
+      return res;
+    });
+  }
+  
 export function post(url, body) {
-  let accessToken = Cookies.get("accessToken");
-  return fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      autherization: "bearer " + accessToken
-    },
-    body
-  }).then(res => {
-    console.log(res.json());
-    if (res.status === 401) {
-      Cookies.remove("accessToken");
-      store.dispatch(push("/login"));
-    }
-    return res.json();
-  })
-}
-
+  let accessToken = localStorage.getItem("accessToken");
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        autherization: "bearer " + accessToken
+      },
+      body
+    }).then(res => {
+      if (res.status === 401) {
+        localStorage.removeItem("accessToken");
+        store.dispatch(push("/login"));
+      }
+      return res.json();
+    })
+  }
+  
 export function put(url, body) {
-  let accessToken = Cookies.get("accessToken");
+  let accessToken = localStorage.getItem("accessToken");
   return fetch(url, {
     method: "PUT",
     headers: {
@@ -65,7 +63,7 @@ export function put(url, body) {
     body: body
   }).then(res => {
     if (res.status === 401) {
-      Cookies.remove("accessToken");
+      localStorage.removeItem("accessToken");
       store.dispatch(push("/login"));
     }
     return res;
