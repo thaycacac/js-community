@@ -56,7 +56,7 @@ export default class Card extends Component {
               >
                 <div className='user-content'>
                     <a href='./profile'>View profile</a><br/>
-                    <a href='/login'>Sign out</a>
+                    <a href=''>Sign out</a>
                 </div>
                 
               </div>
