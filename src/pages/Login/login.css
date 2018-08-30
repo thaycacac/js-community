@@ -1,6 +1,6 @@
 @font-face {
-    font-family: AnnieUseYourTelescope;
-    src: url(../header/AnnieUseYourTelescope.ttf);
+    font-family: Starlight Personal;
+    src: url('../header/Starlight\ Personal.ttf');
     font-weight: bold;
 }
 
@@ -26,8 +26,8 @@ body {
     margin-left: 12%;
     color: white;
     display: inline-block;
-    font-family: AnnieUseYourTelescope;
-    font-size: 28px;
+    font-family: Starlight Personal;
+    font-size: 32px;
     float: left;
 }
 
