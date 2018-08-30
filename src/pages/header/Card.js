@@ -47,7 +47,7 @@ export default class Card extends Component {
     return (
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
-          <img src={login} style={{ width: '15%', marginRight: '5px' }} />
+          <img src={login} style={{ width: '10%', marginRight: '5px' }} />
           Hi, {this.state.username} <i className="fa fa-angle-down" style={{ fontSize: '15px', color: 'white', marginLeft: '5px' }}></i>
         </button>
 
