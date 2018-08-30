@@ -51,7 +51,9 @@
     margin-right: 5px;
     right: 10px;
 }
-
+.user :focus{
+    outline: none;
+}
 .user-content{
     display: block;
     position: absolute;
