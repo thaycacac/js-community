@@ -1,5 +1,7 @@
 import { FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_ERROR,
-FETCH_CONTENT_REQUEST,FETCH_CONTENT_SUCCESS,FETCH_CONTENT_ERROR } from './types';
+FETCH_CONTENT_REQUEST,FETCH_CONTENT_SUCCESS,FETCH_CONTENT_ERROR,
+FETCH_COMMENT_REQUEST,FETCH_COMMENT_SUCCESS,FETCH_COMMENT_ERROR,
+FETCH_LIKE_REQUEST,FETCH_LIKE_SUCCESS,FETCH_LIKE_ERROR } from './types';
 import * as userFetch from '../../utils/fetch';
 import { BACKEND_URL } from '../../config/constants';
 
@@ -92,6 +94,104 @@ export function fetchPostContent(postId){
                 });
             }).catch(() =>  {
                 dispatch(fetchContentError)
+                reject()
+            });
+        })
+        
+    }
+}
+
+// Post like
+
+export function fetchPostLikeRequest() {
+    return {
+        type: FETCH_LIKE_REQUEST
+    }
+}
+
+export function fetchPostLikeSuccess(payload) {
+    
+    return {
+        type: FETCH_LIKE_SUCCESS,
+        payload
+    }
+}
+
+export function fetchPostLikeError() {
+    return {
+        type: FETCH_LIKE_ERROR
+    }
+}
+
+export function fetchPostLike(postId) {
+    return (dispatch) => {
+        return new Promise((resolve, reject) => {
+            const url = `${BACKEND_URL}/post/like/${postId}`;
+            userFetch.get(url).then(res => {
+                res.json().then(json => {
+                    if (json === false || json.length === 0) {
+                        dispatch(fetchPostLikeError)
+                        reject()
+                    } else {
+                        dispatch(fetchPostLikeSuccess(json))
+                        
+                        resolve()
+                    }
+                }).catch(() =>  {
+                    dispatch(fetchPostLikeError)
+                    reject()
+                });
+            }).catch(() =>  {
+                dispatch(fetchPostLikeError)
+                reject()
+            });
+        })
+        
+    }
+}
+
+// post comment
+
+export function fetchPostCommentRequest() {
+    return {
+        type: FETCH_COMMENT_REQUEST
+    }
+}
+
+export function fetchPostCommentSuccess(payload) {
+    
+    return {
+        type: FETCH_COMMENT_SUCCESS,
+        payload
+    }
+}
+
+export function fetchPostCommentError() {
+    return {
+        type: FETCH_COMMENT_ERROR
+    }
+}
+
+export function fetchPostComment(postId) {
+    return (dispatch) => {
+        return new Promise((resolve, reject) => {
+            const url = `${BACKEND_URL}/post/comment/${postId}`;
+            userFetch.get(url).then(res => {
+                res.json().then(json => {
+                    if (json === false || json.length === 0) {
+                        dispatch(fetchPostCommentError)
+                        reject()
+                    } else {
+                        dispatch(fetchPostCommentSuccess(json))
+                        
+                        resolve()
+                    }
+                }).catch(() =>  {
+                    dispatch(fetchPostCommentError)
+                    reject()
+                });
+            }).catch(() =>  {
+                dispatch(fetchPostCommentError)
                 reject()
             });
         })

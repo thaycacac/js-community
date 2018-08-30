@@ -60,7 +60,7 @@ class WritePost extends Component {
                                 // console.log('type',this.state.type)
                             }}>
                                 <option value='Blog' selected>Blog</option>
-                                <option value='Question'>Question</option>
+                                <option value='QA'>QA</option>
                                 <option value='TextBook'>TextBook</option>
                             </select>
                             <input className='title-input' type='text' placeholder='Title'

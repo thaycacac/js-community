@@ -4,14 +4,16 @@ import 'font-awesome/css/font-awesome.min.css';
 import avatar from '../images/avatar.png';
 import {Link} from 'react-router';
 
+
 export default class ShortPost extends Component{
     constructor(props){
         super(props);
         this.state={
-                post:this.props.post
-
+                post:this.props.post,
+                
         }
     }
+
     render(){
         return(
             
@@ -50,4 +52,3 @@ export default class ShortPost extends Component{
         )
     }
 }
-

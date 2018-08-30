@@ -51,7 +51,6 @@ export function post(url, body) {
       return res.json();
     })
   }
-  
 export function put(url, body) {
   let accessToken = localStorage.getItem("accessToken");
   return fetch(url, {
