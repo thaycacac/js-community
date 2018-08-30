@@ -11,7 +11,8 @@ export default (state = initialState, action ) => {
     switch(action.type) {
         case LOGIN_SUCCESS:
             const payload = action.payload;
-            return [...state, ...payload]
+            return {...state, ...payload}
+            
         default:
             return state;
     }

@@ -15,6 +15,7 @@ export function loginError() {
 }
 
 export function loginSuccess(payload) {
+    console.log(payload);
     return {
         type : LOGIN_SUCCESS,
         payload
@@ -26,11 +27,9 @@ export function login(email, picture, name) {
         return new Promise((resolve, reject) => {
             const URL = `${BACKEND_URL}/signin`;
             const body = JSON.stringify({email, picture, name});
-            console.log(body);
             userfetch.post(URL, body)
             .then(json => {
                 if (json && json.token) {
-                    console.log(json);
                     const {name, email, avatar, description, userId} = json;
                     localStorage.setItem('name', name);
                     localStorage.setItem('userId', userId);
