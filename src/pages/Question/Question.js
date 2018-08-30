@@ -61,7 +61,10 @@ class Question extends Component {
 
           <div className='main-content'>
             {
-              this.state.posts.map(post => <ShortPost post={post} />)
+              this.state.posts.map(post => {
+                if(post.type==='QA'){return <ShortPost post={post} />}
+                
+              })
             }
           </div>
           <div className='side-bar-right'>

@@ -65,24 +65,24 @@ export default class Profile extends Component{
           <div className='profile'>
             <div className='avatar'><img src={avatar}/></div>
             <div className='bar-content'>
-            <div className='username-profile'>{this.state.username}Nguyễn Quang Linh</div>
+            <div className='username-profile'>User name</div>
             <div className='public-profile'>
               <table className='table-profile'>
                 <tr>
                   <td>Date of birth:</td>
-                  <td>{this.state.dob}13/04/1998</td>
+                  <td>13/04/1998</td>
                 </tr>
                 <tr>
                   <td>Total posts:</td>
-                  <td>{this.state.totalPost}5</td>
+                  <td>5</td>
                 </tr>
                 <tr>
                   <td>Total votes:</td>
-                  <td>{this.state.totalVotes}54</td>
+                  <td>54</td>
                 </tr>
                 <tr>
                   <td>tRanking:</td>
-                  <td>#{this.state.rank}1</td>
+                  <td>#1</td>
                 </tr>
               </table>
             </div>
@@ -90,13 +90,14 @@ export default class Profile extends Component{
           </div>
 
           <div className='main-content'>
+          <h2>This feature is not done yet</h2>
           {
-            this.state.posts.map(post=>{
-                console.log('username',post.username)
-                return (
-                  <ShortPost id={post.id} username={post.username} title={post.title} hashtag={post.hashtag}  like={post.like} comment={post.comment}/>
-                )
-              })
+            // this.state.posts.map(post=>{
+            //     console.log('username',post.username)
+            //     return (
+            //       <ShortPost id={post.id} username={post.username} title={post.title} hashtag={post.hashtag}  like={post.like} comment={post.comment}/>
+            //     )
+            //   })
             
             
           }

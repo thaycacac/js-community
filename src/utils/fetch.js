@@ -35,6 +35,7 @@ export function del(url) {
   }
   
 export function post(url, body) {
+<<<<<<< HEAD
   let accessToken = localStorage.getItem("accessToken");
     return fetch(url, {
       method: "POST",
@@ -52,6 +53,25 @@ export function post(url, body) {
     })
   }
   
+=======
+  let accessToken = Cookies.get("accessToken");
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      autherization: "bearer " + accessToken
+    },
+    body
+  }).then(res => {
+    if (res.status === 401) {
+      Cookies.remove("accessToken");
+      store.dispatch(push("/login"));
+    }
+    return res.json();
+  })
+}
+
+>>>>>>> 3d8e1765d9638f5e4a4ad549d5b23c49e1f1876c
 export function put(url, body) {
   let accessToken = localStorage.getItem("accessToken");
   return fetch(url, {
