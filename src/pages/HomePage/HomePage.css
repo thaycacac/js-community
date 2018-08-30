@@ -1,52 +1,47 @@
 
 
 .newfeed-container{
-  max-width: 1200px;
+  width: 1200px;
   height: 100%;
   background-color: #f2f2f2;
   margin: auto;
-  display: grid;
-  grid-template-areas:
-  'side-bar-1 main main main main side-bar-2'
-  'side-bar-3 main main main main side-bar-4'
-  'side-bar-3 main main main main side-bar-4'
-  'side-bar-3 main main main main side-bar-4';
-  grid-gap:10px;
-  position: relative;
-}
 
+}
+.side-bar-left{
+  float: left;
+  width: 250px;
+  padding:0px;
+}
 .hashtag-bar{
-  
-  grid-area: side-bar-3;
   float: left;
   width: 250px;
   height: 400px;
   background-color: #ffffff;
-  display: block;
-
 
 }
 
 .main-content{
-  grid-area: main;
   float: left;
   width: 640px;
-  height: 100%;
   background-color: #ffffff;
   display: block;
   margin-left: 10px;
 
 }
 
+.side-bar-right{
+  float: left;
+  width: 250px;
+  margin-left: 10px;
+}
 .weekly-bar{
-  grid-area: side-bar-2;
   float: left;
   width: 250px;
   height: 400px;
   background-color: #ffffff;
   display: block;
-  margin-left: 10px;
-
+  margin-bottom: 20px;
+  
 }
 .weekly-bar a{
   text-decoration: none;
@@ -55,24 +50,21 @@
 }
 
 .ranking-bar{
-  grid-area: side-bar-4;
   float: left;
   width: 250px;
-  height: 400px;
   background-color: #ffffff;
   display: block;
-  margin-left: 10px;
+
 
 }
 
 .saved-post-bar{
-  grid-area: side-bar-1;
   float: left;
   width: 250px;
   height: 400px;
   background-color: #ffffff;
   display: block;
-
+  margin-bottom: 20px;
 }
 
 /* style menu bar */
@@ -111,8 +103,10 @@
   width: 80%;
   margin: auto;
   text-align: center;
+  padding:10px;
 }
 
 .ranking-table th{
   text-align: center;
+  padding:10px;
 }

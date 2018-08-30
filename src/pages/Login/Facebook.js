@@ -1,48 +1,68 @@
 import React, { Component } from 'react';
-
-import FacebookLogin from 'react-facebook-login';
-
+import { login } from '../../reducers/login/actions';
+import { connect } from 'react-redux';
+import toastr from 'toastr';
+// import FacebookLogin from 'react-facebook-login';
+import logoFB from '../images/iconFB.png';
 import { browserHistory } from 'react-router';
-
-export default class Facebook extends Component {
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import './login.css';
+class Facebook extends Component {
     state = {
-        isLoggedIn: false,
-        userID: '',
         name: '',
         email: '',
-        picture: ''
+        picture : ''
     }
 
-    responseFacebook = response => {
-        this.setState({
-            isLoggedIn : true,
-            userID : response.userID,
-            name : response.name,
-            email : response.email,
-            picture: response.picture.data.url 
-        });
+    responseFacebook = (response) => {
+        const {name, email, picture} = response;
+        if (picture && picture.data && picture.data.url) {
+            this.props.login(email, picture.data.url, name).then(() => {
+                this.setState({
+                    name,
+                    email,
+                    picture : picture.data.url
+                });
+                browserHistory.push("/home");
+            }).catch(() => toastr.error("Đăng nhập thất bại hoặc bạn không có quyền vào trang này"))
+        } else {
+            toastr.error("Đăng nhập thất bại hoặc bạn không có quyền vào trang này")
+        }
+        
     }
 
     render() {
         let fbContent;
 
-        if(this.state.isLoggedIn) {
+        if (this.state.isLoggedIn) {
             browserHistory.push("/home");               
         } else {
             fbContent = (<FacebookLogin
                 appId="1075153362660059"
-                autoLoad={true}
+                autoLoad={false}
                 fields="name,email,picture"
                 callback={this.responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon="fa-facebook"
-              />);
+                render={renderProps => (
+                    <div onClick={renderProps.onClick} className="link-sign-in btn-sign-in">
+                        <img src={logoFB} width="24px"/>
+                        <span>Login with Facebook</span>
+                    </div>
+                )}
+            />);
         }
 
-        return(
-            <div>
-            {fbContent}
+        return (
+            <div >
+                {fbContent}
             </div>
         )
     }
+
+
 }
+
+const mapDispatchToProps = {
+    login: login
+}
+
+export default connect(null, mapDispatchToProps)(Facebook);

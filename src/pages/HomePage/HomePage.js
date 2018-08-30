@@ -3,152 +3,99 @@ import './HomePage.css'
 import Header from './../header/Header'
 import ShortPost from './../Post/ShortPost'
 import Menu from './../Menu/Menu'
-import {connect} from 'react-redux'
-import { fetchPosts } from '../../reducers/post/actions';
+import { connect } from 'react-redux'
+import { fetchPosts } from '../../reducers/post/actions'
+import Rank from './../sidebars/Rank'
+import Hashtags from './../sidebars/Hashtags'
+import SavedPost from './../sidebars/SavedPost'
+import Weekly from './../sidebars/Weekly'
 
 class HomePage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-      this.state={
-        posts:[],
-        total_pages : 0,
-        page : 0
-      }
+    this.state = {
+      posts: [],
+      total_pages: 0,
+      page: 0,
+
+    }
   }
-  
-  componentWillMount(){
+
+  componentWillMount() {
     this.props.fetchPosts(0).then(() => {
-      const {posts, total_pages, page} = this.props.posts;
-      this.setState({posts, total_pages, page})
+      const { posts, total_pages, page } = this.props.posts;
+      this.setState({ posts, total_pages, page })
     })
-    
+
   }
-  
+
   render() {
     return (
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <Header />
 
-        <Menu/>
+        <Menu />
 
         <div className='newfeed-container'>
+          <div className='side-bar-left'>
+            <div className='saved-post-bar'>
+              <div className='bar-title'>
+                Saved post
+        </div>
+              <div className='bar-content'>
+                <SavedPost />
+              </div>
+            </div>
 
-          <div className='saved-post-bar'>
-            <div className='bar-title'>
-              Saved post
-        </div>
-            <div className='bar-content'>
-              No saved post.
-        </div>
+            <div className='hashtag-bar'>
+              <div className='bar-title'>
+                #Hashtag
           </div>
 
-          <div className='hashtag-bar'>
-            <div className='bar-title'>
-              #Hashtag
-          </div>
-
-            <div className='bar-content'>
-            {
-                // this.state.hashtags.map((hashtag)=>{
-                //   return(<a>{hashtag}</a> )
-                  
-                // })
-            }
-              <a>#android</a> 
-              <a>#web</a>
-              <a>#machineLearning</a> 
-              <a>#iOS</a>
-              <a>#AI</a>
-              <a>#tricks</a>
-              <a>#share</a>
+              <div className='bar-content'>
+                <Hashtags />
+              </div>
             </div>
           </div>
-            
+
+
           <div className='main-content'>
             {
-              this.state.posts.map(post => <ShortPost post={post}/>)
+              this.state.posts.map(post => <ShortPost post={post} />)
             }
           </div>
+          <div className='side-bar-right'>
+            <div className='weekly-bar'>
+              <div className='bar-title'>
+                Weekly
+          </div>
+              <Weekly />
+            </div>
 
-          <div className='weekly-bar'>
-            <div className='bar-title'>
-            Weekly
+            <div className='ranking-bar'>
+              <div className='bar-title'>
+                Ranking
           </div>
-            <div className='bar-content'>
-            <ul>
-            {
-                // this.state.activities.map((date,activity)=>{
-                //   return(
-                //     <li>{date} - {activity}</li>
-                //   )
-                // })
-            }
-            </ul>
-              No activities yet.
-          </div>
-          <a href='/event'>Detail>></a>
-          </div>
-
-          <div className='ranking-bar'>
-            <div className='bar-title'>
-              Ranking
-          </div>
-            <div className='bar-content'>
-              <table className='ranking-table' >
-              {
-                // this.state.ranking.map((rank,username,votes)=>{
-                //   return(
-                //     <tr>
-                //     <td>{rank}</td>
-                //     <td>{username}</td>
-                //     <td>{votes}</td>
-                //     </tr>
-                //   )
-                // })
-              }
-                  <tr>
-                  <th>#</th>
-                  <th>User</th>
-                  <th>Votes</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Wasd</td>
-                    <td>696</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Vũ Phan</td>
-                    <td>569</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>The Uranus</td>
-                    <td>496</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Hoàng Hải</td>
-                    <td>369</td>
-                  </tr>
-              </table>
+              <div className='bar-content'>
+                <Rank />
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     )
   }
 }
 
-function mapStateToProps(state){
-  console.log(state.post.posts)
-  return({
-      posts : state.post.posts
+function mapStateToProps(state) {
+  return ({
+    posts: state.post.posts
   })
 }
 const mapDispatchToProps = {
-  fetchPosts : fetchPosts
+  fetchPosts: fetchPosts
 };
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

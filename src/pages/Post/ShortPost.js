@@ -4,14 +4,16 @@ import 'font-awesome/css/font-awesome.min.css';
 import avatar from '../images/avatar.png';
 import {Link} from 'react-router';
 
+
 export default class ShortPost extends Component{
     constructor(props){
         super(props);
         this.state={
-                post:this.props.post
-
+                post:this.props.post,
+                
         }
     }
+
     render(){
         return(
             
@@ -32,6 +34,9 @@ export default class ShortPost extends Component{
                         }
                     </div>
                     <div className='post-title'>
+                    {
+                        // console.log(this.props.post.postId)
+                    }
                         <Link to={{pathname:`/post/${this.props.post.postId}`}} >{this.state.post.title}</Link>
                     </div>
                     <div className='user-interact'>
@@ -47,4 +52,3 @@ export default class ShortPost extends Component{
         )
     }
 }
-
