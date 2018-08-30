@@ -1,11 +1,11 @@
 import React from 'react';
 import {Route} from 'react-router';
 
-import {HomePage,Profile,Post,Blog,Question,Textbook,WritePost,Event,logIn} from './routes';
+import {HomePage,Profile,Post,Blog,Question,Textbook,WritePost,Event,logIn, PageLayout} from './routes';
 
 export default (
     <Route>
-      
+      <Route path="/" component={PageLayout} />
       <Route path="/home" component={HomePage} />
       <Route path='/profile' component={Profile}/>
       <Route path='/post/:postId' component={Post}/>

@@ -2,8 +2,6 @@ import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS ,
     FETCH_LOGIN_ERROR, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_REQUEST } from './constants';
 import * as userfetch from '../../utils/fetch';
 import { BACKEND_URL } from '../../config/constants';
-import { browserHistory } from 'react-router';
-
 export function loginRequest() {
     return {
         type : LOGIN_REQUEST,
@@ -16,9 +14,10 @@ export function loginError() {
     }
 }
 
-export function loginSuccess() {
+export function loginSuccess(payload) {
     return {
         type : LOGIN_SUCCESS,
+        payload
     }
 }
 
@@ -27,12 +26,19 @@ export function login(email, picture, name) {
         return new Promise((resolve, reject) => {
             const URL = `${BACKEND_URL}/signin`;
             const body = JSON.stringify({email, picture, name});
+            console.log(body);
             userfetch.post(URL, body)
             .then(json => {
-                if (json) {
-                    console.log('json ---- ', json);
-                    dispatch(loginSuccess);
-                    browserHistory.push("/home");
+                if (json && json.token) {
+                    console.log(json);
+                    const {name, email, avatar, description, userId} = json;
+                    localStorage.setItem('name', name);
+                    localStorage.setItem('userId', userId);
+                    localStorage.setItem('avatar', avatar);
+                    localStorage.setItem('email', email);
+                    localStorage.setItem('description', description);
+                    localStorage.setItem('accessToken', json.token);
+                    dispatch(loginSuccess(json));
                     resolve();
                 } else {
                     dispatch(loginError);
@@ -42,49 +48,4 @@ export function login(email, picture, name) {
             }).catch(err => console.log(err))
         })
     }
-}
-
-
-export function fetchLoginSuccess(payload) {
-    return {
-        type : FETCH_LOGIN_SUCCESS,
-        payload
-    }
-}
-
-export function fetchLoginError() {
-    return {
-        type : FETCH_LOGIN_ERROR
-    }
-}
-
-export function fetchLoginRequest() {
-    return {
-        type: FETCH_LOGIN_REQUEST
-    }
-}
-
-export function fetchLogin(){
-    return(dispatch =>{
-        return new Promise((resolve,reject) => {
-            const url =`${BACKEND_URL}/signin`
-            userfetch.get(url).then( res => {
-                res.json().then(json =>{
-                    if(json === false || json.length===0){
-                        dispatch(fetchLoginError)
-                        reject()
-                    } else {
-                        dispatch(fetchLoginSuccess(json))
-                        resolve()
-                    }
-                }).catch(() => {
-                    dispatch(fetchLoginError)
-                    reject()
-                }).catch(() => {
-                    dispatch(fetchLoginError)
-                    reject()
-                })
-            })
-        })
-    })
 }

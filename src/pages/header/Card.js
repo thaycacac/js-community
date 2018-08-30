@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import './Header.css';
 import 'font-awesome/css/font-awesome.min.css';
 import login from '../images/login.png';
-import {Link} from 'react-router';
-
+import { Link } from 'react-router';
 export default class Card extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
       showMenu: false,
-      email:'',
-      username: 'user'
+      email: this.props.auth && this.props.auth.email || '',
+      username: this.props.auth && this.props.auth.name || 'Linh'
     };
     
     this.showMenu = this.showMenu.bind(this);
@@ -36,7 +35,10 @@ export default class Card extends Component {
       
     }
   }
-
+  signOut= () => {
+    console.log('sign out')
+    localStorage.clear();
+  }
   render() {
     return (
       <div className='user'>
@@ -55,8 +57,10 @@ export default class Card extends Component {
                 }}
               >
                 <div className='user-content'>
-                    <a href='./profile'>View profile</a><br/>
-                    <a href=''>Sign out</a>
+                    <Link to='/profile'>View profile</Link><br/>
+                    <Link onClick={() => {
+                      this.signOut()
+                    }}to='/login'> Sign out </Link>
                 </div>
                 
               </div>
