@@ -10,7 +10,7 @@ export default (
       <Route path='/profile' component={Profile}/>
       <Route path='/post/:postId' component={Post}/>
       <Route path='/blog' component={Blog}/>
-      <Route path='/question' component={Question}/>
+      <Route path='/QA' component={Question}/>
       <Route path='/textbook' component={Textbook}/>
       <Route path='/writepost' component={WritePost}/>
       <Route path='/event' component={Event}/>
