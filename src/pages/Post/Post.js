@@ -13,6 +13,7 @@ import Hashtags from './../sidebars/Hashtags'
 import SavedPost from './../sidebars/SavedPost'
 import Weekly from './../sidebars/Weekly'
 import { fetchPostLike, fetchPostComment } from '../../reducers/post/actions'
+import ReadOnly from './../WritePost/Editor1';
 
 class Post extends Component {
     constructor(props) {
@@ -123,7 +124,7 @@ class Post extends Component {
                             </div>
 
                             <div className='post-content'>
-                                {this.state.post.content}
+                                <ReadOnly value={this.state.post.content}/>
                             </div>
                             <button className='btn btn-sm btn-primary'
                                 style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}

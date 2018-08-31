@@ -19,15 +19,15 @@ class WritePost extends Component {
             title: '',
             hashtagString: '',
             hashtags: [],
-            content: '',
+            content: localStorage.getItem('content'),
             type:'Blog',
         }
     }
 
     addPost(){
-        
+        console.log('after content',this.state.content);
         // console.log('this.state', this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
-        this.props.addPost(1,this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
+        this.props.addPost(1,this.state.title, this.state.content, this.state.type, this.state.hashtags)
     }
 
     render() {
