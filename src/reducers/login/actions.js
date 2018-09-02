@@ -15,7 +15,6 @@ export function loginError() {
 }
 
 export function loginSuccess(payload) {
-    console.log(payload);
     return {
         type : LOGIN_SUCCESS,
         payload

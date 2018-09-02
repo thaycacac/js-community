@@ -20,24 +20,27 @@ class Rank extends Component {
     render() {
         return (
             <table className='ranking-table' >
-                <tr>
-                <th>Top</th>
-                    
-                    <th>User</th>
-                    <th>Votes</th>
-                </tr>
-
+                <thead>
+                    <tr>
+                        <th>Top</th>
+                        
+                        <th>User</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>    
+                <tbody>
                 {
                     this.state.ranks.map(rank => {
                       return(
-                        <tr>                       
-                        <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px'}}/> </td>
-                        <td>{rank.name}</td>
-                        <td>{rank.total_votes}</td>
+                        <tr key={rank.name}>                       
+                            <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px'}}/> </td>
+                            <td>{rank.name}</td>
+                            <td>{rank.total_votes}</td>
                         </tr>
                       )
                     })
                 }
+                </tbody>
             </table>
         )
     }
