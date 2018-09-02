@@ -29,7 +29,7 @@
 
 .user {
     height: 40px;
-    width: 120px;
+    width: 170px;
     float: right;
     border-radius: 4px;
     font-size: 15px;
@@ -41,7 +41,7 @@
 
 .user-button{
     height: 40px;
-    width: 120px;
+    width: 170px;
     background-color: #2c4762;
     color: #ffffff;
     border: 0px ;
@@ -51,12 +51,14 @@
     margin-right: 5px;
     right: 10px;
 }
-
+.user :focus{
+    outline: none;
+}
 .user-content{
     display: block;
     position: absolute;
     background-color: #ffffff;
-    min-width: 120px;
+    min-width: 170px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
@@ -88,7 +90,7 @@
     text-align: center;
     padding-top: 10px;
     position: absolute;
-    right: 160px;
+    right: 200px;
 }
 .write-a-post a{
     text-decoration: none;

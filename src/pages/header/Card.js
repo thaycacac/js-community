@@ -3,39 +3,41 @@ import './Header.css';
 import 'font-awesome/css/font-awesome.min.css';
 import login from '../images/login.png';
 import { Link } from 'react-router';
+
 export default class Card extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       showMenu: false,
       email: this.props.auth && this.props.auth.email || '',
       username: this.props.auth && this.props.auth.name || 'Linh'
+
     };
-    
+
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
   }
-  
-  showMenu(event) {
-    event.preventDefault();
-    
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
-    });
+
+  componentWillMount(){
+    const username = this.props.auth.name.split(/[ ]+/).pop();
+    this.setState({username})
   }
-  
+  showMenu() {
+    if(this.state.showMenu===false) this.setState({showMenu:true})
+    else this.setState({showMenu:false})
+  }
+
   closeMenu(event) {
-    
     if ( this.dropdownMenu && !this.dropdownMenu.contains(event.target)) {
-      
       this.setState({ showMenu: false }, () => {
         document.removeEventListener('click', this.closeMenu);
-      });  
-      
+      });
     }
+
   }
-  signOut= () => {
+
+  signOut = () => {
     console.log('sign out')
     localStorage.clear();
   }
@@ -43,10 +45,10 @@ export default class Card extends Component {
     return (
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
-          <img src={login} style={{width:'15%',marginRight:'5px'}}/>
-          Hi, {this.state.username} <i className="fa fa-angle-down" style={{fontSize:'15px',color:'white',marginLeft:'5px'}}></i>
+          <img src={login} style={{ width: '10%', marginRight: '5px' }} />
+          Hi, {this.state.username} <i className="fa fa-angle-down" style={{ fontSize: '15px', color: 'white', marginLeft: '5px' }}></i>
         </button>
-        
+
         {
           this.state.showMenu
             ? (
@@ -57,12 +59,13 @@ export default class Card extends Component {
                 }}
               >
                 <div className='user-content'>
-                    <Link to='/profile'>View profile</Link><br/>
-                    <Link onClick={() => {
-                      this.signOut()
-                    }}to='/login'> Sign out </Link>
+                  <Link to='/profile'>View profile</Link><br />
+                  <Link onClick={() => {
+                    this.signOut()
+                  }} to='/login'> Sign out </Link>
+
                 </div>
-                
+
               </div>
             )
             : (
