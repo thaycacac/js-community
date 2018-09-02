@@ -23,7 +23,7 @@ class Header extends Component{
                 <input className="form-control search col-sm-3" type='text' placeholder='Search...'/>
                 <div className='write-a-post col-sm-2'>
                 <a href='/writepost'>
-                    <i class="fa fa-pencil-square-o"></i> Write a post 
+                    <i className="fa fa-pencil-square-o"></i> Write a post 
                 </a> 
                 </div>
                 <Card auth = {this.props.auth}/>
@@ -33,7 +33,6 @@ class Header extends Component{
 }
 function mapStateToProps(state) {
     const auth = state.auth.reducer;
-    console.log(auth);
     return { auth }
 }
 

@@ -4,29 +4,29 @@ import Header from './../header/Header';
 import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 import {connect} from 'react-redux'
-import { fetchPosts } from '../../reducers/post/actions'
+import { fetchPosts, fetchMorePosts } from '../../reducers/post/actions'
 import Rank from './../sidebars/Rank'
 import Hashtags from './../sidebars/Hashtags'
 import SavedPost from './../sidebars/SavedPost'
 import Weekly from './../sidebars/Weekly'
-
+import InfiniteScroll from 'react-infinite-scroller';
 class Blog extends Component {
   constructor(props){
     super(props);
       this.state={
         posts:[],
         total_pages : 0,
-        page : 0
+        page : 0,
+        hasMore : true
       }
   }
   
-  componentWillMount(){
-    this.props.fetchPosts(0).then(() => {
-      const {posts, total_pages, page} = this.props.posts;
-      this.setState({posts, total_pages, page})
+  loadFunc = () => {
+    this.props.fetchMorePosts(this.state.page ).then(() => {
+      const { posts, total_pages, page } = this.props.posts;
+      this.setState({ posts, total_pages, page, hasMore : parseInt(page) + 1 < total_pages })
     })
-    
-  }
+}
   render() {
     return (
       <div style={{ backgroundColor: '#f2f2f2' }}>
@@ -58,12 +58,20 @@ class Blog extends Component {
 
 
           <div className='main-content'>
+          <InfiniteScroll
+              pageStart={0}
+              loadMore={() => {this.loadFunc()}}
+              hasMore={this.state.hasMore}
+              loader={<div className="loader center" key={0}>Đang tải thêm...</div>}
+          >
             {
               this.state.posts.map(post => {
                 if(post.type==='Blog'){return <ShortPost post={post} />}
                 
               })
             }
+          </InfiniteScroll>
+            
           </div>
           <div className='side-bar-right'>
             <div className='weekly-bar'>
@@ -96,7 +104,8 @@ function mapStateToProps(state){
   })
 }
 const mapDispatchToProps = {
-  fetchPosts : fetchPosts
+  fetchPosts : fetchPosts,
+  fetchMorePosts: fetchMorePosts
 };
 
 
