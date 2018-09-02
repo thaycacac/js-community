@@ -1,4 +1,4 @@
-import { FETCH_CONTENT_REQUEST, FETCH_CONTENT_SUCCESS, FETCH_CONTENT_ERROR } from './types';
+import { FETCH_CONTENT_REQUEST, FETCH_CONTENT_SUCCESS } from './types';
 
 const initialState = {
     post:{}

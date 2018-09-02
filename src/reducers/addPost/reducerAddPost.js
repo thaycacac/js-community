@@ -1,5 +1,5 @@
-import { ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_ERROR } from './types'
-import { addPostError, addPostRequest } from './actions';
+import { ADD_POST_REQUEST, ADD_POST_SUCCESS } from './types'
+// import { addPostError, addPostRequest } from './actions';
 const initialState = {
     body: null
 };

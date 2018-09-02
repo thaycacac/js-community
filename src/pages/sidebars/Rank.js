@@ -29,13 +29,13 @@ class Rank extends Component {
                     </tr>
                 </thead>    
                 <tbody>
-                {
+                    {
                     this.state.ranks.map(rank => {
                       return(
-                        <tr key={rank.name}>                       
-                            <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px'}}/> </td>
-                            <td>{rank.name}</td>
-                            <td>{rank.total_votes}</td>
+                        <tr key={Math.random()}>                       
+                        <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px'}} alt="avatar"/> </td>
+                        <td>{rank.name}</td>
+                        <td>{rank.total_votes}</td>
                         </tr>
                       )
                     })

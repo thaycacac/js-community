@@ -9,7 +9,6 @@ export function addPostRequest(authorId, title, content, type, hashtag) {
         authorId,
         title,
         content,
-        type,
         hashtag
     }
 }
@@ -34,7 +33,7 @@ export function addPost(authorId, title, content, type, hashtag) {
             
             userFetch.post(url, body)
                 .then(json => {
-                    console.log('addPostJson', json);
+                    // console.log('addPostJson', json);
                     if (json && json.rowsAffected && json.rowsAffected[0] > 0) {
                         
                         dispatch(addPostSuccess);

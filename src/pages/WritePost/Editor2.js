@@ -120,6 +120,8 @@ document: {
         const paragraph = Block.create('paragraph')
         return change.insertNodeByKey(node.key, node.nodes.size, paragraph)
       }
+      default: 
+        return null;
     }
   },
 },
@@ -145,7 +147,7 @@ class RichText extends React.Component {
 
   hasLinks = () => {
     const { value } = this.state
-    return value.inlines.some(inline => inline.type == 'link')
+    return value.inlines.some(inline => inline.type === 'link')
   }
 
   /**
@@ -157,7 +159,7 @@ class RichText extends React.Component {
 
   hasMark = type => {
     const { value } = this.state
-    return value.activeMarks.some(mark => mark.type == type)
+    return value.activeMarks.some(mark => mark.type === type)
   }
 
   /**
@@ -169,7 +171,7 @@ class RichText extends React.Component {
 
   hasBlock = type => {
     const { value } = this.state
-    return value.blocks.some(node => node.type == type)
+    return value.blocks.some(node => node.type === type)
   }
 
   /**
@@ -192,10 +194,10 @@ class RichText extends React.Component {
           {this.renderBlockButton('numbered-list', 'ul')}
           {this.renderBlockButton('bulleted-list', 'ol')}
           <Button onMouseDown={this.onClickImage}>
-            <Icon><i class="fa fa-file-image-o"></i></Icon>
+            <Icon><i className="fa fa-file-image-o"></i></Icon>
           </Button>
           <Button active={this.hasLinks()} onMouseDown={this.onClickLink}>
-            <Icon><i class="fa fa-link"></i></Icon>
+            <Icon><i className="fa fa-link"></i></Icon>
           </Button>
         </Toolbar>
         <Editor
@@ -300,6 +302,8 @@ class RichText extends React.Component {
               </a>
             )
           }
+          default: 
+            return null;
     }
   }
 
@@ -323,16 +327,16 @@ class RichText extends React.Component {
 
   onDropOrPaste = (event, change, editor) => {
     const target = getEventRange(event, change.value)
-    if (!target && event.type == 'drop') return
+    if (!target && event.type === 'drop') return
 
     const transfer = getEventTransfer(event)
     const { type, text, files } = transfer
 
-    if (type == 'files') {
+    if (type ==='files') {
       for (const file of files) {
         const reader = new FileReader()
         const [mime] = file.type.split('/')
-        if (mime != 'image') continue
+        if (mime !== 'image') continue
 
         reader.addEventListener('load', () => {
           editor.change(c => {
@@ -344,7 +348,7 @@ class RichText extends React.Component {
       }
     }
 
-    if (type == 'text') {
+    if (type === 'text') {
       if (!isUrl(text)) return
       if (!isImage(text)) return
       change.call(insertImage, text, target)
@@ -370,6 +374,8 @@ class RichText extends React.Component {
         return <em {...attributes}>{children}</em>
       case 'underlined':
         return <u {...attributes}>{children}</u>
+      default:
+        return null;
     }
   }
 
@@ -442,7 +448,7 @@ class RichText extends React.Component {
     const { document } = value
 
     // Handle everything but list buttons.
-    if (type != 'bulleted-list' && type != 'numbered-list') {
+    if (type !== 'bulleted-list' && type !== 'numbered-list') {
       const isActive = this.hasBlock(type)
       const isList = this.hasBlock('list-item')
 
@@ -458,7 +464,7 @@ class RichText extends React.Component {
       // Handle the extra wrapping required for list buttons.
       const isList = this.hasBlock('list-item')
       const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type == type)
+        return !!document.getClosest(block.key, parent => parent.type === type)
       })
 
       if (isList && isType) {
@@ -469,7 +475,7 @@ class RichText extends React.Component {
       } else if (isList) {
         change
           .unwrapBlock(
-            type == 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
+            type === 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
           )
           .wrapBlock(type)
       } else {
@@ -522,7 +528,7 @@ class RichText extends React.Component {
 
     const transfer = getEventTransfer(event)
     const { type, text } = transfer
-    if (type != 'text' && type != 'html') return
+    if (type !== 'text' && type !== 'html') return
     if (!isUrl(text)) return
 
     if (this.hasLinks()) {

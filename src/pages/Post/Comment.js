@@ -13,7 +13,7 @@ export default class Comment extends Component {
     render(){
         return(
             <div className='comment-container'>
-                <div className='comment-user-avatar'><img src={avatar}/></div>
+                <div className='comment-user-avatar'><img src={avatar} alt="avatar"/></div>
                 <div className='comment-content'>
                     <div className='username'><a href=''>{this.state.username}</a></div>
                     <div className='comment-text'>

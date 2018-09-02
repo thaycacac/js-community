@@ -66,8 +66,8 @@ class Blog extends Component {
           >
             {
               this.state.posts.map(post => {
-                if(post.type==='Blog'){return <ShortPost post={post} />}
-                
+                if(post.type==='Blog'){return <ShortPost post={post} key={Math.random()} />}
+                return null;
               })
             }
           </InfiniteScroll>
@@ -98,7 +98,6 @@ class Blog extends Component {
 }
 
 function mapStateToProps(state){
-  console.log(state.post.posts)
   return({
       posts : state.post.posts
   })

@@ -12,11 +12,11 @@ class Header extends Component{
         }
     }
     render(){
-        return(
+        return( 
             <div className="header-container">
                 <div className="title col-sm-3">
                     <a href='/home'>
-                    <img src={logoJS} style={{height:'40px'}}/> JS Community
+                    <img src={logoJS} alt="logo JS" style={{height:'40px'}}/> JS Community
                     </a> 
                  
                  </div>

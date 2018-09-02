@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 import './WritePost.css'
 import Header from './../header/Header'
 import Menu from './../Menu/Menu'
-import Editor1 from './Editor1'
+// import Editor1 from './Editor1'
 import Editor2 from './Editor2'
-import initialValue from './value.json'
-import { Value } from 'slate'
+// import initialValue from './value.json'
+// import { Value } from 'slate'
 import {addPost} from '../../reducers/addPost/actions'
 import { connect } from 'react-redux'
 
@@ -26,7 +26,7 @@ class WritePost extends Component {
 
     addPost(){
         
-        console.log('this.state', this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
+        // console.log('this.state', this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
         this.props.addPost(1,this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
     }
 
@@ -40,7 +40,7 @@ class WritePost extends Component {
 
                     <div className='writing-navigation'>
                         <div className='turn-back' >
-                            <a href='/home'><i class="fa fa-chevron-left"></i> Back</a>
+                            <a href='/home'><i className="fa fa-chevron-left"></i> Back</a>
                         </div>
 
                         <button className='btn btn-primary btn-post'
@@ -48,7 +48,7 @@ class WritePost extends Component {
                                 this.addPost();
                             }}
                         >
-                            <i class="fa fa-paper-plane-o"></i> Post
+                            <i className="fa fa-paper-plane-o"></i> Post
                         </button>
                     </div>
 
@@ -70,7 +70,8 @@ class WritePost extends Component {
                             />
                             <input className='hashtag-input' type='text' placeholder='hashtag : web,android,...'
                                 onChange={event => {
-                                    this.state.hashtagString = event.target.value;
+                                    // this.state.hashtagString = event.target.value;
+                                    this.setState({ hashtagString: event.target.value });
                                     const res = this.state.hashtagString.split(',');
                                     this.setState({ hashtags: res });
                                 }}

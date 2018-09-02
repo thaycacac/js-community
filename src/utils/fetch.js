@@ -35,6 +35,7 @@ export function del(url) {
   }
   
 export function post(url, body) {
+
   let accessToken = localStorage.getItem("accessToken");
     return fetch(url, {
       method: "POST",
@@ -51,6 +52,7 @@ export function post(url, body) {
       return res.json();
     })
   }
+
 export function put(url, body) {
   let accessToken = localStorage.getItem("accessToken");
   return fetch(url, {

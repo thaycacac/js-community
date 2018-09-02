@@ -70,7 +70,7 @@ class HomePage extends Component {
               loader={<div className="loader center" key={0}>Đang tải thêm...</div>}
           >
             {
-              this.state.posts.map(post => <ShortPost key={post.postId} post={post} />)
+              this.state.posts.map(post => <ShortPost post={post} key={Math.random()}/>)
             }
           </InfiniteScroll>
             

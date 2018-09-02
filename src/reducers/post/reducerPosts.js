@@ -1,4 +1,5 @@
-import {FETCH_POST_SUCCESS,FETCH_POST_REQUEST,FETCH_POST_ERROR, FETCH_MORE_POST_SUCCESS} from './types';
+
+import {FETCH_POST_SUCCESS,FETCH_POST_REQUEST} from './types';
 
 const initialState = {
     posts: [],

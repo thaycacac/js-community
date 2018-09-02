@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Question.css';
 import Header from './../header/Header';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+// import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 import {connect} from 'react-redux'
@@ -68,8 +68,8 @@ class Question extends Component {
           >
             {
               this.state.posts.map(post => {
-                if(post.type==='QA'){return <ShortPost post={post} />}
-                
+                if(post.type==='QA'){return <ShortPost post={post} key={Math.random()}/>}
+                return null;
               })
             }
           </InfiniteScroll>
@@ -100,7 +100,6 @@ class Question extends Component {
 }
 
 function mapStateToProps(state){
-  console.log(state.post.posts)
   return({
       posts : state.post.posts
   })
