@@ -1,7 +1,7 @@
 import { FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_ERROR,
 FETCH_CONTENT_REQUEST,FETCH_CONTENT_SUCCESS,FETCH_CONTENT_ERROR,
 FETCH_COMMENT_REQUEST,FETCH_COMMENT_SUCCESS,FETCH_COMMENT_ERROR,
-FETCH_LIKE_REQUEST,FETCH_LIKE_SUCCESS,FETCH_LIKE_ERROR } from './types';
+FETCH_LIKE_REQUEST,FETCH_LIKE_SUCCESS,FETCH_LIKE_ERROR, FETCH_MORE_POST_SUCCESS } from './types';
 import * as userFetch from '../../utils/fetch';
 import { BACKEND_URL } from '../../config/constants';
 
@@ -19,6 +19,13 @@ export function fetchPostsSuccess(payload) {
     }
 }
 
+export function fetchMorePostsSuccess(payload) {
+    
+    return {
+        type: FETCH_MORE_POST_SUCCESS,
+        payload
+    }
+}
 export function fetchPostsError() {
     return {
         type: FETCH_POST_ERROR
@@ -51,7 +58,32 @@ export function fetchPosts(page) {
         
     }
 }
-
+export function fetchMorePosts(page) {
+    return (dispatch) => {
+        return new Promise((resolve, reject) => {
+            const url = `${BACKEND_URL}/post/get?page=${page}`;
+            userFetch.get(url).then(res => {
+                res.json().then(json => {
+                    if (json === false || json.length === 0) {
+                        dispatch(fetchPostsError)
+                        reject()
+                    } else {
+                        dispatch(fetchMorePostsSuccess(json))
+                        
+                        resolve()
+                    }
+                }).catch(() =>  {
+                    dispatch(fetchPostsError)
+                    reject()
+                });
+            }).catch(() =>  {
+                dispatch(fetchPostsError)
+                reject()
+            });
+        })
+        
+    }
+}
 
 // fetch post content
 
