@@ -19,7 +19,7 @@ export default class ShortPost extends Component{
             
             <div className='short-post-container'>
                 <div className='user-avatar'>
-                    <img src={this.props.post && this.props.post.avatar ? this.props.post.avatar : avatar} alt="avatar"/>
+                    <img src={this.props.post && this.props.post.authorAvatar ? this.props.post.authorAvatar : avatar} alt="avatar"/>
                 </div>
 
                 <div className='short-description'>

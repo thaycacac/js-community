@@ -43,8 +43,11 @@ export default class Card extends Component {
     return (
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
-          <img src={login} alt="login" style={{ width: '10%', marginRight: '5px' }} />
-          Hi, {this.state.username} <i className="fa fa-angle-down" style={{ fontSize: '15px', color: 'white', marginLeft: '5px' }}></i>
+        <img src={localStorage.getItem('avatar')} style={{width: '30px',
+        height: '30px',
+        marginRight:'5px',
+        borderRadius: '100px',
+        overflow: 'hidden'}}/>Hi, {this.state.username} <i className="fa fa-angle-down" style={{ fontSize: '15px', color: 'white', marginLeft: '5px' }}></i>
         </button>
 
         {
