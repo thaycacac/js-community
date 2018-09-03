@@ -20,16 +20,14 @@ class Rank extends Component {
     render() {
         return (
             <table className='ranking-table' >
-                {/* <tr> */}
                 <thead>
                     <tr>
                         <th>Top</th>
+                        
                         <th>User</th>
                         <th>Votes</th>
                     </tr>
-                </thead>
-                
-                {/* </tr> */}
+                </thead>    
                 <tbody>
                     {
                     this.state.ranks.map(rank => {
@@ -43,7 +41,6 @@ class Rank extends Component {
                     })
                 }
                 </tbody>
-                
             </table>
         )
     }

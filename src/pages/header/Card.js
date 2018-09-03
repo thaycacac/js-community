@@ -12,7 +12,6 @@ export default class Card extends Component {
       showMenu: false,
       email: (this.props.auth && this.props.auth.email) || '',
       username: (this.props.auth && this.props.auth.name) || 'Linh'
-
     };
 
     this.showMenu = this.showMenu.bind(this);
@@ -29,9 +28,7 @@ export default class Card extends Component {
   }
 
   closeMenu(event) {
-
-    if (!this.dropdownMenu.contains(event.target)) {
-
+    if ( this.dropdownMenu && !this.dropdownMenu.contains(event.target)) {
       this.setState({ showMenu: false }, () => {
         document.removeEventListener('click', this.closeMenu);
       });
