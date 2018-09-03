@@ -1,12 +1,12 @@
 
 import React, { Component } from 'react';
 // Require Editor JS files.
-
+import Value from 'slate'
 import './WritePost.css'
 import Header from './../header/Header'
 import Menu from './../Menu/Menu'
-// import Editor1 from './Editor1'
-import Editor2 from './Editor2'
+import TextEditor from './Editor1'
+// import Editor2 from './Editor2'
 // import initialValue from './value.json'
 // import { Value } from 'slate'
 import {addPost} from '../../reducers/addPost/actions'
@@ -19,15 +19,15 @@ class WritePost extends Component {
             title: '',
             hashtagString: '',
             hashtags: [],
-            content: localStorage.getItem('content'),
+            content: '',
             type:'Blog',
         }
     }
-
     addPost(){
-        console.log('after content',this.state.content);
+        const text = localStorage.getItem('text')
+        // console.log('text',text);
         // console.log('this.state', this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
-        this.props.addPost(1,this.state.title, this.state.content, this.state.type, this.state.hashtags)
+        this.props.addPost(1,this.state.title,  text, this.state.type, this.state.hashtags)
     }
 
     render() {
@@ -80,7 +80,7 @@ class WritePost extends Component {
                         </form>
                     </div>
                     <div className='writing-content'>
-                        <Editor2 />
+                        <TextEditor/>
                         {
                             // console.log('hashtags', this.state.hashtags)
                         }

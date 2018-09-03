@@ -123,8 +123,7 @@ class Post extends Component {
                                 </div>
                             </div>
 
-                            <div className='post-content'>
-                                <ReadOnly value={this.state.post.content}/>
+                            <div className='post-content' dangerouslySetInnerHTML={{ __html: this.state.post.content }}>
                             </div>
                             <button className='btn btn-sm btn-primary'
                                 style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}

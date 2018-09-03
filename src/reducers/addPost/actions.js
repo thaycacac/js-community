@@ -30,7 +30,7 @@ export function addPost(authorId, title, content, type, hashtag) {
         return new Promise((resolve, reject) => {
             const url = `${BACKEND_URL}/post/add`;
             const body = JSON.stringify({ authorId, title, content, type, hashtag });
-            
+            console.log(body);
             userFetch.post(url, body)
                 .then(json => {
                     // console.log('addPostJson', json);
@@ -40,11 +40,12 @@ export function addPost(authorId, title, content, type, hashtag) {
                         browserHistory.push(`/${type}`)
                         resolve()
                     } else {
+                        console.log(json);
                         dispatch(addPostError);
                         reject()
                     }
 
-                })
+                }).catch(err => console.log(err));
         })
     }
 }

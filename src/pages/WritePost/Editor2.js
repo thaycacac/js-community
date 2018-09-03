@@ -3,13 +3,85 @@ import { Block,Value } from 'slate'
 import styled from 'react-emotion'
 import { LAST_CHILD_TYPE_INVALID } from 'slate-schema-violations'
 import React from 'react'
-import initialValue from './value.json'
+// import initialValue from './value.json'
 import imageExtensions from 'image-extensions'
 import isUrl from 'is-url'
-
+import Html from 'slate-html-serializer'
 import { isKeyHotkey } from 'is-hotkey'
 import { Button, Icon, Toolbar } from '../components'
 
+
+const BLOCK_TAGS = {
+  blockquote: 'quote',
+  p: 'paragraph',
+  pre: 'code',
+}
+// Add a dictionary of mark tags.
+const MARK_TAGS = {
+  em: 'italic',
+  strong: 'bold',
+  u: 'underline',
+}
+const rules = [
+  {
+    deserialize(el, next) {
+      const type = BLOCK_TAGS[el.tagName.toLowerCase()]
+      if (type) {
+        return {
+          object: 'block',
+          type: type,
+          data: {
+            className: el.getAttribute('class'),
+          },
+          nodes: next(el.childNodes),
+        }
+      }
+    },
+    serialize(obj, children) {
+      if (obj.object == 'block') {
+        switch (obj.type) {
+          case 'code':
+            return (
+              <pre>
+                <code>{children}</code>
+              </pre>
+            )
+          case 'paragraph':
+            return <p className={obj.data.get('className')}>{children}</p>
+          case 'quote':
+            return <blockquote>{children}</blockquote>
+          case 'image':
+            return <img src={children}/>
+        }
+      }
+    },
+  },
+  // Add a new rule that handles marks...
+  {
+    deserialize(el, next) {
+      const type = MARK_TAGS[el.tagName.toLowerCase()]
+      if (type) {
+        return {
+          object: 'mark',
+          type: type,
+          nodes: next(el.childNodes),
+        }
+      }
+    },
+    serialize(obj, children) {
+      if (obj.object == 'mark') {
+        switch (obj.type) {
+          case 'bold':
+            return <strong>{children}</strong>
+          case 'italic':
+            return <em>{children}</em>
+          case 'underline':
+            return <u>{children}</u>
+        }
+      }
+    },
+  },
+]
 /**
  * A change helper to standardize wrapping links.
  *
@@ -17,6 +89,9 @@ import { Button, Icon, Toolbar } from '../components'
  * @param {String} href
  */
 
+// Create a new serializer instance with our `rules` from above.
+const html = new Html({ rules })
+const initialValue = localStorage.getItem('content') || '<p></p>'
 function wrapLink(change, href) {
     change.wrapInline({
       type: 'link',
@@ -136,7 +211,7 @@ class RichText extends React.Component {
    */
 
   state = {
-    value: Value.fromJSON(initialValue),
+    value:  html.deserialize(initialValue),
   }
 
   /**
@@ -386,14 +461,15 @@ class RichText extends React.Component {
    */
 
   onChange = ({ value }) => {
+    // When the document changes, save the serialized HTML to Local Storage.
+    if (value.document != this.state.value.document) {
+      const content = html.serialize(value)
+      localStorage.setItem('content', content)
+      console.log('content',localStorage.getItem('content'))
+    }
     this.setState({ value })
-    const content = JSON.stringify(this.state.value.toJSON());
-    localStorage.setItem('content',content)
-    // console.log('contents',localStorage.getItem('content'));
-    // console.log('initialValue',initialValue);
-    // localStorage.setItem('content')
   }
-
+  
   /**
    * On key down, if it's a formatting command toggle a mark.
    *
