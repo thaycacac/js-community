@@ -62,7 +62,7 @@ class HomePage extends Component {
           </div>
 
 
-          <div className='main-content'>
+          <div className='home-main-content'>
           <InfiniteScroll
               pageStart={0}
               loadMore={() => {this.loadFunc()}}

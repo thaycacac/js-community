@@ -12,7 +12,7 @@
   }
   
   
-  .main-content{
+  .profle-main-content{
     grid-area: main;
     float: left;
     width: 640px;
@@ -73,7 +73,7 @@
  }
 
   /* main content */
-  .main-content{
+  .profilemain-content{
     padding: 10px;
   }
   

@@ -59,7 +59,7 @@ class Textbook extends Component {
           </div>
 
 
-          <div className='main-content'>
+          <div className='textbook-main-content'>
             {
               this.state.posts.map(post => {
                 if(post.type==='TextBook'){return <ShortPost post={post} key={Math.random()} />}

@@ -57,7 +57,7 @@ class Blog extends Component {
           </div>
 
 
-          <div className='main-content'>
+          <div className='blog-main-content'>
           <InfiniteScroll
               pageStart={0}
               loadMore={() => {this.loadFunc()}}

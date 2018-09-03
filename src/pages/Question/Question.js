@@ -59,7 +59,7 @@ class Question extends Component {
           </div>
 
 
-          <div className='main-content'>
+          <div className='question-main-content'>
           <InfiniteScroll
               pageStart={0}
               loadMore={() => {this.loadFunc()}}

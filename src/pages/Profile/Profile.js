@@ -89,7 +89,7 @@ export default class Profile extends Component{
             </div>
           </div>
 
-          <div className='main-content'>
+          <div className='profile-main-content'>
           <h2>This feature is not done yet</h2>
           {
             // this.state.posts.map(post=>{

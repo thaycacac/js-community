@@ -20,7 +20,7 @@
 
 }
 
-.main-content{
+.question-main-content{
   float: left;
   width: 640px;
   background-color: #ffffff;
@@ -93,7 +93,7 @@
 }
 
 /* main content */
-.main-content{
+.question-main-content{
   padding: 10px;
   margin-bottom: 40px;
 }
