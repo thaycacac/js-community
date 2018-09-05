@@ -189,7 +189,7 @@ code{
 /* post content */
 .post-content{
   margin:20px;
- 
+  width: 640px;
   padding:10px;
 }
 

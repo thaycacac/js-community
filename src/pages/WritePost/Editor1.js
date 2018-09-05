@@ -14,7 +14,7 @@ export default class TextEditor extends Component {
 
   handleChange(value) {
     this.setState({ text: value })
-    console.log('text',this.state.text)
+    // console.log('text',this.state.text)
     localStorage.setItem('text',this.state.text)
   }
   render() {

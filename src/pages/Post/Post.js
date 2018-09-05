@@ -58,7 +58,7 @@ class Post extends Component {
     renderComments(){
         if (this.state.comments.length >0) {
             return this.state.comments.map(comment => 
-                <Comment username={comment.userName} content={comment.content} key={Math.random()}/>
+                <Comment username={comment.userName} content={comment.content} userAvatar={comment.userAvatar} key={Math.random()}/>
             )
         }else{
             return <i style={{margin:'20px'}}>No comment yet</i>

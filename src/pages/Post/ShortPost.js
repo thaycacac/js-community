@@ -3,17 +3,25 @@ import './ShortPost.css';
 import 'font-awesome/css/font-awesome.min.css';
 import avatar from '../images/avatar.png';
 import {Link} from 'react-router';
+import { fetchpostHashtags } from './../../reducers/hashtag/actions';
+import { connect } from 'react-redux';
 
-
-export default class ShortPost extends Component{
+class ShortPost extends Component{
     constructor(props){
         super(props);
         this.state={
                 post:this.props.post,
-                
+                hashtags:[]
         }
     }
-
+    componentWillMount(){
+        this.props.fetchpostHashtags(this.props.post.postId)
+        .then(() =>{
+            const hashtags = this.props.hashtags;
+            console.log('hashtags',hashtags);
+            this.setState({hashtags})
+        })
+    }
     render(){
         return(
             
@@ -26,11 +34,11 @@ export default class ShortPost extends Component{
                     <p className='username'><a href='/profile'>{this.state.post.authorName}</a></p>
                     <div className='main-hashtag'>
                         {
-                            // this.state.post.hashtags.map(hashtag=>{
-                            //     return(
-                            //         <span className='hashtag'><a>{hashtag}</a></span>
-                            //     )
-                            // })
+                            this.state.hashtags.map(hashtag=>{
+                                return(
+                                    <span className='hashtag'><a>{hashtag.hashtag}</a></span>
+                                )
+                            })
                         }
                     </div>
                     <div className='post-title'>
@@ -49,3 +57,15 @@ export default class ShortPost extends Component{
         )
     }
 }
+
+function mapStateToProps(state){
+    // console.log('state',state)
+    return({
+        hashtags:state.hashtags.postHashtags.hashtagResult
+    })
+}
+const mapDispatchToProps={
+    fetchpostHashtags: fetchpostHashtags
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ShortPost)
