@@ -5,7 +5,7 @@ import rank from './reducers/rank'
 import addPost from './reducers/addPost'
 import auth from './reducers/login'
 import hashtags from './reducers/hashtag'
-
+import addComment from './reducers/postInteraction'
 import profileRank from './reducers/profile'
 const rootReducer = combineReducers({
   router: routerReducer,
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   addPost,
   auth,
   hashtags,
-  profileRank
+  profileRank,
+  addComment
 });
 export default rootReducer;

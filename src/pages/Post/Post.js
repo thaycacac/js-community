@@ -191,6 +191,7 @@ class Post extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log('state',state)
     return ({
         post: state.post.post.post,
         likes: state.post.likes,
