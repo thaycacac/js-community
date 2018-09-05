@@ -2,59 +2,34 @@ import React, { Component } from 'react';
 import Header from './../header/Header';
 import './Profile.css';
 // import ShortPost from './../Post/ShortPost';
-import avatar from '../images/avatar.png';
+// import avatar from '../images/avatar.png';
 import Menu from './../Menu/Menu';
+import { fetchRank } from '../../reducers/profile/actions';
+import { connect } from 'react-redux';
 
-export default class Profile extends Component{
+class Profile extends Component{
   constructor(props){
     super(props);
       this.state={
-        posts:[
-          {
-            id:'1',
-            username:'Nguyễn Quang Linh',
-            title:'Các loại bootstrap trong RxSwift',
-            hashtag:['Swift','iOS'],
-            like:'17',
-            comment:'32'
-          },
-          {
-            id:'2',
-            username:'Phan Xuân Vũ',
-            title:'Bootstrapping trong AngularJS',
-            like:'45',
-            comment:'35'
-          },
-          {
-            id:'3',
-            username:'Nguyễn Thái Bảo',
-            title:'Class method: Một số vấn đề về Coding Standard',
-            like:'1',
-            comment:'0'
-          },
-          {
-            id:'4',
-            username:'Nguyễn Hoàng Hải',
-            title:'hướng dẫn debug trong react native',
-            like:'97',
-            comment:'58'
-          },
-          {
-            id:'5',
-            username:'Wasd',
-            title:'Vài ghi chép về V8 và Garbage Collection',
-            like:'25',
-            comment:'45'
-          }
-          ],
-          userid:'',
-          username:'',
-          dob:'',
-          totalPost:'',
-          totalVotes:'',
-          rank:'',
+        posts:[],
+        rank: {},
+        // userId: localStorage.getItem('userId')
       }
   }
+
+  componentWillMount() {
+      this.props.fetchRank(localStorage.getItem('userId')).then(() => {
+        const rank = this.props.rank;
+        // const userId = rank.userId;
+        // const name = rank.name;
+        // const avatar = rank.avatar;
+        // const total_votes = rank.total_votes;
+        // const top = rank.top;
+        // console.log(rank);
+        this.setState({ rank })
+      })
+  }
+
     render(){
         return(
         <div style={{ backgroundColor: '#e6f2f2f2e6e6' }}>
@@ -63,27 +38,25 @@ export default class Profile extends Component{
         <div className='profile-container'>
 
           <div className='profile'>
-            <div className='avatar'><img src={avatar} alt="avatar"/></div>
+            <div className='avatar'><img src={this.state.rank.avatar} alt="avatar" style={{borderRadius: '100px'}}/></div>
             <div className='bar-content'>
-            <div className='username-profile'>User name</div>
+            <div className='username-profile'>{this.state.rank.name}</div>
             <div className='public-profile'>
               <table className='table-profile'>
-                <tr>
-                  <td>Date of birth:</td>
-                  <td>13/04/1998</td>
-                </tr>
+              <tbody> 
                 <tr>
                   <td>Total posts:</td>
-                  <td>5</td>
+                  <td>null</td>
                 </tr>
                 <tr>
                   <td>Total votes:</td>
-                  <td>54</td>
+                  <td>{this.state.rank.total_votes}</td>
                 </tr>
                 <tr>
-                  <td>tRanking:</td>
-                  <td>#1</td>
+                  <td>Top ranking:</td>
+                  <td>{this.state.rank.top}</td>
                 </tr>
+              </tbody>
               </table>
             </div>
             </div>
@@ -108,3 +81,17 @@ export default class Profile extends Component{
         )
     }
 }
+
+function mapStateToProps(state) {
+  // console.log('state',state)
+  return ({
+    posts : state.posts,
+    rank: state.profileRank.profileRank.rank
+  })
+}
+
+const mapDispatchToProps = {
+  fetchRank:fetchRank
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

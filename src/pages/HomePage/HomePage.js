@@ -30,7 +30,7 @@ class HomePage extends Component {
           await this.setState({ posts, total_pages, page : parseInt(page) + 1, hasMore : parseInt(page) + 1 < total_pages })
         })
       }
-      
+
   }
   render() {
     return (
