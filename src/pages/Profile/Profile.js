@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Header from './../header/Header';
 import './Profile.css';
-// import ShortPost from './../Post/ShortPost';
+import ShortPost from './../Post/ShortPost';
 // import avatar from '../images/avatar.png';
 import Menu from './../Menu/Menu';
-import { fetchRank } from '../../reducers/profile/actions';
+import { fetchRank, fetchPost } from '../../reducers/profile/actions';
 import { connect } from 'react-redux';
 
 class Profile extends Component{
@@ -28,6 +28,10 @@ class Profile extends Component{
         // console.log(rank);
         this.setState({ rank })
       })
+      this.props.fetchPost(localStorage.getItem('userId'), 0).then(() => {
+        const posts = this.props.posts;
+        this.setState({ posts });
+      })
   }
 
     render(){
@@ -46,7 +50,7 @@ class Profile extends Component{
               <tbody> 
                 <tr>
                   <td>Total posts:</td>
-                  <td>null</td>
+                  <td>{this.state.posts.length}</td>
                 </tr>
                 <tr>
                   <td>Total votes:</td>
@@ -63,16 +67,14 @@ class Profile extends Component{
           </div>
 
           <div className='profile-main-content'>
-          <h2>This feature is not done yet</h2>
+          {/* <h2>This feature is not done yet</h2> */}
           {
-            // this.state.posts.map(post=>{
-            //     console.log('username',post.username)
-            //     return (
-            //       <ShortPost id={post.id} username={post.username} title={post.title} hashtag={post.hashtag}  like={post.like} comment={post.comment}/>
-            //     )
-            //   })
-            
-            
+            this.state.posts.map(post=>{
+                console.log('username',post.username)
+                return (
+                  <ShortPost post={post} key={Math.random()}/>
+                )
+              })
           }
           </div>
           </div>
@@ -85,13 +87,14 @@ class Profile extends Component{
 function mapStateToProps(state) {
   // console.log('state',state)
   return ({
-    posts : state.posts,
+    posts : state.profilePost.profilePost.posts,
     rank: state.profileRank.profileRank.rank
   })
 }
 
 const mapDispatchToProps = {
-  fetchRank:fetchRank
+  fetchRank:fetchRank,
+  fetchPost: fetchPost
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
