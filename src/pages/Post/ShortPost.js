@@ -18,11 +18,11 @@ class ShortPost extends Component{
         this.props.fetchpostHashtags(this.props.post.postId)
         .then(() =>{
             const hashtags = this.props.hashtags;
-            console.log('hashtags',hashtags);
             this.setState({hashtags})
         })
     }
     render(){
+        const isLiked = this.props.liked && this.props.liked.includes(this.state.post.postId);
         return(
             
             <div className='short-post-container'>
@@ -36,7 +36,7 @@ class ShortPost extends Component{
                         {
                             this.state.hashtags.map(hashtag=>{
                                 return(
-                                    <span className='hashtag'><a>{hashtag.hashtag}</a></span>
+                                    <span key={Math.random()}className='hashtag'><a>{hashtag.hashtag}</a></span>
                                 )
                             })
                         }
@@ -44,11 +44,11 @@ class ShortPost extends Component{
                     <div className='post-title'>
                         <Link to={{pathname:`/post/${this.props.post.postId}`}} >{this.state.post.title}</Link>
                     </div>
-                    <div className='user-interact'>
-                    <i className="fa fa-thumbs-o-up" style={{fontSize:'15px', marginRight: '5px'}}> </i>
-                    <span>{this.props.post.total_likes}</span>
-                    <i className="fa fa-comment-o" style={{fontSize:'15px', marginLeft:'10px', marginRight: '5px'}}></i>
-                    <span>{this.props.post.total_comments}</span>
+                    <div className='short-user-interact' style={{fontSize:'18px'}}>
+                        <i className="fa fa-thumbs-o-up" style={{fontSize:'18px', marginRight: '5px', color: isLiked && '#3578E5'}}> </i>
+                        <span style={{color: isLiked && '#3578E5'}}>{this.props.post.total_likes}</span>
+                        <i className="fa fa-comment-o" style={{fontSize:'18px', marginLeft:'10px', marginRight: '5px'}}></i>
+                        <span>{this.props.post.total_comments}</span>
                     </div>
                 </div>
                 
