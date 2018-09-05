@@ -149,7 +149,7 @@ class Post extends Component {
                                     style={{ float: 'right', width: '70px' }}
                                     onClick={()=>{
                                          this.props.addComment(this.props.params.postId,localStorage.getItem('userId'),this.state.newComment);
-                                         window.location.reload();
+                                        //  window.location.reload();
                                     }}
                                 >
                                     Post

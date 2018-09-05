@@ -63,12 +63,12 @@ class Profile extends Component{
           </div>
 
           <div className='profile-main-content'>
-          <h2>This feature is not done yet</h2>
+          <span style={{margin:'40px' }}>You have no post yet</span>
           {
             // this.state.posts.map(post=>{
             //     console.log('username',post.username)
             //     return (
-            //       <ShortPost id={post.id} username={post.username} title={post.title} hashtag={post.hashtag}  like={post.like} comment={post.comment}/>
+                  // <ShortPost id={post.id} username={post.username} title={post.title} hashtag={post.hashtag}  like={post.like} comment={post.comment}/>
             //     )
             //   })
             
