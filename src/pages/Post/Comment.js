@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Comment.css';
 import avatar from '../images/avatar.png';
 
+
 export default class Comment extends Component {
     constructor(props){
         super(props);
@@ -10,6 +11,7 @@ export default class Comment extends Component {
             content:this.props.content
         }
     }
+    
     render(){
         return(
             <div className='comment-container'>

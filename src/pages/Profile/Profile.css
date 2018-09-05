@@ -73,8 +73,12 @@
  }
 
   /* main content */
-  .profilemain-content{
-    padding: 10px;
+  .profile-main-content{
+    float: left;
+  width: 640px;
+  background-color: #ffffff;
+  display: block;
+  margin-left: 10px;
   }
   
   .username-profile{

@@ -33,7 +33,8 @@ class Rank extends Component {
                     this.state.ranks.map(rank => {
                       return(
                         <tr key={Math.random()}>                       
-                        <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px'}} alt="avatar"/> </td>
+                        <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px',borderRadius: '100px',
+                        overflow: 'hidden'}} alt="avatar"/> </td>
                         <td>{rank.name}</td>
                         <td>{rank.total_votes}</td>
                         </tr>

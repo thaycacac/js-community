@@ -121,11 +121,13 @@ code{
 
   /* short description */
 
-.user-avatar{
-    width: 80px;
-    height: 80px;
+  .user-avatar{
+    width: 60px;
+    height: 60px;
     float: left;
     margin:10px;
+    border-radius: 100px;
+    overflow: hidden;
 }
 
 .user-avatar img{

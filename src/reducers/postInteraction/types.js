@@ -1,0 +1,9 @@
+// post like
+export const ADD_LIKE_REQUEST = 'ADD_LIKE_REQUEST';
+export const ADD_LIKE_SUCCESS = 'ADD_LIKE_SUCCESS';
+export const ADD_LIKE_ERROR = 'ADD_POST_ERROR';
+
+// post comment
+export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
+export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
+export const ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR';

@@ -13,7 +13,7 @@ import Hashtags from './../sidebars/Hashtags'
 import SavedPost from './../sidebars/SavedPost'
 import Weekly from './../sidebars/Weekly'
 import { fetchPostLike, fetchPostComment } from '../../reducers/post/actions'
-import ReadOnly from './../WritePost/Editor1';
+import {addComment,addLike} from '../../reducers/postInteraction/actions'
 
 class Post extends Component {
     constructor(props) {
@@ -130,6 +130,7 @@ class Post extends Component {
                                 onClick={() => {
                                     if (!this.state.liked) {
                                         this.setState({ total_likes: this.state.total_likes + 1, liked: true })
+                                        this.props.addLike(this.props.params.postId,localStorage.getItem('userId'));
                                     } else {
                                         this.setState({ total_likes: this.state.total_likes - 1, liked: false })
                                     }
@@ -146,7 +147,10 @@ class Post extends Component {
                                 <textarea placeholder='Add comment here...' onChange={event => { this.setState({newComment : event.target.value}) }}></textarea>
                                 <button className='btn btn-primary'
                                     style={{ float: 'right', width: '70px' }}
-
+                                    onClick={()=>{
+                                         this.props.addComment(this.props.params.postId,localStorage.getItem('userId'),this.state.newComment);
+                                         window.location.reload();
+                                    }}
                                 >
                                     Post
                             </button>
@@ -197,7 +201,9 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     fetchPostContent: fetchPostContent,
     fetchPostLike: fetchPostLike,
-    fetchPostComment: fetchPostComment
+    fetchPostComment: fetchPostComment,
+    addComment:addComment,
+    addLike: addLike,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
