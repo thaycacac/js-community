@@ -5,7 +5,7 @@ import avatar from '../images/avatar.png';
 import {Link} from 'react-router';
 import { fetchpostHashtags } from './../../reducers/hashtag/actions';
 import { connect } from 'react-redux';
-
+import {addLike} from '../../reducers/postInteraction/actions'
 class ShortPost extends Component{
     constructor(props){
         super(props);
@@ -45,7 +45,8 @@ class ShortPost extends Component{
                         <Link to={{pathname:`/post/${this.props.post.postId}`}} >{this.state.post.title}</Link>
                     </div>
                     <div className='short-user-interact' style={{fontSize:'18px'}}>
-                        <i className="fa fa-thumbs-o-up" style={{fontSize:'18px', marginRight: '5px', color: isLiked && '#3578E5'}}> </i>
+                        <i className="fa fa-thumbs-o-up" style={{fontSize:'18px', marginRight: '5px', color: isLiked && '#3578E5'}}
+                        > </i>
                         <span style={{color: isLiked && '#3578E5'}}>{this.props.post.total_likes}</span>
                         <i className="fa fa-comment-o" style={{fontSize:'18px', marginLeft:'10px', marginRight: '5px'}}></i>
                         <span>{this.props.post.total_comments}</span>
@@ -65,7 +66,8 @@ function mapStateToProps(state){
     })
 }
 const mapDispatchToProps={
-    fetchpostHashtags: fetchpostHashtags
+    fetchpostHashtags: fetchpostHashtags,
+    addLike: addLike
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(ShortPost)

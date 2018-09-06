@@ -73,6 +73,7 @@ class Post extends Component {
 
     render() {
         const isLiked = this.state.listLiked && this.state.listLiked.includes(this.state.post.postId);
+        console.log(isLiked);
         return (
             <div style={{ backgroundColor: '#f2f2f2' }}>
                 <Header />
@@ -142,11 +143,18 @@ class Post extends Component {
                             : 
                             <button className='btn btn-sm btn-primary'
                                 style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}
-                                onClick={() => {
+                                onClick={async () => {
                                     if (!this.state.liked) {
                                         this.setState({ total_likes: this.state.total_likes + 1, liked: true })
-                                        this.props.addLike(this.props.params.postId,localStorage.getItem('userId'));
-                                        window.location.reload();
+                                        this.props.addLike(this.props.params.postId,localStorage.getItem('userId')).then(async() => {
+                                            console.log(this.props.params.postId);
+                                            this.props.fetchLikeHistory().then( async () => {
+                                                const list = await this.props.liked.map(element => element && element.postId)
+                                                await this.setState({listLiked : list})
+                                                console.log(this.state.listLiked)
+                                            }).catch(err => {console.log(err)})
+                                        })
+                                        
                                     } else {
                                         this.setState({ total_likes: this.state.total_likes - 1, liked: false })
                                     }
@@ -167,7 +175,10 @@ class Post extends Component {
                                     style={{ float: 'right', width: '70px' }}
                                     onClick={()=>{
                                          this.props.addComment(this.props.params.postId,localStorage.getItem('userId'),this.state.newComment);
-                                         window.location.reload();
+                                         this.props.fetchPostComment(this.props.params.postId).then(() => {
+                                            const comments = this.props.comments.comments
+                                            this.setState({ comments })
+                                        })
                                     }}
                                 >
                                     Post
