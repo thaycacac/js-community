@@ -67,7 +67,7 @@ class Profile extends Component{
           </div>
 
           <div className='profile-main-content'>
-          {/* <h2>This feature is not done yet</h2> */}
+
           {
             this.state.posts.map(post=>{
                 console.log('username',post.username)
@@ -75,6 +75,7 @@ class Profile extends Component{
                   <ShortPost post={post} key={Math.random()}/>
                 )
               })
+
           }
           </div>
           </div>

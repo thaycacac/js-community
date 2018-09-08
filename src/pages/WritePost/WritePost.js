@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 // Require Editor JS files.
-import Value from 'slate'
 import './WritePost.css'
 import Header from './../header/Header'
 import Menu from './../Menu/Menu'
