@@ -68,6 +68,28 @@ export function fetchRank(uid) {
     })
 }
 
-export function fetchPost(uid) {
-
+export function fetchPost(uid, page) {
+    return(dispatch =>{
+        return new Promise((resolve,reject) => {
+            const url =`${BACKEND_URL}/post/user/${uid}?page=${page}`
+            userFetch.get(url).then( res => {
+                res.json().then(json =>{
+                    if(json === false || json.length===0){
+                        dispatch(fetchPostError)
+                        reject()
+                    } else {
+                        console.log('json',json)
+                        dispatch(fetchPostSuccess(json))
+                        resolve()
+                    }
+                }).catch(() => {
+                    dispatch(fetchPostError)
+                    reject()
+                }).catch(() => {
+                    dispatch(fetchPostError)
+                    reject()
+                })
+            })
+        })
+    })
 }
