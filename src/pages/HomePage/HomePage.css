@@ -15,9 +15,8 @@
 .hashtag-bar{
   float: left;
   width: 250px;
-  height: 400px;
   background-color: #ffffff;
-
+  padding-bottom: 20px;
 }
 
 .home-main-content{
