@@ -32,6 +32,7 @@ code{
     width: 640px;
     background-color: #ffffff;
     margin-bottom: 20px;
+  
   }
   
   .side-bar-right{
@@ -188,7 +189,6 @@ code{
 
 /* post content */
 .post-content{
-  margin:20px;
   width: 640px;
   padding:10px;
 }
