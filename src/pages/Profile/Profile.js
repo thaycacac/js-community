@@ -18,7 +18,7 @@ class Profile extends Component{
   }
 
   componentWillMount() {
-      this.props.fetchRank(localStorage.getItem('userId')).then(() => {
+      this.props.fetchRank(this.props.params.userId).then(() => {
         const rank = this.props.rank;
         // const userId = rank.userId;
         // const name = rank.name;
@@ -28,7 +28,7 @@ class Profile extends Component{
         // console.log(rank);
         this.setState({ rank })
       })
-      this.props.fetchPost(localStorage.getItem('userId'), 0).then(() => {
+      this.props.fetchPost(this.props.params.userId, 0).then(() => {
         const posts = this.props.posts;
         this.setState({ posts });
       })

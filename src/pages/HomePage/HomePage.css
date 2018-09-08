@@ -36,7 +36,7 @@
 .weekly-bar{
   float: left;
   width: 250px;
-
+  height: 150px;
   background-color: #ffffff;
   display: block;
   margin-bottom: 20px;
@@ -60,7 +60,7 @@
 .saved-post-bar{
   float: left;
   width: 250px;
-
+  height: 150px;
   background-color: #ffffff;
   display: block;
   margin-bottom: 20px;
@@ -108,4 +108,13 @@
 .ranking-table th{
   text-align: center;
   padding:10px;
+}
+
+.rank-name {
+  min-width: 120px;
+  text-align: center;
+}
+
+.rank-record {
+  margin-bottom: 7px;
 }

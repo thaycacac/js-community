@@ -14,14 +14,14 @@ class Hashtags extends Component {
     this.props.fetchAllHashtags().then(() => {
       const hashtags = this.props.hashtags;
       this.setState({ hashtags });
-      console.log("hashtags", hashtags);
+      // console.log("hashtags", hashtags);
     });
   }
 
   renderHashtags() {
     return this.state.hashtags.map(hashtag => {
       return (
-        <a
+        <a key={Math.random()}
           style={{
             marginLeft: "5px",
             border: "1px solid #5bc0de",

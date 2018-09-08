@@ -31,7 +31,7 @@ class ShortPost extends Component{
                 </div>
 
                 <div className='short-description'>
-                    <p className='username'><a href='/profile'>{this.state.post.authorName}</a></p>
+                    <p className='username'><Link to={{pathname:`/profile/${this.state.post.authorId}`}}>{this.state.post.authorName}</Link></p>
                     <div className='main-hashtag'>
                         {
                             this.state.hashtags.map(hashtag=>{

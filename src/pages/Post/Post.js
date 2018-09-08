@@ -56,7 +56,6 @@ class Post extends Component {
         })
         this.props.fetchLikeHistory().then(() => {
             const list = this.props.liked.map(element => element && element.postId)
-            console.log(list);
             this.setState({listLiked : list})
           }).catch(err => {console.log(err)})
     }
@@ -73,7 +72,6 @@ class Post extends Component {
 
     render() {
         const isLiked = this.state.listLiked && this.state.listLiked.includes(this.state.post.postId);
-        console.log(isLiked);
         return (
             <div style={{ backgroundColor: '#f2f2f2' }}>
                 <Header />
@@ -112,8 +110,7 @@ class Post extends Component {
                                 <div className='post-title'>
                                     {this.state.post.title}
                                 </div>
-                                <p className='username'><Link to='/profile' >{this.state.post.authorName}</Link></p>
-
+                                <p className='username'><Link to='/profile/53' >{this.state.post.authorName}</Link></p>
 
                                 <div className='user-interact' style={{fontSize: '18px'}}>
                                     <div className='main-hashtag'>
@@ -138,7 +135,7 @@ class Post extends Component {
                                 style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}
                                 disabled
                             >
-                                Đã Like
+                                Liked
                             </button>
                             : 
                             <button className='btn btn-sm btn-primary'
@@ -147,11 +144,11 @@ class Post extends Component {
                                     if (!this.state.liked) {
                                         this.setState({ total_likes: this.state.total_likes + 1, liked: true })
                                         this.props.addLike(this.props.params.postId,localStorage.getItem('userId')).then(async() => {
-                                            console.log(this.props.params.postId);
+                                            // console.log(this.props.params.postId);
                                             this.props.fetchLikeHistory().then( async () => {
                                                 const list = await this.props.liked.map(element => element && element.postId)
                                                 await this.setState({listLiked : list})
-                                                console.log(this.state.listLiked)
+                                                // console.log(this.state.listLiked)
                                             }).catch(err => {console.log(err)})
                                         })
                                         
