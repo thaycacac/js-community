@@ -6,7 +6,7 @@ import avatar from '../images/avatar.png'
 import Comment from './Comment'
 import Menu from './../Menu/Menu'
 import { Link } from 'react-router'
-import { fetchPostContent } from '../../reducers/post/actions'
+import { fetchPostContent, fetchLikeHistory } from '../../reducers/post/actions'
 import { connect } from 'react-redux'
 import Rank from './../sidebars/Rank'
 import Hashtags from './../sidebars/Hashtags'
@@ -34,7 +34,8 @@ class Post extends Component {
             newComment: '',
             liked: false,
             likes: [],
-            comments: []
+            comments: [],
+            listLiked: []
         }
     }
     
@@ -53,6 +54,11 @@ class Post extends Component {
             const likes = this.props.likes.likes;
             this.setState({ likes })
         })
+        this.props.fetchLikeHistory().then(() => {
+            const list = this.props.liked.map(element => element && element.postId)
+            console.log(list);
+            this.setState({listLiked : list})
+          }).catch(err => {console.log(err)})
     }
 
     renderComments(){
@@ -66,6 +72,8 @@ class Post extends Component {
     }
 
     render() {
+        const isLiked = this.state.listLiked && this.state.listLiked.includes(this.state.post.postId);
+        console.log(isLiked);
         return (
             <div style={{ backgroundColor: '#f2f2f2' }}>
                 <Header />
@@ -107,7 +115,7 @@ class Post extends Component {
                                 <p className='username'><Link to='/profile' >{this.state.post.authorName}</Link></p>
 
 
-                                <div className='user-interact'>
+                                <div className='user-interact' style={{fontSize: '18px'}}>
                                     <div className='main-hashtag'>
                                         {
                                             // this.state.post.hashtags.map(hashtag=>{
@@ -117,28 +125,46 @@ class Post extends Component {
                                             // })
                                         }
                                     </div>
-                                    <i className="fa fa-comment-o" style={{ fontSize: '15px', marginLeft: '10px' }}>{this.state.total_comments}</i>
-                                    <i className="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}> {this.state.total_likes}</i>
+                                    <i className="fa fa-comment-o" style={{ fontSize: '18px', marginLeft: '10px' }}>{this.state.total_comments}</i>
+                                    <i className="fa fa-thumbs-o-up" style={{ fontSize: '18px', color: isLiked && '#3578E5' }}> {this.state.total_likes}</i>
 
                                 </div>
                             </div>
 
                             <div className='post-content' dangerouslySetInnerHTML={{ __html: this.state.post.content }}>
                             </div>
+                            {isLiked ? 
                             <button className='btn btn-sm btn-primary'
                                 style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}
-                                onClick={() => {
+                                disabled
+                            >
+                                Đã Like
+                            </button>
+                            : 
+                            <button className='btn btn-sm btn-primary'
+                                style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}
+                                onClick={async () => {
                                     if (!this.state.liked) {
                                         this.setState({ total_likes: this.state.total_likes + 1, liked: true })
-                                        this.props.addLike(this.props.params.postId,localStorage.getItem('userId'));
+                                        this.props.addLike(this.props.params.postId,localStorage.getItem('userId')).then(async() => {
+                                            console.log(this.props.params.postId);
+                                            this.props.fetchLikeHistory().then( async () => {
+                                                const list = await this.props.liked.map(element => element && element.postId)
+                                                await this.setState({listLiked : list})
+                                                console.log(this.state.listLiked)
+                                            }).catch(err => {console.log(err)})
+                                        })
+                                        
                                     } else {
                                         this.setState({ total_likes: this.state.total_likes - 1, liked: false })
                                     }
                                 }
                                 }>
-                                <i className="fa fa-thumbs-o-up" style={{ fontSize: '15px' }}></i>
+                                <i className="fa fa-thumbs-o-up" style={{ fontSize: '18px'}}></i>
                                 Like
                             </button>
+                            }
+                            
                         </div>
 
                         <div className='interaction'>
@@ -149,7 +175,10 @@ class Post extends Component {
                                     style={{ float: 'right', width: '70px' }}
                                     onClick={()=>{
                                          this.props.addComment(this.props.params.postId,localStorage.getItem('userId'),this.state.newComment);
-                                        //  window.location.reload();
+                                         this.props.fetchPostComment(this.props.params.postId).then(() => {
+                                            const comments = this.props.comments.comments
+                                            this.setState({ comments })
+                                        })
                                     }}
                                 >
                                     Post
@@ -191,11 +220,11 @@ class Post extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state',state)
     return ({
         post: state.post.post.post,
         likes: state.post.likes,
-        comments: state.post.comments
+        comments: state.post.comments,
+        liked : state.post.posts.liked
     })
 }
 
@@ -205,6 +234,7 @@ const mapDispatchToProps = {
     fetchPostComment: fetchPostComment,
     addComment:addComment,
     addLike: addLike,
+    fetchLikeHistory: fetchLikeHistory
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

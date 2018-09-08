@@ -33,7 +33,6 @@ export function fetchpostHashtags(postId){
                         reject()
                     } else {
                         dispatch(fetchPostHashtagsSuccess(json))
-                        console.log('json',json)
                         resolve()
                     }
                 }).catch(() =>  {
