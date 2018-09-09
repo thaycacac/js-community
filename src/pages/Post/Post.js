@@ -147,7 +147,6 @@ class Post extends Component {
                                     if (!this.state.liked) {
                                         this.setState({ total_likes: this.state.total_likes + 1, liked: true })
                                         this.props.addLike(this.props.params.postId,localStorage.getItem('userId')).then(async() => {
-                                            console.log(this.props.params.postId);
                                             this.props.fetchLikeHistory().then( async () => {
                                                 const list = await this.props.liked.map(element => element && element.postId)
                                                 await this.setState({listLiked : list})
