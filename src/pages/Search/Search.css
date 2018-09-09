@@ -1,0 +1,112 @@
+
+
+.newfeed-container{
+  width: 1200px;
+  height: 100%;
+  background-color: #f2f2f2;
+  margin: auto;
+
+}
+.side-bar-left{
+  float: left;
+  width: 250px;
+  padding:0px;
+}
+.hashtag-bar{
+  float: left;
+  width: 250px;
+  padding-bottom: 20px;
+  background-color: #ffffff;
+
+}
+
+.blog-main-content{
+  float: left;
+  width: 640px;
+  background-color: #ffffff;
+  display: block;
+  margin-left: 10px;
+
+}
+
+.side-bar-right{
+  float: left;
+  width: 250px;
+  margin-left: 10px;
+}
+.weekly-bar{
+  float: left;
+  width: 250px;
+  height: 150px;
+  background-color: #ffffff;
+  display: block;
+  margin-bottom: 20px;
+  
+}
+.weekly-bar a{
+  text-decoration: none;
+  float: right;
+  margin:10px;
+}
+
+.ranking-bar{
+  float: left;
+  width: 250px;
+  background-color: #ffffff;
+  display: block;
+
+
+}
+
+.saved-post-bar{
+  float: left;
+  width: 250px;
+  height: 150px;
+  background-color: #ffffff;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* style menu bar */
+.menu-bar{
+  width: 540px;
+  height: 80px;
+  background-color: #f2f2f2;
+  border:0px;
+  margin: auto;
+}
+/* side bar */
+.bar-title{
+  margin-top: 10px;
+  margin-left: 90px;
+}
+
+.bar-content{
+  margin:20px;
+}
+
+.bar-content a{
+  text-decoration: none;
+  cursor: pointer;
+  margin: 5px;
+  float: left;
+}
+
+/* main content */
+.blog-main-content{
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+/* ranking table */
+.ranking-table{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding:10px;
+}
+
+.ranking-table th{
+  text-align: center;
+  padding:10px;
+}

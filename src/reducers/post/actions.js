@@ -1,7 +1,8 @@
 import { FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_ERROR,
 FETCH_CONTENT_REQUEST,FETCH_CONTENT_SUCCESS,FETCH_CONTENT_ERROR,
 FETCH_COMMENT_REQUEST,FETCH_COMMENT_SUCCESS,FETCH_COMMENT_ERROR,
-FETCH_LIKE_REQUEST,FETCH_LIKE_SUCCESS,FETCH_LIKE_ERROR, FETCH_MORE_POST_SUCCESS, FETCH_LIKE_HISTORY_SUCCESS } from './types';
+FETCH_LIKE_REQUEST,FETCH_LIKE_SUCCESS,FETCH_LIKE_ERROR, FETCH_MORE_POST_SUCCESS,
+ FETCH_LIKE_HISTORY_SUCCESS, SUBMIT_QUERY } from './types';
 import * as userFetch from '../../utils/fetch';
 import { BACKEND_URL } from '../../config/constants';
 
@@ -35,7 +36,7 @@ export function fetchPostsError() {
 export function fetchPosts(page, link) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            const url = `${BACKEND_URL}/${link}?page=${page}`;
+            const url = `${BACKEND_URL}/${link}&page=${page}`;
             userFetch.get(url).then(res => {
                 res.json().then(json => {
                     if (json === false || json.length === 0) {
@@ -61,7 +62,7 @@ export function fetchPosts(page, link) {
 export function fetchMorePosts(page, link) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            const url = `${BACKEND_URL}/${link}?page=${page}`;
+            const url = `${BACKEND_URL}/${link}&page=${page}`;
             userFetch.get(url).then(res => {
                 res.json().then(json => {
                     if (json === false || json.length === 0) {
@@ -82,6 +83,17 @@ export function fetchMorePosts(page, link) {
             });
         })
         
+    }
+}
+export function submitQuery(payload){
+    return{
+        type:SUBMIT_QUERY,
+        payload
+    }
+}
+export function handleSubmitQuery(query, method) {
+    return (dispatch) => {
+        dispatch(submitQuery({query, method}))
     }
 }
 export function fetchLikeHistory() {

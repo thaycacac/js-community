@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
 
-import {HomePage,Profile,Post,Blog,Question,Textbook,WritePost,Event,logIn, PageLayout} from './routes';
+import {HomePage,Profile,Post,Blog,Question,Textbook,WritePost,Event,logIn, PageLayout, Search} from './routes';
 
 export default (
     <Route>
@@ -15,5 +15,6 @@ export default (
       <Route path='/writepost' component={WritePost}/>
       <Route path='/event' component={Event}/>
       <Route path='/login' component={logIn}/>
+      <Route path='/search' component={Search}/>
     </Route>
   );

@@ -32,7 +32,7 @@ class Blog extends Component {
   loadFunc = async () => {
     if (this.state.page === this.state.loadedPage) {
       await this.setState({loadedPage : this.state.page + 1});
-      await this.props.fetchMorePosts(this.state.page, 'post/get/type/blog' ).then(async() => {
+      await this.props.fetchMorePosts(this.state.page, 'post/get/type/blog?' ).then(async() => {
         const { posts, total_pages, page } = this.props.posts;
         await this.setState({ posts, total_pages, page : parseInt(page) + 1, hasMore : parseInt(page) + 1 < total_pages })
       })
