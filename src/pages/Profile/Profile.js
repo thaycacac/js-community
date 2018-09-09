@@ -70,7 +70,7 @@ class Profile extends Component{
 
           {
             this.state.posts.map(post=>{
-                console.log('username',post.username)
+                // console.log('username',post.username)
                 return (
                   <ShortPost post={post} key={Math.random()}/>
                 )

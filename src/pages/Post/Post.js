@@ -70,11 +70,13 @@ class Post extends Component {
 
   renderComments() {
     if (this.state.comments.length > 0) {
+      // console.log('this.state.comments', this.state.comments);
       return this.state.comments.map(comment => (
         <Comment
           username={comment.userName}
           content={comment.content}
           userAvatar={comment.userAvatar}
+          userId={comment.userId}
           key={Math.random()}
         />
       ));

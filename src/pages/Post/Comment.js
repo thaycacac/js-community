@@ -9,7 +9,8 @@ export default class Comment extends Component {
         this.state={
             username:this.props.username,
             content:this.props.content,
-            userAvatar: this.props.userAvatar
+            userAvatar: this.props.userAvatar,
+            userId: this.props.userId
         }
     }
     
@@ -19,7 +20,7 @@ export default class Comment extends Component {
                 <div className='comment-user-avatar'><img style={{borderRadius:'100px'}}
                  src={this.state.userAvatar ? this.state.userAvatar : avatar} alt="avatar"/></div>
                 <div className='comment-content'>
-                    <div className='username'><Link to={{pathname:`/profile/53`}}>{this.state.username}</Link></div>
+                    <div className='username'><Link to={{pathname:`/profile/${this.state.userId}`}}>{this.state.username}</Link></div>
                     <div className='comment-text'>
                         {this.state.content}
                     </div>

@@ -26,7 +26,7 @@ class Question extends Component {
   componentWillMount() {
     this.props.fetchLikeHistory().then(() => {
       const list = this.props.liked.map(element => element && element.postId)
-      console.log(list);
+      // console.log(list);
       this.setState({liked : list})
     }).catch(err => {console.log(err)})
   }

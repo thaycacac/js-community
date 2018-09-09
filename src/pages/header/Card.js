@@ -60,7 +60,7 @@ export default class Card extends Component {
                 }}
               >
                 <div className='user-content'>
-                  <Link to='/profile'>View profile</Link><br />
+                  <Link to={{pathname:`/profile/${localStorage.getItem('userId')}`}}>View profile</Link><br />
                   <Link onClick={() => {
                     this.signOut()
                   }} to='/login'> Sign out </Link>

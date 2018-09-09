@@ -17,7 +17,7 @@ export default class Weekly extends Component {
             </ul>
               No activities yet.
           </div>
-          <a href='/event'>Detail>></a>
+          {/* <a href='/event'>Detail>></a> */}
             </div>
         );
     }
