@@ -22,7 +22,10 @@ export const Blog = Loadable({
   loader: () => import("../pages/Blog/Blog"),
   loading : Loading
 });
-
+export const Search = Loadable({
+  loader: () => import("../pages/Search/Search"),
+  loading : Loading
+});
 export const Question = Loadable({
   loader: () => import("../pages/Question/Question"),
   loading : Loading

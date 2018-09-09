@@ -4,11 +4,38 @@ import Card from './Card';
 import logoJS from '../images/logoJS.png';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
+import {handleSubmitQuery, fetchPostsSuccess} from '../../reducers/post/actions'
 class Header extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            query: ''
+        }
+    }
     async componentWillMount () {
         let token = await localStorage.getItem('accessToken');
         if (!token) {
            await browserHistory.push('/login')
+        }
+        this.setState({query : this.props.query});
+    }
+    onKeyDown = (e) => {
+        if (e.keyCode === 13 && this.state.query) {
+            this.props.fetchPostsSuccess({
+                posts:[],
+                total_pages : 0,
+                page : 0,
+                hasMore : true,
+                loadedPage : 0,
+                liked : [],
+                query: '',
+                total : 0
+            })
+            this.props.handleSubmitQuery(this.state.query, 'search');
+            if (browserHistory.getCurrentLocation().pathname !== '/search') {
+                setTimeout(() => {browserHistory.push('/search')}, 500);
+            }
+            
         }
     }
     render(){
@@ -20,7 +47,9 @@ class Header extends Component{
                     </a> 
                  
                  </div>
-                <input className="form-control search col-sm-3" type='text' placeholder='Search...'/>
+                <input className="form-control search col-sm-3" type='text' onKeyDown={this.onKeyDown}
+                 placeholder='Search...' onChange={(event) => this.setState({query : event.target.value})}
+                 value={this.state.query}/>
                 <div className='write-a-post col-sm-2'>
                 <a href='/writepost'>
                     <i className="fa fa-pencil-square-o"></i> Write a post 
@@ -33,7 +62,11 @@ class Header extends Component{
 }
 function mapStateToProps(state) {
     const auth = state.auth.reducer;
-    return { auth }
+    const query = state.post.posts.query;
+    return { auth, query }
 }
-
-export default connect(mapStateToProps, null)(Header)
+const mapDispatchToProps = {
+    handleSubmitQuery: handleSubmitQuery,
+    fetchPostsSuccess: fetchPostsSuccess
+  };
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

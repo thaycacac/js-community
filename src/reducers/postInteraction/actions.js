@@ -25,7 +25,7 @@ export function addLike(postId,userId){
         return new Promise((resolve,reject) =>{
             const url = `${BACKEND_URL}/post/add/like`
             const body = JSON.stringify({ postId,userId });
-            console.log(body);
+            // console.log(body);
             userFetch.post(url, body)
                 .then(json => {
                     // console.log('addPostJson', json);
@@ -33,7 +33,7 @@ export function addLike(postId,userId){
                         dispatch(addLikeSuccess);
                         resolve()
                     } else {
-                        console.log(json);
+                        // console.log(json);
                         dispatch(addLikeError);
                         reject()
                     }
@@ -68,16 +68,16 @@ export function addComment(postId, userId, content){
         return new Promise((resolve,reject) =>{
             const url = `${BACKEND_URL}/post/add/comment`
             const body = JSON.stringify({ postId,userId,content });
-            console.log(body);
+            // console.log(body);
             userFetch.post(url, body)
                 .then(json => {
                     // console.log('addPostJson', json);
                     if (json && json.rowsAffected && json.rowsAffected[0] > 0) {
                         dispatch(addCommentSuccess);
-                        console.log('add comment success', postId,userId,content);
+                        // console.log('add comment success', postId,userId,content);
                         resolve()
                     } else {
-                        console.log(json);
+                        // console.log(json);
                         dispatch(addCommentError);
                         reject()
                     }

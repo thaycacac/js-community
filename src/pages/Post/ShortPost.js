@@ -31,7 +31,7 @@ class ShortPost extends Component{
                 </div>
 
                 <div className='short-description'>
-                    <p className='username'><a href='/profile'>{this.state.post.authorName}</a></p>
+                    <p className='username'><Link to={{pathname:`/profile/${this.state.post.authorId}`}}>{this.state.post.authorName}</Link></p>
                     <div className='main-hashtag'>
                         {
                             this.state.hashtags.map(hashtag=>{
@@ -44,11 +44,11 @@ class ShortPost extends Component{
                     <div className='post-title'>
                         <Link to={{pathname:`/post/${this.props.post.postId}`}} >{this.state.post.title}</Link>
                     </div>
-                    <div className='short-user-interact' style={{fontSize:'18px'}}>
-                        <i className="fa fa-thumbs-o-up" style={{fontSize:'18px', marginRight: '5px', color: isLiked && '#3578E5'}}
+                    <div className='short-user-interact' style={{fontSize:'14px'}}>
+                        <i className="fa fa-thumbs-o-up" style={{fontSize:'14px', marginRight: '5px', color: isLiked && '#3578E5',marginBottom:'10px'}}
                         > </i>
                         <span style={{color: isLiked && '#3578E5'}}>{this.props.post.total_likes}</span>
-                        <i className="fa fa-comment-o" style={{fontSize:'18px', marginLeft:'10px', marginRight: '5px'}}></i>
+                        <i className="fa fa-comment-o" style={{fontSize:'14px', marginLeft:'10px', marginRight: '5px',marginBottom:'10px'}}></i>
                         <span>{this.props.post.total_comments}</span>
                     </div>
                 </div>

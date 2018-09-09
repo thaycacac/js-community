@@ -15,7 +15,7 @@ class Facebook extends Component {
     }
 
     responseFacebook = (response) => {
-        console.log(response);
+        // console.log(response);
         const {name, email, picture} = response;
         if (picture && picture.data && picture.data.url) {
             this.props.login(email, picture.data.url, name).then(() => {

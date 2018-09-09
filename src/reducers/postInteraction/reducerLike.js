@@ -1,4 +1,4 @@
-import { ADD_LIKE_REQUEST,ADD_LIKE_SUCCESS,ADD_LIKE_ERROR } from './types';
+import { ADD_LIKE_REQUEST,ADD_LIKE_SUCCESS } from './types';
 
 const initialState = {
     postId:0,

@@ -74,11 +74,12 @@
 
   /* main content */
   .profile-main-content{
+    padding: 30px;
     float: left;
   width: 640px;
   background-color: #ffffff;
   display: block;
-  margin-left: 10px;
+  margin-left: 20px;
   }
   
   .username-profile{

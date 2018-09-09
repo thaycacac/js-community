@@ -25,14 +25,14 @@ class HomePage extends Component {
   componentWillMount() {
     this.props.fetchLikeHistory().then(() => {
       const list = this.props.liked.map(element => element && element.postId)
-      console.log(list);
+      // console.log(list);
       this.setState({liked : list})
     }).catch(err => {console.log(err)})
   }
   loadFunc = async () => {
       if (this.state.page === this.state.loadedPage) {
         await this.setState({loadedPage : this.state.page + 1});
-        await this.props.fetchMorePosts(this.state.page, 'post/get' ).then(async() => {
+        await this.props.fetchMorePosts(this.state.page, 'post/get?' ).then(async() => {
           const { posts, total_pages, page } = this.props.posts;
           await this.setState({ posts, total_pages, page : parseInt(page) + 1, hasMore : parseInt(page) + 1 < total_pages })
         })

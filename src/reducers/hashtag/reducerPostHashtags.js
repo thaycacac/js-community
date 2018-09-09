@@ -1,4 +1,4 @@
-import {FETCH_POST_HASHTAGS_REQUEST,FETCH_POST_HASHTAGS_SUCCESS,FETCH_POST_HASHTAGS_ERROR} from './types'
+import {FETCH_POST_HASHTAGS_REQUEST,FETCH_POST_HASHTAGS_SUCCESS} from './types'
 
 const initialState = {
     hashtags:[]

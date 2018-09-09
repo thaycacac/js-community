@@ -78,7 +78,7 @@ export function fetchPost(uid, page) {
                         dispatch(fetchPostError)
                         reject()
                     } else {
-                        console.log('json',json)
+                        // console.log('json',json)
                         dispatch(fetchPostSuccess(json))
                         resolve()
                     }

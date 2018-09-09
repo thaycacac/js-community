@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
 import 'font-awesome/css/font-awesome.min.css';
-import login from '../images/login.png';
+// import login from '../images/login.png';
 import { Link } from 'react-router';
 
 export default class Card extends Component {
@@ -43,7 +43,7 @@ export default class Card extends Component {
     return (
       <div className='user'>
         <button className='user-button' onClick={this.showMenu}>
-        <img src={localStorage.getItem('avatar')} style={{width: '30px',
+        <img alt="avatar" src={localStorage.getItem('avatar')} style={{width: '30px',
         height: '30px',
         marginRight:'5px',
         borderRadius: '100px',
@@ -60,7 +60,7 @@ export default class Card extends Component {
                 }}
               >
                 <div className='user-content'>
-                  <Link to='/profile'>View profile</Link><br />
+                  <Link to={{pathname:`/profile/${localStorage.getItem('userId')}`}}>View profile</Link><br />
                   <Link onClick={() => {
                     this.signOut()
                   }} to='/login'> Sign out </Link>

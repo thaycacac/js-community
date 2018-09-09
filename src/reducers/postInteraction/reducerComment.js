@@ -1,4 +1,4 @@
-import { ADD_COMMENT_REQUEST,ADD_COMMENT_SUCCESS,ADD_COMMENT_ERROR } from './types';
+import { ADD_COMMENT_REQUEST,ADD_COMMENT_SUCCESS } from './types';
 
 const initialState = {
     postId:0,
