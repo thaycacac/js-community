@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import Header from './../header/Header';
 import './Profile.css';
 import ShortPost from './../Post/ShortPost';
-// import avatar from '../images/avatar.png';
+import avatar from '../images/avatar.png';
 import Menu from './../Menu/Menu';
 import { fetchRank, fetchPost } from '../../reducers/profile/actions';
 import { connect } from 'react-redux';
+import nopost from '../images/no-post.png';
 
 class Profile extends Component{
   constructor(props){
@@ -35,53 +36,90 @@ class Profile extends Component{
   }
 
     render(){
-        return(
-        <div style={{ backgroundColor: '#e6f2f2f2e6e6' }}>
-        <Header />
-          <Menu/>
-        <div className='profile-container'>
+        if(this.state.posts.length > 0) {
+          return(
+          <div style={{ backgroundColor: '#e6f2f2f2e6e6' }}>
+          <Header />
+            <Menu/>
+          <div className='profile-container'>
 
-          <div className='profile'>
-            <div className='avatar'><img src={this.state.rank.avatar} alt="avatar" style={{borderRadius: '100px'}}/></div>
-            <div className='bar-content'>
-            <div className='username-profile'>{this.state.rank.name}</div>
-            <div className='public-profile'>
-              <table className='table-profile'>
-              <tbody> 
-                <tr>
-                  <td>Total posts:</td>
-                  <td>{this.state.posts.length}</td>
-                </tr>
-                <tr>
-                  <td>Total votes:</td>
-                  <td>{this.state.rank.total_votes}</td>
-                </tr>
-                <tr>
-                  <td>Top ranking:</td>
-                  <td>{this.state.rank.top}</td>
-                </tr>
-              </tbody>
-              </table>
+            <div className='profile'>
+              <div className='avatar'><img src={this.state.rank && this.state.rank.avatar !== 'undefined' && this.state.rank.avatar || avatar} alt="avatar" style={{borderRadius: '100px'}}/></div>
+              <div className='bar-content'>
+              <div className='username-profile'>{this.state.rank.name}</div>
+              <div className='public-profile'>
+                <table className='table-profile'>
+                <tbody> 
+                  <tr>
+                    <td>Total posts:</td>
+                    <td>{this.state.posts.length}</td>
+                  </tr>
+                  <tr>
+                    <td>Total votes:</td>
+                    <td>{this.state.rank.total_votes}</td>
+                  </tr>
+                  <tr>
+                    <td>Top ranking:</td>
+                    <td>{this.state.rank.top}</td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+            <div className='profile-main-content'>
+            {
+              this.state.posts.map(post=>{
+                  // console.log('username',post.username)
+                  return (
+                    <ShortPost post={post} key={Math.random()}/>
+                  )
+                })
+            }
             </div>
             </div>
           </div>
+        
+          )
+        } else {
+          return (
+            <div style={{ backgroundColor: '#e6f2f2f2e6e6' }}>
+          <Header />
+            <Menu/>
+          <div className='profile-container'>
 
-          <div className='profile-main-content'>
-
-          {
-            this.state.posts.map(post=>{
-                // console.log('username',post.username)
-                return (
-                  <ShortPost post={post} key={Math.random()}/>
-                )
-              })
-
-          }
+            <div className='profile'>
+              <div className='avatar'><img src={this.state.rank && this.state.rank.avatar !== 'undefined' && this.state.rank.avatar || avatar} alt="avatar" style={{borderRadius: '100px'}}/></div>
+              <div className='bar-content'>
+              <div className='username-profile'>{this.state.rank.name}</div>
+              <div className='public-profile'>
+                <table className='table-profile'>
+                <tbody> 
+                  <tr>
+                    <td>Total posts:</td>
+                    <td>{this.state.posts.length}</td>
+                  </tr>
+                  <tr>
+                    <td>Total votes:</td>
+                    <td>{this.state.rank.total_votes}</td>
+                  </tr>
+                  <tr>
+                    <td>Top ranking:</td>
+                    <td>{this.state.rank.top}</td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+            <div className='profile-no-post'>
+                <img src={nopost} alt="No posts to show"/>
+                <p>No posts to show</p>
+            </div>
+            </div>
           </div>
-          </div>
-        </div>
-      
-        )
+          )
+        }
     }
 }
 
