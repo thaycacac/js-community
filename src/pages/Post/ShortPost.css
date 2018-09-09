@@ -1,7 +1,7 @@
 .short-post-container {
   width: 600px;
 
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px dotted gray;
 }
 
 .user-avatar {

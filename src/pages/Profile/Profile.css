@@ -108,10 +108,25 @@
     margin: auto;
   }
 
+  .profile-no-post{
+    padding: 30px;
+    float: left;
+    width: 640px;
+    background-color: #ffffff;
+    display: block;
+    margin-left: 20px;
+    text-align: center;
+  }
 
+  .profile-no-post img {
+    width: 400px;
+  }
 
-
-
+  .profile-no-post p {
+    margin: 10px;
+    font-size: 24px;
+    font-family: "Comic sans MS";
+  }
 
 
 
