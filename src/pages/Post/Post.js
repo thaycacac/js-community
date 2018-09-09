@@ -103,110 +103,15 @@ class Post extends Component {
                                 <SavedPost />
                             </div>
                         </div>
-                        <div className='bar-content'>
-                            <Hashtags />
-                        </div>
-                    </div>
-                </div>
-
-                <div className='content-1'>
-                    <div className='main-post-content'>
-                        <div className='user-avatar'>
-                            <img src={this.state.post.authorAvatar === null ? avatar : this.state.post.authorAvatar} alt="avatar" />
-                        </div>
-
-                        <div className='short-description'>
-                            <div className='post-title'>
-                                {this.state.post.title}
+                        <div className='hashtag-bar'>
+                            <div className='bar-title'>
+                                #Hashtag
                             </div>
-                            <p className='username'><Link to='/profile' >{this.state.post.authorName}</Link></p>
 
-
-                            <div className='user-interact' style={{ fontSize: '18px' }}>
-                                <div className='main-hashtag'>
-                                    {
-                                        // this.state.post.hashtags.map(hashtag=>{
-                                        //     return(
-                                        //         <span className='hashtag'><a>{hashtag}</a></span>
-                                        //     )
-                                        // })
-                                    }
-                                </div>
-                                <i className="fa fa-comment-o" style={{ fontSize: '18px', marginLeft: '10px' }}>{this.state.total_comments}</i>
-                                <i className="fa fa-thumbs-o-up" style={{ fontSize: '18px', color: isLiked && '#3578E5' }}> {this.state.total_likes}</i>
-
+                            <div className='bar-content'>
+                                <Hashtags />
                             </div>
                         </div>
-
-                        <div className='post-content' dangerouslySetInnerHTML={{ __html: this.state.post.content }}>
-                        </div>
-                        {isLiked ?
-                            <button className='btn btn-sm btn-primary'
-                                style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}
-                                disabled
-                            >
-                                Đã Like
-                            </button>
-                            :
-                            <button className='btn btn-sm btn-primary'
-                                style={{ width: '60px', float: 'right', marginRight: '10px', marginBottom: '20px' }}
-                                onClick={async () => {
-                                    if (!this.state.liked) {
-                                        this.setState({ total_likes: this.state.total_likes + 1, liked: true })
-                                        this.props.addLike(this.props.params.postId, localStorage.getItem('userId')).then(async () => {
-                                            this.props.fetchLikeHistory().then(async () => {
-                                                const list = await this.props.liked.map(element => element && element.postId)
-                                                await this.setState({ listLiked: list })
-                                                console.log(this.state.listLiked)
-                                            }).catch(err => { console.log(err) })
-                                        })
-
-                                    } else {
-                                        this.setState({ total_likes: this.state.total_likes - 1, liked: false })
-                                    }
-                                }
-                                }>
-                                <i className="fa fa-thumbs-o-up" style={{ fontSize: '18px' }}></i>
-                                Like
-                            </button>
-                        }
-
-                    </div>
-
-                    <div className='interaction'>
-                        <div className='add-comment'>
-                            <h4>Comment</h4>
-                            <textarea placeholder='Add comment here...' onChange={event => { this.setState({ newComment: event.target.value }) }}></textarea>
-                            <button className='btn btn-primary'
-                                style={{ float: 'right', width: '70px' }}
-                                onClick={() => {
-                                    this.props.addComment(this.props.params.postId, localStorage.getItem('userId'), this.state.newComment);
-                                    this.props.fetchPostComment(this.props.params.postId).then(() => {
-                                        const comments = this.props.comments.comments
-                                        this.setState({ comments })
-                                    })
-                                }}
-                            >
-                                Post
-                            </button>
-                        </div>
-                        <div className='view-comment'>
-                            {
-                                this.renderComments()
-
-                            }
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div className='side-bar-right'>
-                    <div className='weekly-bar'>
-                        <div className='bar-title'>
-                            Weekly
-          </div>
-                        <Weekly />
                     </div>
                 </div>
 
