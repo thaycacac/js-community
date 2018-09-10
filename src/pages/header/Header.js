@@ -28,7 +28,6 @@ class Header extends Component{
                 hasMore : true,
                 loadedPage : 0,
                 liked : [],
-                query: '',
                 total : 0
             })
             this.props.handleSubmitQuery(this.state.query, 'search');
