@@ -25,7 +25,7 @@ class WritePost extends Component {
     const text = localStorage.getItem("text").trim();
     // console.log('text',text);
     // console.log('this.state', this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
-    this.state.title && text && !text == " "
+    this.state.title && text
       ? this.props.addPost(
           localStorage.getItem("userId"),
           this.state.title,
