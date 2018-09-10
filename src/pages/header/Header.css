@@ -75,12 +75,14 @@
     background-size: 25px;
     background-position: 5px 5px;
     padding-left: 35px;
-    width:50%;
-    min-width: 400px;
+    right: 320px;
+    width: 50%;
+    min-width: 350px;
     position: absolute;
-    left: 260px;
+    left: 280px;
     border:0px;
     border-radius: 100px;
+    margin:auto;
 }
 .search:focus{
     outline: #2c4762;

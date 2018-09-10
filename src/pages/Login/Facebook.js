@@ -15,6 +15,7 @@ class Facebook extends Component {
     }
 
     responseFacebook = (response) => {
+        // console.log(response);
         const {name, email, picture} = response;
         if (picture && picture.data && picture.data.url) {
             this.props.login(email, picture.data.url, name).then(() => {
@@ -44,7 +45,7 @@ class Facebook extends Component {
                 callback={this.responseFacebook}
                 render={renderProps => (
                     <div onClick={renderProps.onClick} className="link-sign-in btn-sign-in">
-                        <img src={logoFB} width="24px"/>
+                        <img src={logoFB} width="24px" alt="logo FB"/>
                         <span>Login with Facebook</span>
                     </div>
                 )}

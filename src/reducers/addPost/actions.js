@@ -9,7 +9,6 @@ export function addPostRequest(authorId, title, content, type, hashtag) {
         authorId,
         title,
         content,
-        type,
         hashtag
     }
 }
@@ -31,21 +30,22 @@ export function addPost(authorId, title, content, type, hashtag) {
         return new Promise((resolve, reject) => {
             const url = `${BACKEND_URL}/post/add`;
             const body = JSON.stringify({ authorId, title, content, type, hashtag });
-            
+            // console.log(body);
             userFetch.post(url, body)
                 .then(json => {
-                    console.log('addPostJson', json);
+                    // console.log('addPostJson', json);
                     if (json && json.rowsAffected && json.rowsAffected[0] > 0) {
                         
                         dispatch(addPostSuccess);
                         browserHistory.push(`/${type}`)
                         resolve()
                     } else {
+                        // console.log(json);
                         dispatch(addPostError);
                         reject()
                     }
 
-                })
+                }).catch(err => console.log(err));
         })
     }
 }

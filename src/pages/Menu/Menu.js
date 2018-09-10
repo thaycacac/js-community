@@ -10,7 +10,7 @@ export default class Menu extends Component {
             <Nav style={{border: '0'}}>
               <NavItem eventKey={1} href='/home'> New Feed</NavItem>
               <NavItem eventKey={1} href='/blog'> Blog</NavItem>
-              <NavItem eventKey={1} href='/question'> Q/A</NavItem>
+              <NavItem eventKey={1} href='/qa'> Q/A</NavItem>
               <NavItem eventKey={1} href='textbook'> Textbook</NavItem>
             </Nav>
           </Navbar>

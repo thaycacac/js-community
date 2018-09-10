@@ -15,12 +15,12 @@
 .hashtag-bar{
   float: left;
   width: 250px;
-  height: 400px;
+  padding-bottom: 20px;
   background-color: #ffffff;
 
 }
 
-.main-content{
+.question-main-content{
   float: left;
   width: 640px;
   background-color: #ffffff;
@@ -37,7 +37,7 @@
 .weekly-bar{
   float: left;
   width: 250px;
-  height: 400px;
+  height: 150px;
   background-color: #ffffff;
   display: block;
   margin-bottom: 20px;
@@ -61,7 +61,7 @@
 .saved-post-bar{
   float: left;
   width: 250px;
-  height: 400px;
+  height: 150px;
   background-color: #ffffff;
   display: block;
   margin-bottom: 20px;
@@ -93,7 +93,7 @@
 }
 
 /* main content */
-.main-content{
+.question-main-content{
   padding: 10px;
   margin-bottom: 40px;
 }

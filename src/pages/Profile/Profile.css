@@ -12,7 +12,7 @@
   }
   
   
-  .main-content{
+  .profle-main-content{
     grid-area: main;
     float: left;
     width: 640px;
@@ -62,8 +62,8 @@
   }
   
   .avatar{
-    width: 60px;
-    height: 60px;
+    width: 150px;
+    height: 150px;
     margin:auto;
 
   }
@@ -73,8 +73,13 @@
  }
 
   /* main content */
-  .main-content{
-    padding: 10px;
+  .profile-main-content{
+    padding: 30px;
+    float: left;
+  width: 640px;
+  background-color: #ffffff;
+  display: block;
+  margin-left: 20px;
   }
   
   .username-profile{
@@ -103,10 +108,25 @@
     margin: auto;
   }
 
+  .profile-no-post{
+    padding: 30px;
+    float: left;
+    width: 640px;
+    background-color: #ffffff;
+    display: block;
+    margin-left: 20px;
+    text-align: center;
+  }
 
+  .profile-no-post img {
+    width: 400px;
+  }
 
-
-
+  .profile-no-post p {
+    margin: 10px;
+    font-size: 24px;
+    font-family: "Comic sans MS";
+  }
 
 
 

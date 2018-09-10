@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import './Textbook.css';
 import Header from './../header/Header';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+// import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import ShortPost from './../Post/ShortPost';
 import Menu from './../Menu/Menu';
 import {connect} from 'react-redux'
-import { fetchPosts } from '../../reducers/post/actions'
+import { fetchPosts, fetchMorePosts, fetchLikeHistory } from '../../reducers/post/actions'
 import Rank from './../sidebars/Rank'
 import Hashtags from './../sidebars/Hashtags'
 import SavedPost from './../sidebars/SavedPost'
 import Weekly from './../sidebars/Weekly'
+import InfiniteScroll from 'react-infinite-scroller';
 
 class Textbook extends Component {
   constructor(props){
@@ -17,16 +18,30 @@ class Textbook extends Component {
       this.state={
         posts:[],
         total_pages : 0,
-        page : 0
+        page : 0,
+        hasMore : true,
+        loadedPage : 0,
+        liked : []
       }
   }
-  
-  componentWillMount(){
-    this.props.fetchPosts(0).then(() => {
-      const {posts, total_pages, page} = this.props.posts;
-      this.setState({posts, total_pages, page})
-    })
-    
+  componentWillMount() {
+    this.props.fetchLikeHistory().then(() => {
+      const list = this.props.liked.map(element => element && element.postId)
+      // console.log(list);
+      this.setState({liked : list})
+    }).catch(err => {console.log(err)})
+  }
+  loadFunc = async () => {
+    if (this.state.page === this.state.loadedPage) {
+      await this.setState({loadedPage : this.state.page + 1});
+      await this.props.fetchMorePosts(this.state.page, 'post/get/type/textbook?' ).then(async() => {
+        const { posts, total_pages, page } = this.props.posts;
+        await this.setState({ posts, total_pages, page : parseInt(page) + 1, hasMore : parseInt(page) + 1 < total_pages })
+      })
+    }
+  }
+  handleLoadFunction = () => {
+    setTimeout(() => {this.loadFunc()}, 2000);
   }
   
   render() {
@@ -59,13 +74,17 @@ class Textbook extends Component {
           </div>
 
 
-          <div className='main-content'>
-            {
-              this.state.posts.map(post => {
-                if(post.type==='TextBook'){return <ShortPost post={post} />}
-                
-              })
-            }
+          <div className='textbook-main-content'>
+          <InfiniteScroll
+                pageStart={0}
+                loadMore={() => {this.handleLoadFunction()}}
+                hasMore={this.state.hasMore}
+                loader={<div className="loader center" key={0}>Đang tải thêm...</div>}
+            >
+              {
+                this.state.posts && this.state.posts.map(post => (<ShortPost post={post} liked={this.state.liked} key={Math.random()}/>))
+              }
+            </InfiniteScroll>
           </div>
           <div className='side-bar-right'>
             <div className='weekly-bar'>
@@ -92,13 +111,15 @@ class Textbook extends Component {
 }
 
 function mapStateToProps(state){
-  console.log(state.post.posts)
   return({
-      posts : state.post.posts
+      posts : state.post.posts,
+      liked : state.post.posts.liked
   })
 }
 const mapDispatchToProps = {
-  fetchPosts : fetchPosts
+  fetchPosts : fetchPosts,
+  fetchMorePosts : fetchMorePosts,
+  fetchLikeHistory: fetchLikeHistory
 };
 
 

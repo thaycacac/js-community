@@ -15,12 +15,11 @@
 .hashtag-bar{
   float: left;
   width: 250px;
-  height: 400px;
   background-color: #ffffff;
-
+  padding-bottom: 20px;
 }
 
-.main-content{
+.home-main-content{
   float: left;
   width: 640px;
   background-color: #ffffff;
@@ -37,7 +36,7 @@
 .weekly-bar{
   float: left;
   width: 250px;
-  height: 400px;
+  height: 150px;
   background-color: #ffffff;
   display: block;
   margin-bottom: 20px;
@@ -61,7 +60,7 @@
 .saved-post-bar{
   float: left;
   width: 250px;
-  height: 400px;
+  height: 150px;
   background-color: #ffffff;
   display: block;
   margin-bottom: 20px;
@@ -93,7 +92,7 @@
 }
 
 /* main content */
-.main-content{
+.home-main-content{
   padding: 10px;
   margin-bottom: 40px;
 }
@@ -109,4 +108,13 @@
 .ranking-table th{
   text-align: center;
   padding:10px;
+}
+
+.rank-name {
+  min-width: 120px;
+  text-align: center;
+}
+
+.rank-record {
+  margin-bottom: 7px;
 }

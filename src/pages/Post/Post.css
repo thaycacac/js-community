@@ -22,7 +22,7 @@ code{
   .hashtag-bar{
     float: left;
     width: 250px;
-    height: 400px;
+    padding-bottom: 20px;
     background-color: #ffffff;
   
   }
@@ -32,6 +32,7 @@ code{
     width: 640px;
     background-color: #ffffff;
     margin-bottom: 20px;
+  
   }
   
   .side-bar-right{
@@ -48,7 +49,7 @@ code{
   .weekly-bar{
     float: left;
     width: 250px;
-    height: 400px;
+    height: 150px;
     background-color: #ffffff;
     display: block;
     margin-bottom: 20px;
@@ -72,7 +73,7 @@ code{
   .saved-post-bar{
     float: left;
     width: 250px;
-    height: 400px;
+    height: 150px;
     background-color: #ffffff;
     display: block;
     margin-bottom: 20px;
@@ -104,7 +105,7 @@ code{
   }
   
   /* main content */
-  .main-content{
+  .post-main-content{
     padding: 10px;
   }
   
@@ -121,11 +122,13 @@ code{
 
   /* short description */
 
-.user-avatar{
-    width: 80px;
-    height: 80px;
+  .user-avatar{
+    width: 60px;
+    height: 60px;
     float: left;
     margin:10px;
+    border-radius: 100px;
+    overflow: hidden;
 }
 
 .user-avatar img{
@@ -186,8 +189,7 @@ code{
 
 /* post content */
 .post-content{
-  margin:20px;
- 
+  width: 640px;
   padding:10px;
 }
 

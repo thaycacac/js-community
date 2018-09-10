@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_REQUEST } from './constants';
+import { LOGIN_SUCCESS } from './constants';
 
 const initialState = {
     email : localStorage.getItem('email') || '',

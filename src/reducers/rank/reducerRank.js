@@ -1,4 +1,4 @@
-import {FETCH_RANK_REQUEST,FETCH_RANK_SUCCESS,FETCH_RANK_ERROR} from './types'
+import {FETCH_RANK_REQUEST,FETCH_RANK_SUCCESS} from './types'
 
 const initialState = {
     ranks: []

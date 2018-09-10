@@ -1,7 +1,8 @@
 import { FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_ERROR,
 FETCH_CONTENT_REQUEST,FETCH_CONTENT_SUCCESS,FETCH_CONTENT_ERROR,
 FETCH_COMMENT_REQUEST,FETCH_COMMENT_SUCCESS,FETCH_COMMENT_ERROR,
-FETCH_LIKE_REQUEST,FETCH_LIKE_SUCCESS,FETCH_LIKE_ERROR, FETCH_MORE_POST_SUCCESS } from './types';
+FETCH_LIKE_REQUEST,FETCH_LIKE_SUCCESS,FETCH_LIKE_ERROR, FETCH_MORE_POST_SUCCESS,
+ FETCH_LIKE_HISTORY_SUCCESS, SUBMIT_QUERY } from './types';
 import * as userFetch from '../../utils/fetch';
 import { BACKEND_URL } from '../../config/constants';
 
@@ -32,10 +33,10 @@ export function fetchPostsError() {
     }
 }
 
-export function fetchPosts(page) {
+export function fetchPosts(page, link) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            const url = `${BACKEND_URL}/post/get?page=${page}`;
+            const url = `${BACKEND_URL}/${link}&page=${page}`;
             userFetch.get(url).then(res => {
                 res.json().then(json => {
                     if (json === false || json.length === 0) {
@@ -58,10 +59,10 @@ export function fetchPosts(page) {
         
     }
 }
-export function fetchMorePosts(page) {
+export function fetchMorePosts(page, link) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            const url = `${BACKEND_URL}/post/get?page=${page}`;
+            const url = `${BACKEND_URL}/${link}&page=${page}`;
             userFetch.get(url).then(res => {
                 res.json().then(json => {
                     if (json === false || json.length === 0) {
@@ -84,9 +85,50 @@ export function fetchMorePosts(page) {
         
     }
 }
-
+export function submitQuery(payload){
+    return{
+        type:SUBMIT_QUERY,
+        payload
+    }
+}
+export function handleSubmitQuery(query, method) {
+    return (dispatch) => {
+        dispatch(submitQuery({query, method}))
+    }
+}
+export function fetchLikeHistory() {
+    return (dispatch) => {
+        return new Promise((resolve, reject) => {
+            const userId = localStorage.getItem('userId');
+            const url = `${BACKEND_URL}/post/get/liked/${userId}`;
+            userFetch.get(url).then(res => {
+                res.json().then(json => {
+                    if (json === false || json.length === 0) {
+                        reject()
+                    } else {
+                        const {liked} = json
+                        dispatch(fetchLikeHistorySuccess(liked))
+                        resolve()
+                    }
+                }).catch(() =>  {
+                    dispatch(fetchPostsError)
+                    reject()
+                });
+            }).catch(() =>  {
+                dispatch(fetchPostsError)
+                reject()
+            });
+        })
+        
+    }
+}
 // fetch post content
-
+export function fetchLikeHistorySuccess(payload){
+    return{
+        type:FETCH_LIKE_HISTORY_SUCCESS,
+        payload
+    }
+}
 export function fetchContentRequest(){
     return {
         type:FETCH_CONTENT_REQUEST

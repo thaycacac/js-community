@@ -3,6 +3,7 @@ import '../HomePage/HomePage.css'
 import { fetchRank } from '../../reducers/rank/actions'
 import { connect } from 'react-redux';
 import avatar from '../images/avatar.png';
+import {Link} from 'react-router';
 
 class Rank extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class Rank extends Component {
         })
     }
     render() {
+        // console.log('this.rank', this.state.ranks);
         return (
             <table className='ranking-table' >
                 <thead>
@@ -29,13 +31,15 @@ class Rank extends Component {
                     </tr>
                 </thead>    
                 <tbody>
-                {
+                    {
                     this.state.ranks.map(rank => {
+                        // console.log(rank.avatar);
                       return(
-                        <tr key={rank.name}>                       
-                            <td><img src={rank && rank.avatar ? rank.avatar : avatar} style={{width:'30px'}}/> </td>
-                            <td>{rank.name}</td>
-                            <td>{rank.total_votes}</td>
+                        <tr key={Math.random()}>    
+                        <td><img src={rank && rank.avatar !== 'undefined' && rank.avatar || avatar} style={{width:'30px',borderRadius: '100px',
+                        overflow: 'hidden'}} alt="avatar" className="rank-record"/> </td>
+                        <td className="rank-name"><Link to={{pathname:`/profile/${rank.userId}`}}>{rank.name}</Link></td>
+                        <td>{rank.total_votes}</td>
                         </tr>
                       )
                     })

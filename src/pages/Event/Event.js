@@ -45,7 +45,7 @@ export default class Event extends Component {
                         </div>
                     </div>
 
-                    <div className='main-content'>
+                    <div className='event-main-content'>
                         <Activity/>
                         <Activity/>
                     </div>
