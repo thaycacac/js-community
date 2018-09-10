@@ -245,7 +245,7 @@ class Post extends Component {
                                 style={{ float: "right", width: "70px" }}
                                 onClick={() => {
                                     this.setState({newComment:this.state.newComment.trim()});
-                                    this.state.newComment&&this.state.newComment==' ' ?
+                                    this.state.newComment?
                                     this.props.addComment(
                                         this.props.params.postId,
                                         localStorage.getItem("userId"),
