@@ -19,6 +19,7 @@ export default class Card extends Component {
   }
 
   componentWillMount(){
+    
     const username = this.props.auth.name.split(/[ ]+/).pop();
     this.setState({username})
   }
@@ -60,7 +61,7 @@ export default class Card extends Component {
                 }}
               >
                 <div className='user-content'>
-                  <Link to={{pathname:`/profile/${localStorage.getItem('userId')}`}}>View profile</Link><br />
+                  <Link to={{pathname:`/profile/${localStorage.getItem('userId')}`}} >View profile</Link><br />
                   <Link onClick={() => {
                     this.signOut()
                   }} to='/login'> Sign out </Link>

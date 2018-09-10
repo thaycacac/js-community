@@ -11,7 +11,7 @@ export default class Menu extends Component {
               <NavItem eventKey={1} href='/home'> New Feed</NavItem>
               <NavItem eventKey={1} href='/blog'> Blog</NavItem>
               <NavItem eventKey={1} href='/qa'> Q/A</NavItem>
-              <NavItem eventKey={1} href='textbook'> Textbook</NavItem>
+              <NavItem eventKey={1} href='/textbook'> Textbook</NavItem>
             </Nav>
           </Navbar>
         </div>

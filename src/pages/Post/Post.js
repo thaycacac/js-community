@@ -129,7 +129,7 @@ class Post extends Component {
                         </div>
 
                         <div className="short-description">
-                            <div className="post-title">{this.state.post.title}</div>
+                            <div className="post-content-title">{this.state.post.title}</div>
                             <p className="username">
                                 <Link to={`/profile/${this.state.post.authorId}`}>
                                     {this.state.post.authorName}
@@ -244,11 +244,13 @@ class Post extends Component {
                                 className="btn btn-primary"
                                 style={{ float: "right", width: "70px" }}
                                 onClick={() => {
+                                    this.setState({newComment:this.state.newComment.trim()});
+                                    this.state.newComment&&this.state.newComment==' ' ?
                                     this.props.addComment(
                                         this.props.params.postId,
                                         localStorage.getItem("userId"),
                                         this.state.newComment
-                                    );
+                                    ) : alert("Please insert comment")
                                     this.props
                                         .fetchPostComment(this.props.params.postId)
                                         .then(() => {

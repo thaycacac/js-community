@@ -23,10 +23,11 @@ class WritePost extends Component {
         }
     }
     addPost(){
-        const text = localStorage.getItem('text')
+        const text = localStorage.getItem('text').trim()
         // console.log('text',text);
         // console.log('this.state', this.state.title, localStorage.getItem('text'), this.state.type, this.state.hashtags)
-        this.props.addPost(localStorage.getItem('userId'),this.state.title,  text, this.state.type, this.state.hashtags)
+        text && text==' ' ?
+        this.props.addPost(localStorage.getItem('userId'),this.state.title,  text, this.state.type, this.state.hashtags): alert("Please write something!")
     }
 
     render() {
